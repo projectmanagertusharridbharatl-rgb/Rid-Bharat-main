@@ -1,0 +1,1362 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application JEE</title>
+    <link rel="stylesheet" href="/rts/css/jee/jee.css">
+</head>
+
+<body>
+  
+
+    <div class="main-container">
+        <div class="quiz-container">
+            <div class="question-header">
+                <h2>JEE Test 1</h2>
+                <div class="timer"> <span id="timer"></span> </div>
+            </div>
+
+            <select id="languageSelect" onchange="changeLanguage()" class="language-select">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+            </select>
+
+            <p id="questionCounter"></p>
+            <div id="question"></div>
+            <ul class="options" id="options"></ul>
+
+            <div class="buttons">
+                <button class="btn" onclick="prevQuestion()">Previous</button>
+                <button class="btn btn-next" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <div class="status-indicator">
+                    <p class="answered"><span></span> Answered</p>
+                    <p class="not-attempted"><span></span> Not Attempted</p>
+                    <p class="marked"><span></span> Marked</p>
+                    <p class="visited"><span></span> Visited</p>
+                    <div class="circles-container" id="circleContainer"></div>
+                    <button class="/rts/btn submit-btn" onclick="submitQuiz()">Submit Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/rts/js/jee/mains/fast-test.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!--  trayl -->
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Quiz with Mouse Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .quiz-container {
+            flex: 3;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 25px;
+            position: relative;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+            margin-bottom: 20px;
+        }
+        
+        .question-header h2 {
+            font-size: 1.8rem;
+            color: #1a2a6c;
+        }
+        
+        .timer {
+            background: #1a2a6c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .monitor-status {
+            position: absolute;
+            top: 25px;
+            right: 160px;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #1a2a6c;
+            border: 2px solid #1a2a6c;
+            z-index: 10;
+        }
+        
+        .monitor-status i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .monitor-status.active {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .monitor-status.warning {
+            background: #FFC107;
+            color: black;
+        }
+        
+        .monitor-status.alert {
+            background: #f44336;
+            color: white;
+        }
+        
+        .language-select {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 2px solid #1a2a6c;
+            background: white;
+            font-weight: bold;
+            color: #1a2a6c;
+            z-index: 10;
+        }
+        
+        #questionCounter {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #b21f1f;
+            margin-bottom: 20px;
+        }
+        
+        #question {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #222;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #1a2a6c;
+        }
+        
+        .options {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .options li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f1f3f9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+        }
+        
+        .options li:hover {
+            background: #e1e6f9;
+            transform: translateY(-2px);
+        }
+        
+        .options li.selected {
+            background: #d4dcff;
+            border-color: #1a2a6c;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #1a2a6c;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background: #0f1c4e;
+            transform: translateY(-3px);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-next {
+            background: #b21f1f;
+        }
+        
+        .btn-next:hover {
+            background: #8a1818;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 25px;
+        }
+        
+        .sidebar-content {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .status-indicator {
+            margin-bottom: 20px;
+        }
+        
+        .status-indicator p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .status-indicator p span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .answered span {
+            background: #4CAF50;
+        }
+        
+        .not-attempted span {
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+        }
+        
+        .marked span {
+            background: #FFC107;
+        }
+        
+        .visited span {
+            background: #2196F3;
+        }
+        
+        .circles-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+        
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid #1a2a6c;
+            transition: all 0.3s;
+        }
+        
+        .circle:hover {
+            transform: scale(1.1);
+        }
+        
+        .circle.visited {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .circle.answered {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .circle.marked {
+            background: #FFC107;
+            color: black;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            background: #b21f1f;
+        }
+        
+        .submit-btn:hover {
+            background: #8a1818;
+        }
+        
+        .monitor-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .monitor-container h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .movement-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .direction {
+            width: 60px;
+            height: 60px;
+            background: #f1f3f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .direction.active {
+            background: #f44336;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .warning-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .warning-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: shake 0.5s;
+        }
+        
+        .warning-content h2 {
+            color: #b21f1f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .warning-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .warning-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .alarm {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            animation: alarmFlash 0.5s infinite;
+        }
+        
+        @keyframes alarmFlash {
+            0% { background: rgba(255,0,0,0.7); }
+            50% { background: rgba(255,0,0,0.3); }
+            100% { background: rgba(255,0,0,0.7); }
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .monitor-status {
+                top: 80px;
+                right: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>JEE Mains Practice Test</h1>
+        <p>Test your knowledge with this JEE Mains mock test. Please minimize mouse movements during the test.</p>
+    </div>
+    
+    <div class="main-container">
+        <div class="quiz-container">
+            <div class="question-header">
+                <h2>Physics, Chemistry & Mathematics</h2>
+                <div class="timer">Time Left: <span id="timer">45:00</span></div>
+            </div>
+            
+            <div class="monitor-status active" id="monitorStatus">
+                <i class="fas fa-shield-alt"></i>
+                <span>Monitoring Active</span>
+            </div>
+            
+            <select id="languageSelect" class="language-select">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+            </select>
+            
+            <p id="questionCounter">Question 1 of 25</p>
+            <div id="question">A particle moves in a straight line with a constant acceleration. It changes its velocity from 10 m/s to 20 m/s while passing through a distance of 135 m. What is the acceleration of the particle?</div>
+            <ul class="options" id="options">
+                <li>A) 1 m/s²</li>
+                <li>B) 1.5 m/s²</li>
+                <li>C) 2 m/s²</li>
+                <li>D) 2.5 m/s²</li>
+            </ul>
+            
+            <div class="buttons">
+                <button class="btn" onclick="prevQuestion()">Previous</button>
+                <button class="btn btn-next" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <div class="status-indicator">
+                    <p class="answered"><span></span> Answered</p>
+                    <p class="not-attempted"><span></span> Not Attempted</p>
+                    <p class="marked"><span></span> Marked for Review</p>
+                    <p class="visited"><span></span> Visited</p>
+                    <div class="circles-container" id="circleContainer"></div>
+                    <button class="submit-btn" onclick="submitQuiz()">Submit Test</button>
+                </div>
+                
+                <div class="monitor-container">
+                    <h3>Movement Monitor</h3>
+                    <p>Excessive mouse movements will trigger warnings</p>
+                    <div class="movement-indicator">
+                        <div class="direction" id="leftDir"><i class="fas fa-arrow-left"></i></div>
+                        <div class="direction" id="upDir"><i class="fas fa-arrow-up"></i></div>
+                        <div class="direction" id="rightDir"><i class="fas fa-arrow-right"></i></div>
+                        <div class="direction" id="downDir"><i class="fas fa-arrow-down"></i></div>
+                    </div>
+                    <div class="warning-level">
+                        <p>Warning Level: <span id="warningLevel">0/3</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="warning-modal" id="warningModal">
+        <div class="warning-content">
+            <h2>⚠️ Warning!</h2>
+            <p id="warningMessage">Excessive mouse movement detected! Please remain focused on the test.</p>
+            <button class="warning-btn" onclick="closeWarning()">Continue Test</button>
+        </div>
+    </div>
+    
+    <div class="alarm" id="alarm"></div>
+    
+    <script>
+        // Quiz data
+        const questions = [
+            {
+                question: "A particle moves in a straight line with a constant acceleration. It changes its velocity from 10 m/s to 20 m/s while passing through a distance of 135 m. What is the acceleration of the particle?",
+                options: ["1 m/s²", "1.5 m/s²", "2 m/s²", "2.5 m/s²"],
+                correct: 2
+            },
+            {
+                question: "The half-life of a radioactive substance is 30 minutes. What fraction of the substance will remain undecayed after 1.5 hours?",
+                options: ["1/2", "1/4", "1/8", "1/16"],
+                correct: 2
+            },
+            {
+                question: "Which of the following has the highest electron affinity?",
+                options: ["F", "Cl", "Br", "I"],
+                correct: 1
+            },
+            {
+                question: "The number of structural isomers possible for C₄H₁₀O is:",
+                options: ["4", "5", "6", "7"],
+                correct: 3
+            },
+            {
+                question: "If the roots of the equation x² - bx + c = 0 are two consecutive integers, then b² - 4c is:",
+                options: ["-2", "-1", "0", "1"],
+                correct: 3
+            },
+            {
+                question: "The integral of ∫(eˣ(1 + x) / cos²(eˣ x) dx is equal to:",
+                options: ["tan(eˣ x) + C", "eˣ tan(eˣ x) + C", "eˣ tan(x) + C", "tan(eˣ) + C"],
+                correct: 0
+            },
+            {
+                question: "A parallel plate capacitor is charged and then isolated. When the plates are moved farther apart, what happens to the charge on the capacitor?",
+                options: ["Increases", "Decreases", "Remains constant", "Becomes zero"],
+                correct: 2
+            },
+            {
+                question: "Which of the following compounds will not give iodoform test?",
+                options: ["CH₃CH₂OH", "CH₃CH₂CH₂OH", "CH₃COCH₃", "CH₃CHO"],
+                correct: 1
+            },
+            {
+                question: "The area bounded by the curve y = |x| - 1 and y = 1 - |x| is:",
+                options: ["1", "2", "3", "4"],
+                correct: 1
+            }
+        ];
+        
+        // Quiz state
+        let currentQuestion = 0;
+        let answers = new Array(questions.length).fill(-1);
+        let marked = new Array(questions.length).fill(false);
+        let visited = new Array(questions.length).fill(false);
+        let warningCount = 0;
+        let timeLeft = 45 * 60; // 45 minutes in seconds
+        let timerInterval;
+        
+        // Mouse monitoring state
+        let mousePositions = [];
+        let lastMousePosition = { x: 0, y: 0 };
+        let movementTimer;
+        let warningLevelEl = document.getElementById('warningLevel');
+        
+        // DOM Elements
+        const questionCounterEl = document.getElementById('questionCounter');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const circleContainerEl = document.getElementById('circleContainer');
+        const timerEl = document.getElementById('timer');
+        const warningModal = document.getElementById('warningModal');
+        const warningMessage = document.getElementById('warningMessage');
+        const monitorStatus = document.getElementById('monitorStatus');
+        const alarm = document.getElementById('alarm');
+        const leftDir = document.getElementById('leftDir');
+        const rightDir = document.getElementById('rightDir');
+        const upDir = document.getElementById('upDir');
+        const downDir = document.getElementById('downDir');
+        
+        // Initialize quiz
+        function initQuiz() {
+            createQuestionCircles();
+            startTimer();
+            loadQuestion(currentQuestion);
+            startMovementMonitoring();
+        }
+        
+        // Create question circles
+        function createQuestionCircles() {
+            circleContainerEl.innerHTML = '';
+            for (let i = 0; i < questions.length; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.textContent = i + 1;
+                circle.addEventListener('click', () => loadQuestion(i));
+                circleContainerEl.appendChild(circle);
+            }
+        }
+        
+        // Load question
+        function loadQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+            
+            currentQuestion = index;
+            visited[index] = true;
+            
+            // Update UI
+            questionCounterEl.textContent = `Question ${index + 1} of ${questions.length}`;
+            questionEl.textContent = questions[index].question;
+            
+            // Clear options
+            optionsEl.innerHTML = '';
+            
+            // Add options
+            questions[index].options.forEach((option, i) => {
+                const li = document.createElement('li');
+                li.textContent = `${String.fromCharCode(65 + i)}) ${option}`;
+                if (answers[index] === i) {
+                    li.classList.add('selected');
+                }
+                li.addEventListener('click', () => selectOption(i));
+                optionsEl.appendChild(li);
+            });
+            
+            // Update question circles
+            updateQuestionCircles();
+        }
+        
+        // Select option
+        function selectOption(optionIndex) {
+            answers[currentQuestion] = optionIndex;
+            
+            // Update UI
+            const options = optionsEl.querySelectorAll('li');
+            options.forEach((li, i) => {
+                if (i === optionIndex) {
+                    li.classList.add('selected');
+                } else {
+                    li.classList.remove('selected');
+                }
+            });
+            
+            updateQuestionCircles();
+        }
+        
+        // Update question circles
+        function updateQuestionCircles() {
+            const circles = circleContainerEl.querySelectorAll('.circle');
+            circles.forEach((circle, i) => {
+                circle.className = 'circle';
+                if (visited[i]) circle.classList.add('visited');
+                if (answers[i] !== -1) circle.classList.add('answered');
+                if (marked[i]) circle.classList.add('marked');
+                if (i === currentQuestion) circle.classList.add('active');
+            });
+        }
+        
+        // Next question
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                loadQuestion(currentQuestion + 1);
+            }
+        }
+        
+        // Previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                loadQuestion(currentQuestion - 1);
+            }
+        }
+        
+        // Start timer
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+        
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change color when time is running out
+            if (timeLeft < 300) { // 5 minutes
+                timerEl.style.color = '#b21f1f';
+                timerEl.style.fontWeight = 'bold';
+            }
+        }
+        
+        // Start movement monitoring
+        function startMovementMonitoring() {
+            // Set initial position
+            lastMousePosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            
+            // Start monitoring mouse movements
+            document.addEventListener('mousemove', handleMouseMove);
+            
+            // Start periodic checking
+            movementTimer = setInterval(checkMouseMovement, 1000);
+        }
+        
+        function handleMouseMove(e) {
+            const currentPosition = { x: e.clientX, y: e.clientY };
+            
+            // Calculate movement direction
+            const dx = currentPosition.x - lastMousePosition.x;
+            const dy = currentPosition.y - lastMousePosition.y;
+            
+            // Update direction indicators
+            updateDirectionIndicators(dx, dy);
+            
+            // Store the current position
+            mousePositions.push({
+                x: currentPosition.x,
+                y: currentPosition.y,
+                timestamp: Date.now()
+            });
+            
+            // Keep only positions from the last 5 seconds
+            const now = Date.now();
+            mousePositions = mousePositions.filter(pos => now - pos.timestamp < 5000);
+            
+            // Update last position
+            lastMousePosition = currentPosition;
+        }
+        
+        function updateDirectionIndicators(dx, dy) {
+            // Reset all
+            leftDir.classList.remove('active');
+            rightDir.classList.remove('active');
+            upDir.classList.remove('active');
+            downDir.classList.remove('active');
+            
+            // Set active directions
+            if (dx < -5) leftDir.classList.add('active');
+            if (dx > 5) rightDir.classList.add('active');
+            if (dy < -5) upDir.classList.add('active');
+            if (dy > 5) downDir.classList.add('active');
+        }
+        
+        function checkMouseMovement() {
+            // If less than 5 positions, not enough data
+            if (mousePositions.length < 5) return;
+            
+            // Calculate total distance moved
+            let totalDistance = 0;
+            for (let i = 1; i < mousePositions.length; i++) {
+                const dx = mousePositions[i].x - mousePositions[i-1].x;
+                const dy = mousePositions[i].y - mousePositions[i-1].y;
+                totalDistance += Math.sqrt(dx*dx + dy*dy);
+            }
+            
+            // If movement exceeds threshold, trigger warning
+            if (totalDistance > 500) { // 500px in 5 seconds
+                triggerWarning();
+            }
+        }
+        
+        function triggerWarning() {
+            warningCount++;
+            warningLevelEl.textContent = `${warningCount}/3`;
+            
+            if (warningCount <= 3) {
+                // Update status indicator
+                monitorStatus.classList.remove('active', 'warning', 'alert');
+                if (warningCount === 1) {
+                    monitorStatus.classList.add('warning');
+                    monitorStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Warning 1</span>';
+                } else if (warningCount === 2) {
+                    monitorStatus.classList.add('warning');
+                    monitorStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Warning 2</span>';
+                } else {
+                    monitorStatus.classList.add('alert');
+                    monitorStatus.innerHTML = '<i class="fas fa-radiation"></i><span>Final Warning</span>';
+                }
+                
+                // Show warning message
+                warningMessage.textContent = `Excessive mouse movement detected! This is warning ${warningCount} of 3.`;
+                warningModal.style.display = 'flex';
+                
+                // Show alarm on final warning
+                if (warningCount === 3) {
+                    alarm.style.display = 'block';
+                    setTimeout(() => {
+                        alarm.style.display = 'none';
+                    }, 3000);
+                }
+                
+                // Clear mouse positions to reset monitoring
+                mousePositions = [];
+            } else {
+                // After 3 warnings, submit the test
+                submitQuiz();
+            }
+        }
+        
+        function closeWarning() {
+            warningModal.style.display = 'none';
+        }
+        
+        // Submit quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            clearInterval(movementTimer);
+            
+            // Remove event listeners
+            document.removeEventListener('mousemove', handleMouseMove);
+            
+            // Calculate score
+            let score = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (answers[i] === questions[i].correct) {
+                    score++;
+                }
+            }
+            
+            // Show results
+            alert(`Test submitted!\nYour score: ${score}/${questions.length}\nPercentage: ${((score/questions.length)*100).toFixed(1)}%`);
+        }
+        
+        // Initialize quiz when page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Quiz with Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .quiz-container {
+            flex: 3;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 25px;
+            position: relative;
+        }
+        
+        /* Add monitoring status indicator styles */
+        .monitor-status {
+            position: absolute;
+            top: 25px;
+            right: 160px;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #1a2a6c;
+            border: 2px solid #1a2a6c;
+            z-index: 10;
+        }
+        
+        .monitor-status i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .monitor-status.active {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .monitor-status.warning {
+            background: #FFC107;
+            color: black;
+        }
+        
+        .monitor-status.alert {
+            background: #f44336;
+            color: white;
+        }
+        
+        /* Add warning modal styles */
+        .warning-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .warning-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: shake 0.5s;
+        }
+        
+        .warning-content h2 {
+            color: #b21f1f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .warning-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .warning-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Add alarm styles */
+        .alarm {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,0,0,0.7);
+            z-index: 2000;
+            display: none;
+            animation: alarmFlash 0.5s infinite;
+        }
+        
+        /* Add camera detection styles */
+        .camera-feed {
+            width: 200px;
+            height: 150px;
+            background: #333;
+            margin: 10px auto;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .camera-feed video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @keyframes alarmFlash {
+            0% { background: rgba(255,0,0,0.7); }
+            50% { background: rgba(255,0,0,0.3); }
+            100% { background: rgba(255,0,0,0.7); }
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="quiz-container">
+            <div class="question-header">
+                <h2>JEE Test 1</h2>
+                <div class="timer">Time Left: <span id="timer">45:00</span></div>
+            </div>
+            
+            <!-- Monitoring Status Indicator -->
+            <!-- <div class="monitor-status active" id="monitorStatus">
+                <i class="fas fa-shield-alt"></i>
+                <span>Monitoring Active</span>
+            </div>
+            
+            <p id="questionCounter">Question 1 of 25</p>
+            <div id="question">A particle moves in a straight line with a constant acceleration. It changes its velocity from 10 m/s to 20 m/s while passing through a distance of 135 m. What is the acceleration of the particle?</div>
+            <ul class="options" id="options">
+                <li>A) 1 m/s²</li>
+                <li>B) 1.5 m/s²</li>
+                <li>C) 2 m/s²</li>
+                <li>D) 2.5 m/s²</li>
+            </ul>
+            
+            <div class="buttons">
+                <button class="btn" onclick="prevQuestion()">Previous</button>
+                <button class="btn btn-next" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <div class="status-indicator">
+                    <p class="answered"><span></span> Answered</p>
+                    <p class="not-attempted"><span></span> Not Attempted</p>
+                    <p class="marked"><span></span> Marked</p>
+                    <p class="visited"><span></span> Visited</p>
+                    <div class="circles-container" id="circleContainer"></div>
+                    <button class="submit-btn" onclick="submitQuiz()">Submit Test</button>
+                </div>
+                
+                <!-- Movement Monitor Section -->
+                <!-- <div class="monitor-container">
+                    <h3>Movement Monitor</h3>
+                    <p>Excessive mouse movements will trigger warnings</p>
+                     -->
+                    <!-- Camera Detection Section -->
+                    <!-- <div class="camera-section">
+                        <h4>Camera Monitoring</h4>
+                        <div class="camera-feed">
+                            <video id="cameraFeed" autoplay playsinline></video>
+                        </div>
+                        <p id="cameraStatus">Camera: Checking...</p>
+                    </div>
+                    
+                    <div class="warning-level">
+                        <p>Warning Level: <span id="warningLevel">0/3</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+    <!-- Warning Modal -->
+    <!-- <div class="warning-modal" id="warningModal">
+        <div class="warning-content">
+            <h2>⚠️ Warning!</h2>
+            <p id="warningMessage">Excessive movement detected! Please remain focused on the test.</p>
+            <button class="warning-btn" onclick="closeWarning()">Continue Test</button>
+        </div>
+    </div>
+     -->
+    <!-- Alarm -->
+    <!-- <div class="alarm" id="alarm"></div>
+    
+    <script>
+        // Monitoring state
+        let mousePositions = [];
+        let lastMousePosition = { x: 0, y: 0 };
+        let movementTimer;
+        let warningCount = 0;
+        let cameraInterval;
+        let faceDetectionInterval;
+        let timeLeft = 45 * 60; // 45 minutes in seconds
+        
+        // DOM Elements
+        const warningLevelEl = document.getElementById('warningLevel');
+        const warningModal = document.getElementById('warningModal');
+        const warningMessage = document.getElementById('warningMessage');
+        const monitorStatus = document.getElementById('monitorStatus');
+        const alarm = document.getElementById('alarm');
+        const cameraFeed = document.getElementById('cameraFeed');
+        const cameraStatus = document.getElementById('cameraStatus');
+        
+        // Initialize monitoring when page loads
+        window.addEventListener('load', function() {
+            startTimer();
+            startMovementMonitoring();
+            initializeCamera();
+        });
+        
+        // Timer function
+        function startTimer() {
+            updateTimerDisplay();
+            setInterval(function() {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        // Mouse movement monitoring
+        function startMovementMonitoring() {
+            lastMousePosition = { 
+                x: window.innerWidth / 2, 
+                y: window.innerHeight / 2 
+            };
+            
+            document.addEventListener('mousemove', handleMouseMove);
+            movementTimer = setInterval(checkMouseMovement, 1000);
+        }
+        
+        function handleMouseMove(e) {
+            const currentPosition = { x: e.clientX, y: e.clientY };
+            mousePositions.push({
+                x: currentPosition.x,
+                y: currentPosition.y,
+                timestamp: Date.now()
+            });
+            
+            // Keep only positions from last 5 seconds
+            const now = Date.now();
+            mousePositions = mousePositions.filter(pos => now - pos.timestamp < 5000);
+            lastMousePosition = currentPosition;
+        }
+        
+        function checkMouseMovement() {
+            if (mousePositions.length < 5) return;
+            
+            let totalDistance = 0;
+            for (let i = 1; i < mousePositions.length; i++) {
+                const dx = mousePositions[i].x - mousePositions[i-1].x;
+                const dy = mousePositions[i].y - mousePositions[i-1].y;
+                totalDistance += Math.sqrt(dx*dx + dy*dy);
+            }
+            
+            if (totalDistance > 500) {
+                triggerWarning("Excessive mouse movement detected!");
+            }
+        }
+        
+        // Camera monitoring
+        function initializeCamera() {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function(stream) {
+                        cameraFeed.srcObject = stream;
+                        cameraStatus.textContent = "Camera: Active";
+                        startFaceDetection();
+                    })
+                    .catch(function(error) {
+                        console.error("Camera access error:", error);
+                        cameraStatus.textContent = "Camera: Not Available";
+                        // Simulate periodic camera checks
+                        cameraInterval = setInterval(checkCameraAccess, 5000);
+                    });
+            } else {
+                cameraStatus.textContent = "Camera: Not Supported";
+            }
+        }
+        
+        function startFaceDetection() {
+            // This is a simplified version - in a real app you would use a face detection library
+            faceDetectionInterval = setInterval(function() {
+                // Simulate random face detection
+                if (Math.random() < 0.1) { // 10% chance of "detecting" suspicious activity
+                    triggerWarning("Suspicious activity detected by camera!");
+                }
+            }, 10000); // Check every 10 seconds
+        }
+        
+        function checkCameraAccess() {
+            // Simulate checking if camera was disconnected
+            if (Math.random() < 0.3) { // 30% chance of "detecting" camera disconnection
+                triggerWarning("Camera disconnected or covered!");
+            }
+        }
+        
+        // Warning system
+        function triggerWarning(message) {
+            warningCount++;
+            warningLevelEl.textContent = `${warningCount}/3`;
+            warningMessage.textContent = message || "Suspicious activity detected!";
+            
+            if (warningCount <= 3) {
+                // Update status indicator
+                monitorStatus.classList.remove('active', 'warning', 'alert');
+                if (warningCount === 1) {
+                    monitorStatus.classList.add('warning');
+                    monitorStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Warning 1</span>';
+                } else if (warningCount === 2) {
+                    monitorStatus.classList.add('warning');
+                    monitorStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Warning 2</span>';
+                } else {
+                    monitorStatus.classList.add('alert');
+                    monitorStatus.innerHTML = '<i class="fas fa-radiation"></i><span>Final Warning</span>';
+                    alarm.style.display = 'block';
+                    setTimeout(() => {
+                        alarm.style.display = 'none';
+                    }, 3000);
+                }
+                
+                warningModal.style.display = 'flex';
+                mousePositions = []; // Reset movement tracking
+            } else {
+                submitQuiz();
+            }
+        }
+        
+        function closeWarning() {
+            warningModal.style.display = 'none';
+        }
+        
+        // Quiz submission
+        function submitQuiz() {
+            clearInterval(movementTimer);
+            clearInterval(cameraInterval);
+            clearInterval(faceDetectionInterval);
+            
+            if (cameraFeed.srcObject) {
+                cameraFeed.srcObject.getTracks().forEach(track => track.stop());
+            }
+            
+            alert("Test submitted due to multiple warnings!");
+            // Here you would normally submit the quiz to your server
+        }
+        
+        // Dummy quiz functions - replace with your actual quiz logic
+        function prevQuestion() {
+            console.log("Previous question");
+        }
+        
+        function nextQuestion() {
+            console.log("Next question");
+        }
+    </script>
+</body>
+</html> --> --> -->

@@ -1,0 +1,387 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  body,
+  html {
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+  }
+  .background {
+    background: linear-gradient(rgba(20, 44, 142, 0.85), rgba(20, 44, 142, 0.85)), url('https://source.unsplash.com/1600x900/?technology,innovation') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* upper section  */
+  .section {
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .section h2 {
+    color: #0f244b;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .section img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: left;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    width: 52%;
+  }
+  .overlay h3 {
+    padding: 5px;
+    height: 20%;
+    font-size: 1.1rem;
+  }
+  .overlay h2{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    color: #88a4ca;
+  }
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+.section {
+  padding: 15px;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+}
+
+.overlay {
+  width: 70%;
+  padding: 15px;
+}
+
+.overlay h2 {
+  font-size: 1.3rem;
+}
+
+.overlay h3 {
+  font-size: 1rem;
+}
+}
+
+@media (max-width: 480px) {
+.section {
+  padding: 10px;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+}
+
+.overlay {
+  width: 90%;
+  padding: 10px;
+}
+
+.overlay h2 {
+  font-size: 1.2rem;
+}
+
+.overlay h3 {
+  font-size: 0.9rem;
+}
+}
+
+  /* mission , vision and motive section. */
+  .section p {
+    color: #2c2b39;
+    line-height: 1.6;
+    text-align:bottom;
+    margin-bottom: 20px;
+  }
+  .content-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .content-item img {
+    width: 280px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .content-item4 {
+    max-width: 870px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  .content h2 {
+    margin: 0 0 10px;
+    color: rgb(10 10 100);
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    text-align: left;
+  }
+ .content p {
+    margin: 0;
+    text-align: center;
+  }
+ .vision {
+    flex-direction: row-reverse;
+  } 
+   @media (max-width: 768px) {
+    .content-item {
+      flex-direction: column;
+      text-align: center;
+    } 
+
+    .vision {
+      flex-direction: column;
+    }
+
+    .vision .content {
+      text-align: calc();
+    }
+  }
+  .layout-container {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+ }
+
+ /* Archievements card section */
+ .achievements-section {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+  }
+  h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+  }
+  .achievements-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .achievement-card {
+   
+     background: linear-gradient(to right, #3a7ab9, #005792, #00A4CC); 
+
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    height: 405px;
+    font-size: 1rem;
+    transition: transform 0.3s;
+    overflow: hidden;
+    box-shadow: 0 0 2px 1px #00b09b;
+  }
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  .achievement-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1 / 1;
+    display: block;
+    margin: 0 auto;
+  }
+  .achievement-card h3 {
+    margin: 10px 0 10px;
+    font-size: 1em;
+  }
+  .achievement-card p {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.3rem;
+    font-family: serif;
+    margin: -7px;
+  }
+
+  @media (max-width: 768px) {
+.achievement-card {
+  width: 90%;
+  height: auto;
+}
+} 
+
+/* founder section c */
+.content-item {
+display: flex;
+padding: 10px;
+}
+
+.left-section {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+background: linear-gradient(to bottom, #5486c5, #9fa1a7);
+border-radius: 50px;
+ width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.left-section img {
+width: 99px;
+  height: 103px;
+  margin-bottom: 24px;
+  padding: 4px;
+
+}
+
+.text-content {
+max-width: 600px;
+}
+
+.right-image {
+flex: 1; 
+display: flex;
+align-items: center; 
+justify-content: center; 
+}
+
+.right-image img {
+border-radius: 58px;
+ width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+p {
+line-height: 1.6;
+margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+.content-item {
+  flex-direction: column; 
+}
+
+.right-image img {
+  max-width: 100%;
+}
+}
+/* footer section */
+.content-container {
+display: flex;
+align-items: stretch; 
+gap: 20px;
+padding: 20px;
+justify-items: center;
+}
+
+.content-left  {
+width: 100%; 
+height: 100%; 
+object-fit: cover;
+border-radius: 10px;
+  color: beige;
+  line-height: 1.6rem;
+  flex: 1;
+  background: linear-gradient(to right, #001f3f, #0056b3);
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.content-right {
+flex: 1; 
+background: linear-gradient(to right, #001f3f, #0056b3); 
+color: white;
+padding: 12px;
+line-height: 1.6rem;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+height: 100%; 
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+}
+.content-left p {
+font-size: 1rem;
+color: white;
+line-height: 1.6;
+text-align: justify;
+}
+.content-item {
+margin-bottom: 20px;
+}
+.content-right p {
+font-size: 1rem;
+color: white;
+line-height: 1.6;
+text-align: justify;
+}
+.content4 h1 {
+font-family: sans-serif;
+font-size: 2.2rem;
+font-style: bold;
+align-items: center;
+justify-content: center;
+display: flex;
+
+}
+
+@media screen and (max-width: 768px) {
+.content-container {
+  flex-direction: column; 
+}
+.content-right {
+  padding: 15px;
+}
+.content-right h3 {
+  font-size: 1.1rem;
+}
+.content-right p {
+  font-size: 0.95rem;
+}
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RID Navbar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/RTS/public/css/category.css">
+  <link rel="stylesheet" href="/RTS/public/css/navbar.css">
+  <link rel="stylesheet" href="/RTS/public/css/Deshbord.css">
+</head>
+<body>
+  <header style="
+        border-bottom: 1px solid #083d5d;
+        backdrop-filter: blur(4px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        z-index: 999;
+      ">
+  <div class="top-bar">
+    <div class="top-left">
+      <strong>Website:</strong> RID (Research Innovation & Discovery) by TWSKAA Welfare Foundation |
+      <strong>Helpline:</strong> +91-8307 87323 |
+      <strong>Email:</strong> supportrid5@gmail.com
+    </div>
+    <div class="top-right">
+      <a href="#">Main Content</a>
+      <a href="#">+A</a>
+      <a href="#">A</a>
+      <a href="#">A-</a>
+      <a href="#">Feedback</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="navbar-left">
+      <img src="/RTS/public/Deshbord/category/test/technical&coding/img/final_logo copy.svg" alt="RID Logo" class="logo">
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <div class="navbar-right">
+      <div class="search-box">
+        <input type="text" placeholder="Search Anything...">
+        <i class="fa fa-search"></i>
+      </div>
+      <a href="#" class="btn certificate"><i class="fa fa-award"></i> Certificate</a>
+      <a href="#" class="btn profile"><i class="fa fa-user"></i> Profile</a>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#"><i class="fa fa-home"></i> Home</a>
+      <div class="dropdown">
+        <a href="#"><i class="fa fa-file-alt"></i> Research Papers <i class="fa fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#">Paper 1</a>
+          <a href="#">Paper 2</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#"><i class="fa fa-building"></i> Centers <i class="fa fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#">Center 1</a>
+          <a href="#">Center 2</a>
+        </div>
+      </div>
+      <a href="#"><i class="fa fa-phone"></i> Contact</a>
+      <a href="#"><i class="fa fa-users"></i> About Us</a>
+      <a href="#" class="btn certificate"><i class="fa fa-award"></i> Certificate</a>
+      <a href="#" class="btn profile"><i class="fa fa-user"></i> Profile</a>
+    </nav>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
+  </header>
+  <!-- <div class="container"> -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <aside class="sidebar">
+      <h2 class="mainu">Main Menu</h2>
+      <ul class="menu">
+        <li><i class="fas fa-home home-icon"></i><a href="/dasborde_main/Deshbord.html">Home</a> </li>
+        <li><i class="fas fa-user profile-icon"></i><a href="  ">My Profile</a> </li>
+        <li><i class="fas fa-star category-icon"></i><a href="Deshbord/category/category.html"> Category</a></li>
+        <li><i class="fas fa-shopping-cart purchase-icon"></i><a href="/dasborde_main/my purchase/my_purchase.html">My Purchase</a> </li>
+        <li><i class="fas fa-comment-dots feedback-icon"></i><a href="  "> Feedback</a></li>
+        <li><i class="fas fa-dollar-sign refund-icon"></i><a href="  ">Refund/Cancellation Policy</a> </li>
+        <li><i class="fas fa-shield-alt privacy-icon"></i><a href="  ">Privacy Policy</a> </li>
+        <li><i class="fas fa-file-contract terms-icon"></i><a href="/dasborde_main/term_and_conditions/term_conditions.html ">Terms and Conditions</a> </li>
+        <li><i class="fas fa-star-half-alt rate-icon"></i><a href="  ">Rate Us</a> </li>
+        <li><i class="fas fa-sign-out-alt logout-icon"></i><a href="  "> Logout</a></li>
+      </ul>
+    </aside>
+    <main>
+         
+
+<div style="position: relative;">
+      <div style="height: 150px; width: 1100px; background-color: #000080; position: relative;">
+      </div>
+
+      <div style="height: 290px; width: 170px; background-color: #000080; border-radius: 10px; position: absolute; top: 30%; left: 73%; border: 3px white solid; padding-top: 10px;">
+
+        <img src="/RTS/public/Deshbord/category/test/10th/punjab/img_book/ncert social science.PNG" alt="Image" style="width: 100%; height: 170px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-top: -10px;">
+        
+        <div style="padding: 5px 15px 5px 15px;">
+            <h3 style="font-size: 18px; margin-top: 0; color: #e0e5ec;">Addition</h3>
+            <p style="font-size: 14px; opacity: 0.8; margin: 5px 0; color: #e0e5ec;">Beginner basic <span style="float: right; font-size: 14px; color: #d1d9e6;">$12</span></p>
+            
+            <!-- Adjust button position -->
+            <button style="display: block; width: 100px; margin: 7px auto; padding: 10px; background: red; color: white; border: none; border-radius: 20px; cursor: pointer; box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); transition: background-color 0.3s ease;">
+                Buy now
+            </button>
+        </div>
+    </div>
+    
+
+
+
+
+
+    
+
+    </div>
+
+
+      <div style="display: flex; margin-left: 100px; margin-top: 50px;">
+        <h2 style="color: blue; margin-right: 40px;">Validity: 3 months</h2>
+        <h2 style="color: blue;"> Language: Social Science</h2>
+    </div> <br>
+
+
+    <hr style="border: 2px solid black; width: 40%; border-radius: 5px; margin-left: 6%; margin-right: 20%;">
+
+    <h2 style="margin-top: 70px; text-align: left;">Discription</h2>
+
+
+    <div style="margin-right: 10px; margin-top: 30px; height: 400px; width: 1050px; color: #000000; overflow: auto; text-align: left; border: 2px solid ; padding: 20px; background-color: #F6FBFF; border-radius: 8px;">
+      <p style="line-height: 1.6;">
+        Reading is an essential skill that helps improve our knowledge, language, and imagination. It allows us to explore different worlds, understand diverse perspectives, and learn new ideas. When we read, we not only learn facts but also improve our vocabulary and comprehension skills. <br> <br>
+
+Books, newspapers, and articles offer a wide range of information, from history and science to current events. Reading regularly helps us stay informed and aware of what is happening around the world. It also enhances our critical thinking skills because we learn to analyze and evaluate the information presented. <br> <br>
+
+In addition, reading is a great way to relax and reduce stress. It provides an escape from daily routines and offers a peaceful break. Whether it’s a novel, a magazine, or even a blog post, reading can be both entertaining and educational.
+      </p>
+    
+    </div>
+    
+    
+
+
+
+
+
+    <h2 style="margin-top: 70px; text-align: left;">ALL TEST's</h2>
+    
+     <!-- frist Parent div with 3 small child divs -->
+
+    <div style="display: grid; grid-template-columns: repeat(3, 300px); gap: 19px; margin-top: 40px;">
+  
+      <div style="background: #e0e5ec; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff; text-align: center; width: 300px; margin: 20px auto;">
+        <h2 style="margin-bottom: 20px; font-size: 16px;">Test : Social Science</h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                100 Questions 
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                360 Marks
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+               180 Minutes
+            </div>
+        </div>
+        <a href="/RTS/public/Deshbord/category/test/10th/punjab/NCERT/social science/test1.html">
+            <button style="background-color: #000080; color: #ffffff; height: 40px; width: 100px; border-radius: 20px;">Start Test</button>
+        </a>
+    </div>
+    
+     
+    
+      
+      <!-- Second Parent div with 3 small child divs -->
+      <div style="background: #e0e5ec; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff; text-align: center; width: 300px; margin: 20px auto;">
+        <h2 style="margin-bottom: 20px; font-size: 16px;">Test : Social Science  </h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                50 Questions 
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                360 Marks
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                180 Minutes
+            </div>
+        </div>
+        <a href="/RTS/public/Deshbord/category/test/10th/punjab/NCERT/social science/test2.html">
+            <button style="background-color: #000080; color: #ffffff; height: 40px; width: 100px; border-radius: 20px;"> Start Test</button>
+        </a>
+    </div>
+    
+    
+      
+      <!-- Third Parent div with 3 small child divs -->
+      <div style="background: #e0e5ec; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff; text-align: center; width: 300px; margin: 20px auto;">
+        <h2 style="margin-bottom: 20px; font-size: 16px;"> Test : Social Science  </h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                50 Questions 
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                360 Marks
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                180 Minutes
+            </div>
+        </div>
+        <a href="/RTS/public/Deshbord/category/test/10th/punjab/NCERT/social science/test3.html">
+            <button style="background-color: #000080; color: #ffffff; height: 40px; width: 100px; border-radius: 20px;"> Start Test</button>
+        </a>
+    </div>
+    
+
+
+
+
+
+
+    <div style="background: #e0e5ec; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff; text-align: center; width: 300px; margin: 20px auto;">
+        <h2 style="margin-bottom: 20px; font-size: 16px;">Test : Social Science  </h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                50 Questions 
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                360 Marks
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                180 Minutes
+            </div>
+        </div>
+        <a href="/RTS/public/Deshbord/category/test/10th/punjab/NCERT/social science/test4.html">
+            <button style="background-color: #000080; color: #ffffff; height: 40px; width: 100px; border-radius: 20px;"> Start Test</button>
+        </a>
+    </div>
+    
+    <div style="background: #e0e5ec; padding: 20px; border-radius: 10px; box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff; text-align: center; width: 300px; margin: 20px auto;">
+        <h2 style="margin-bottom: 20px; font-size: 16px;">Test : Social Science  </h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                50 Questions 
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                360 Marks
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff; width: 80px; font-size: 12px;">
+                180 Minutes
+            </div>
+        </div>
+        <a href="/RTS/public/Deshbord/category/test/10th/punjab/NCERT/social science/test5.html">
+            <button style="background-color: #000080; color: #ffffff; height: 40px; width: 100px; border-radius: 20px;"> Start Test</button>
+        </a>
+    </div>
+   
+
+    
+    </div>
+    
+      
+      
+</body>
+</html>

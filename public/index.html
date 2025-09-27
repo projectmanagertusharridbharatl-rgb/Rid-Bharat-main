@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RID Bharat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" href="/project_rid/public/assets/logorid.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+  <!--main page link this link used -->
+  <link rel="stylesheet" href="index_main_container.css">
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/images/Grouplogo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png" />
+  <link rel="manifest" href="favicons/site.webmanifest" />
+  <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5" />
+
+
+
+  <link rel="icon" href="/public/assets/final_logo.svg" type="image/png" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <style>
+    #circle-img {
+      border-radius: 50%;
+
+    }
+  </style>
+</head>
+
+<body>
+  <header style="
+        border-bottom: 1px solid #083d5d;
+        backdrop-filter: blur(4px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        z-index: 999;
+      ">
+    <div class="header">
+      <div class="web-text">
+        <p id="para">
+          <span>RID Bharat Run by TWF
+          </span>
+        </p>
+
+        <p>Helpline: <span>+91-9892782728 </span></p>
+        <p>Email: <span>ridorg.in@gmail.com</span></p>
+      </div>
+      <div class="right-text">
+        <a class="link" href="#">ISO:9001:2015 Certified</a>
+        <a class="link" href="#">TWF</a>
+        <a class="link" href="#">Reg.No:048884</a>
+        <a class="link" href="#">ESTD:2020</a>
+      </div>
+    </div>
+    <nav>
+      <div class="nav" id="main-nav">
+        <div class="logo">
+
+          <img src="./assets/final_logo.svg" alt="logo" height="82px" />
+          <span><span class="material-symbols-outlined close" id="sideBarIcon" onclick="cllick()">menu</span></span>
+
+        </div>
+        <div class="menu" id="innerCont">
+          <ul class="upperNav">
+            <div class="search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                </path>
+              </svg>
+              <input type="text" placeholder="Search Anything..." />
+            </div>
+            <form class="search-box" style="display: none;">
+              <input type="text" placeholder=" " />
+              <button type="reset"></button>
+            </form>
+            <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- <button id="onlineTest1" onclick="openRTSOnlineTest()">
+              <span class="fa-brands fa-servicestack"></span> RTS Online
+            </button>
+
+            <script>
+              function openRTSOnlineTest() {
+                const isRegistered = localStorage.getItem("isRegistered");
+                const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+                if (isRegistered === "true" && isLoggedIn === "true") {
+                  // Registered and logged in
+                  window.location.href = "/RTS/public/main.html";
+                } else if (isRegistered === "true" && isLoggedIn !== "true") {
+                  // Registered but not logged in
+                  alert("Please login to continue.");
+                  window.location.href = "Login/login.html";
+                } else {
+                  // Not registered
+                  alert("Please register to continue.");
+                  window.location.href = "Signup/form.html";
+                }
+              }
+            </script> -->
+
+
+            
+            <button id="onlineTest1" onclick="window.location.href='/RTS/public/main.html'">
+              <span class="fa-brands fa-servicestack"> </span> RTS Online
+            </button>
+
+<!-- 
+            // Registration success ke baad
+localStorage.setItem("isRegistered", "true");
+
+            // Login success ke baad
+            localStorage.setItem("isLoggedIn", "true");
+            
+            localStorage.removeItem("isLoggedIn"); -->
+
+
+            <button id="ebookBtn">
+              <span class="material-symbols-outlined"> auto_stories </span>E-Book
+            </button>
+
+            <div class="certificate">
+              <button id="certificate" onclick="window.location.href= '/verify'">
+                <span class="material-symbols-outlined">
+                  developer_guide
+                </span>
+                Certificate
+              </button>
+            </div>
+
+            <div class="btn-box">
+              <div id="swap-btn"></div>
+
+              <button class="toggle-btn" onclick="handleLoginClick()" id="logInButton">
+                <span class="material-symbols-outlined"> login </span> Login
+              </button>
+
+              <button class="toggle-btn" id="signUpBtn" onclick="changes(event)">
+                <span class="material-symbols-outlined"> how_to_reg </span>
+                Register
+              </button>
+
+
+
+
+
+
+
+
+
+              <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////// -->
+              <script>
+                function changes(event) {
+                  event.preventDefault();
+                  var changes = document.getElementById("signUpBtn");
+                  changes.style.color = "";
+                  var handle = document.getElementById("logInButton");
+                  handle.style.color = "white";
+                }
+              </script>
+            </div>
+            <div id="footerr" style="display: none"></div>
+            <div id="profile-sectionn" style="display: none"></div>
+
+          </ul>
+          <ul class="lowerNav">
+            <li>
+              <a class="menu-link" href="index.html"><object class="svg-object" data="./assets/icons/add_home_work.svg"
+                  type="image/svg+xml"></object>Home</a>
+            </li>
+            <li class="menu-linki">
+              <a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/article_shortcut.svg"
+                  type="image/svg+xml"></object>Research Papers</a>
+            </li>
+            <li>
+              <a class="menu-link" href="#" id="about-link"><object class="svg-object" data="./assets/icons/group.svg"
+                  type="image/svg+xml"></object>About Us</a>
+            </li>
+            <li>
+              <a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/balcony.svg"
+                  type="image/svg+xml"></object>Center <i class="fas fa-chevron-down"></i></a>
+
+              <div class="dropdown-menu">
+                <ul>
+                  <li>
+                    <a class="nav-link" href="#"><object class="svg-object" data="./assets/icons/rocket.svg"
+                        type="image/svg+xml"></object>Skill Center <i class="fas fa-chevron-right"></i></a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="#"><object class="svg-object" data="./assets/icons/science.svg"
+                        type="image/svg+xml"></object>WIT Center <i class="fas fa-chevron-right"></i></a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="#"><object class="svg-object" data="./assets/icons/diagnosis.svg"
+                        type="image/svg+xml"></object>RID Center <i class="fas fa-chevron-right"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a class="menu-link" href="/contact/contact.html"><object class="svg-object"
+                  data="./assets/icons/call_log.svg" type="image/svg+xml"></object>Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <div style="display: none" id="about-container"></div>
+  <div id="closeContent">
+    <div class="slider" style="margin-top: 130px">
+      <div class="myslide fade">
+        <img src="./assets/bn1.png" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="myslide fade">
+        <img src="./assets/bn2.png" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="myslide fade">
+        <img src="./assets/bn3.png" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="myslide fade">
+        <img src="./assets/bn4.png" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="dotsbox" style="text-align: center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+    </div>
+
+    <div class="do_center">
+      <div class="onText-slider">
+        <div class="text-area">
+          <h1 style="text-transform: uppercase; font-size: 18px">
+            <strong>Welcome to the future of</strong> research innovation & discovery (RID)
+            <h1>
+              <p>
+                At RID, we bring the world's most promising minds into our circle to
+                investigate, inspire, and innovate a technical & logical world for
+                all.
+              </p>
+        </div>
+        <button id="learnMore">
+          <object class="svg-object" data="./assets/icons/slideshow.svg" type="image/svg+xml"></object>Learn More
+        </button>
+      </div>
+    </div>
+
+    <div class="home-content">
+      <div class="content">
+        <h1> What is RID Organization?</h1>
+        <p id="para1">
+          <strong> <b>RID</b></strong> Organization i.e.
+          <strong>Research, Innovation </strong> and
+          <strong> Discovery</strong> Organization is an organization which is
+          run by TWF(TWKSAA WELFARE FOUNDATION). The main objective of
+          which is that in the coming times, the discovery, publication and
+          use of NEW (RID, PMS & TLR) should be done first in Indian culture,
+          civilization and language from this holy land of India.
+        </p>
+        <!---------- slide bar in main page container-->
+
+        <!--- slide bar end of the main project -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <p class="min_txt text_padding"><b id="msg">Important Message:</b> All the students, teachers and intellectuals who
+    are interested in
+    Research, Innovation & Discovery to join this RID organization and by discovering something new (RID, PMS & TLR)
+    to the world with their intelligence, wisdom and talent. Solve people's problems by creating and adopting.</p>
+
+
+
+  <!---------- slide bar in main page container-->
+  <div class="scroll-container-reset">
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Research </b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide1.png" alt="Slide 1">
+      <div class="card-content-alltagp">
+        <h3><b>Why should we innovate</b></h3>
+        <p>1. To program</p>
+        <p>2. For change</p>
+        <p>3. To improve production</p>
+        <p>4. To benefit society</p>
+        <p>5. To be ahead of competition</p>
+        <p>6. Development of the country's science and technology</p>
+      </div>
+    </div>
+
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Innovation</b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide2.png" alt="Slide 2">
+      <div class="card-content-alltagp">
+        <h3><b>What is the meaning of innovation</b></h3>
+        <p>1. Bringing new ideas or methods.</p>
+        <p>2. Improving existing systems.</p>
+        <p>3. Solving problems in better ways.</p>
+        <p>4. Supporting progress and growth.</p>
+        <p>5. Helping society and industries.</p>
+        <p>6. Encouraging creativity and change.</p>
+      </div>
+    </div>
+
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Discovery</b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide3.png" alt="Slide 3">
+      <div class="card-content-alltagp">
+        <h3><b>How does innovation improve production</b></h3>
+        <p>1. Increases efficiency.</p>
+        <p>2. Reduces time and costs.</p>
+        <p>3. Improves product quality.</p>
+        <p>4. Boosts output through automation.</p>
+        <p>5. Minimizes waste.</p>
+        <p>6. Develops better tools and machinery.</p>
+      </div>
+    </div>
+
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Research (R-1)</b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide4.png" alt="Slide 4">
+      <div class="card-content-alltagp">
+        <h3><b>How does innovation benefit society?</b></h3>
+        <p>1. Improves quality of life.</p>
+        <p>2. Creates job opportunities.</p>
+        <p>3. Solves societal problems.</p>
+        <p>4. Drives economic growth.</p>
+        <p>5. Advances healthcare and education.</p>
+        <p>6. Promotes sustainability and environmental protection.</p>
+      </div>
+    </div>
+
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Research (R-2)</b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide5.png" alt="Slide 5">
+      <div class="card-content-alltagp">
+        <h3><b>How to do research?</b></h3>
+        <p>1. Choose a topic.</p>
+        <p>2. Read and collect basic info.</p>
+        <p>3. Make your research questions.</p>
+        <p>4. Collect data from good sources.</p>
+        <p>5. Write short notes.</p>
+        <p>6. Understand and connect the ideas.</p>
+        <p>7. Write your conclusion.</p>
+      </div>
+    </div>
+
+    <div class="card-update-container-deepak">
+      <b>
+        <h3><b>Research (R-3)</b></h3>
+      </b>
+      <img src="/assets/slide_main_img/slide6.png" alt="Slide 6">
+      <div class="card-content-alltagp">
+        <h3><b>How to improve your research?</b></h3>
+        <p>1. Read from multiple trusted sources.</p>
+        <p>2. Ask clear and focused questions.</p>
+        <p>3. Use updated and reliable data.</p>
+        <p>4. Organize your notes properly.</p>
+        <p>5. Review and check for accuracy.</p>
+        <p>6. Practice regularly to sharpen your skills.</p>
+      </div>
+    </div>
+  </div>
+  <!--- slide bar end of the main project -->
+ 
+    <section data-scroll data-scroll-speed="0.1" class="discover-research" style="margin-top: 30px;">
+      <div class="left">
+        <h2 style="text-transform: capitalize; ">RID SCIENTIFIC COMMUNITY (RSC)</h2>
+        <p id="para">
+        <ul> Welcome to the RID Scientific Community (RSC)<br>
+          At RSC, we are dedicated to discovering, developing, and innovating cutting-edge technologies that shape the
+          future. Our community brings together visionary researchers, industry leaders, and passionate innovators to
+          tackle global challenges and advance scientific progress.
+          With a focus on collaboration, innovation, and excellence, RSC serves as a hub for transformative ideas and
+          groundbreaking research. By combining expertise across disciplines, we aim to create sustainable, impactful
+          solutions that improve lives and redefine possibilities.
+          Join us as we explore new horizons and drive meaningful change through science and technology. Together, we
+          innovate for a better tomorrow.</ul>
+        </p>
+
+        <h2>Connect with RID scientific community(RSC)</h2>
+        <p id="para">
+          Share your research, collaborate with your peers, and get the
+          support you need to advance your career.
+        </p>
+        <button type="button" id="btn">Join Us</button>
+        <p id="para">Join us as we explore new horizons and drive meaningful change through science and technology.
+          Together, we innovate for a better tomorrow.</p>
+        <br><br>
+        <hr>
+        <hr>
+        <h3>VISIT TOPIC </h3>
+        <div class="topics-section">
+          <a href="#">HTML</a>
+          <a href="#">CSS</a>
+          <a href="#">PYTHON</a>
+          <a href="#">ENGLISH</a>
+          <a href="#">REACT JS</a>
+          <a href="#">Virtual Reality</a>
+          <a href="#">Big Data Analytics</a>
+          <a href="#">Wearable Technology</a>
+          <a href="#">Digital Transformation</a>
+          <a href="#">5G Technology</a>
+        </div>
+      </div>
+
+
+      <div id="circle-img" class="right animate__animated animate__fadeInRight">
+        <img src="../assets/dash-ebook-images/technology related img.jpeg" alt="" draggable="false" />
+
+      </div>
+
+    </section>
+
+
+
+  <section class="newsletter">
+    <div class="newsletter-body">
+      <div class="text">
+        <br><br>
+        <h2>Sign up for our newsletter</h2>
+        <p>Fresh data delivered whenever you feel low.</p>
+      </div>
+      <div class="inputbtnsubs">
+        <div class="subscribeletter">
+          <input type="search" placeholder="Enter Email Address..." />
+        </div>
+        <a class="Subscribe" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-scroll data-scroll-speed="0.1" class="latest-reading">
+    <h2>Latest Readings</h2>
+    <p>
+      We're gathering a lot of content from various sources and conducting
+      additional research to provide you with valuable insights and a great
+      experience.
+    </p>
+
+    <div class="reading-one">
+      <div style="display: flex; gap: 8px; align-items: center">
+        <div style="width: 100%">
+          <h3>Internet & Our Publications</h3>
+          <hr style="border: none; border-bottom: 1px dotted #000" />
+        </div>
+      </div>
+
+      <div class="fullreading">
+        <div class="posts">
+          <div class="post-one">
+            <img src="./assets/post-one-image.png" alt="thumbnail post one" />
+            <p>REPORT | MAY 17, 2024</p>
+            <h2>Stock Market | Popular Now-A-Days | Any Future?</h2>
+            <p>
+              In the readings, you can learn how the RID algorithm works and
+              discover popular topics such as stock market analysis, AI, and
+              machine learning.
+            </p>
+            <a>Read More...</a>
+          </div>
+          <div style="
+                  border-right: 1px dotted #000;
+                  height: inherit;
+                  width: 1px;
+                "></div>
+          <div class="post-two">
+            <img src="./assets/post-two-image.png" alt="thumbnail post" />
+            <p>REPORT | MAY 09, 2024</p>
+            <h2>
+              AI Generated Art | Open AI Launched new model to generate
+              images more precisely.
+            </h2>
+            <p>
+              Currently, AI is assisting many freelancers, projects, and
+              various users to work more efficiently. It is also
+              collaborating with different companies to achieve more
+              advanced outcomes.
+            </p>
+            <a>Read More...</a>
+          </div>
+        </div>
+        <div style="border-right: 1px dotted #000; height: inherit; width: 1px"></div>
+        <div class="ourposts">
+          <div class="post-three">
+            <img src="./assets/post-three-image.png" alt="thumbnail post" />
+            <p>REPORT | JUNE 21, 2024</p>
+            <h2>
+              NVIDA is making new records. It is now on top in the list of
+              best tech companies
+            </h2>
+            <p>
+              NVIDIA is a company that manufactures chips related to visual
+              graphics hardware, known as GPUs. They are integrating AI and
+              machine learning into their processes to develop new updates.
+            </p>
+            <a>Read More...</a>
+          </div>
+          <div class="loadmore">
+            <a href="#">Load More</a>
+          </div>
+        </div>
+      </div>
+      <hr style="border: none; border-bottom: 1px dotted #000" />
+    </div>
+  </section>
+  </div>
+  
+  <section class="footer">
+    <footer>
+      <div class="left">
+        <img src="./assets/final_logo.svg" alt="footer logo" />
+        <p>
+          Mig, 72, Rajiv Nagar, A Sector, Aayodhya bypass Bhopal, Madhya
+          Pradesh, India (462022)
+        </p>
+        <div>
+          <a href="#" style="color: var(--maintheme)">ridorg.in@gmail.com | Email</a>
+          <br /><br />
+          <a href="#" style="color: var(--maintheme)">+91 9892782728 | Mobile</a>
+        </div>
+      </div>
+
+      <div class="links-head">
+        <div style="width: 100%">
+          <h3>Research Topics</h3>
+          <br />
+          <hr style="border: none; border-bottom: 1px dotted #000" />
+        </div>
+
+        <div class="links">
+          <div class="links-1">
+            <a href="#">Computers</a>
+            <a href="#">Tech National Affairs</a>
+            <a href="#">AI: Artificial Intelligence</a>
+            <a href="#">Race & Ethnicity</a>
+            <a href="#">Religion</a>
+            <a href="#">Age & Generations</a>
+            <a href="#">Gender & Equality</a>
+          </div>
+          <div class="links-2">
+            <a href="#">Space Engineering</a>
+            <a href="#">Economy & Work</a>
+            <a href="#">Science</a>
+            <a href="#">Internet & Technology</a>
+            <a href="#">News Habits & Media</a>
+            <a href="#">Methodological Research</a>
+          </div>
+          <div class="links-3">
+            <a href="#">Aeronautical Engineering</a>
+            <a href="#">Become Dev</a>
+            <a href="#">Frontend Techstack</a>
+            <a href="#">Resume Building</a>
+            <a href="#">Formal Communication</a>
+            <a href="#">English & More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="links-social">
+        <div style="width: 100%">
+          <h3>Social Links</h3>
+          <br />
+          <hr style="border: none; border-bottom: 1px dotted #000" />
+        </div>
+
+        <div class="links">
+          <div class="links-1">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
+            <a
+              href="https://www.linkedin.com/in/rid-bharat-9a4517324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=andro"><ion-icon
+                name="logo-linkedin"></ion-icon> LinkedIn</a>
+            <a href="https://youtube.com/@ridbharat?si=KEFBYHmDgDyJcRMD"><ion-icon name="logo-youtube"></ion-icon>
+              YouTube</a>
+            <a href="https://github.com/RID-bharat25"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+          </div>
+          <div class="links-2">
+            <a href="https://www.instagram.com/ridbharat?igsh=MW1seTNvMnhrMmdyNA=="><ion-icon
+                name="logo-instagram"></ion-icon> Instagram</a>
+            <a href="mailto:ridorg.in@gmail.com"><ion-icon name="mail-outline"></ion-icon> Email Us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+  <hr style="border: none; border-bottom: 1px dotted #000" />
+  <section class="copyrightsection">
+    <div>
+      <p>
+        Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights
+        Reserved.
+      </p>
+    </div>
+    <div class="link">
+      <a href="#">About </a> &nbsp;|&nbsp;
+      <a href="#">Terms & Conditions </a> &nbsp;|&nbsp;
+      <a href="#">Privacy Policy </a> &nbsp;|&nbsp;
+      <a href="#">Feedback</a>
+    </div>
+  </section>
+
+  <div id="quiz">
+    <h1 style="display: none">Select a Topic:</h1>
+    <select id="topic-select" style="display: none">
+      <option value="general knowledge">General Knowledge</option>
+      <option value="science">Science</option>
+      <option value="history">History</option>
+      <option value="technology">Technology</option>
+
+    </select>
+    <button onclick="loadQuestion()" style="display: none">Start Quiz</button>
+
+    <h2 id="question"></h2>
+    <ul id="answers"></ul>
+    <button id="next" style="display: none" onclick="loadQuestion()">
+      Next
+    </button>
+  </div>
+
+  <!-- Script -->
+
+  <!-- by khushi -->
+
+
+  <script>
+    // Function to get the cookie by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Function to handle login button click
+    function handleLoginClick() {
+
+      const token = getCookie('token'); // Get JWT token from cookies
+
+      if (token) {
+        // If token exists, send it to the server to check the role
+        fetch('/api/verify-token', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}` // Send the token in the headers
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // Redirect based on user role
+              switch (data.role) {
+                case 'student':
+                  window.location.href = '/student';
+                  break;
+                case 'teacher':
+                  window.location.href = '/teacher';
+                  break;
+                case 'organisation':
+                  window.location.href = '/organisation';
+                  break;
+                case 'admin':
+                  window.location.href = '/admin';
+                  break;
+                default:
+                  window.location.href = '/login'; // If no valid role, go to login
+              }
+            } else {
+              // If token is invalid, redirect to login page
+              window.location.href = '/login';
+            }
+          })
+          .catch(error => {
+            console.error('Error verifying token:', error);
+            window.location.href = '/login'; // In case of error, go to login
+          });
+      } else {
+        // If no token found, redirect to login page
+        window.location.href = '/login';
+      }
+    }
+    document
+      .querySelector(".menu-link")
+      .addEventListener("mouseover", function () {
+        const svgDoc = this.querySelector(".svg-object").contentDocument;
+        svgDoc.querySelector("svg").style.fill = "red";
+
+      });
+
+    document
+      .querySelector(".menu-link")
+      .addEventListener("mouseout", function () {
+        const svgDoc = this.querySelector(".svg-object").contentDocument;
+        svgDoc.querySelector("svg").style.fill = "black";
+
+      });
+  </script>
+
+  <script>
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("login") === "success") {
+        const test = document.getElementById("profile-sectionn");
+        const hideLoginBtn = document.getElementById("logInButton");
+        const hideSignUpBtn = document.getElementById("signUpBtn");
+        const showProfileBtn = document.getElementById("profile-section");
+        hideSignUpBtn.style.display = "none";
+        hideLoginBtn.style.display = "none";
+        showProfileBtn.style.display = "block";
+        test.style.display = "block";
+      }
+    };
+    function closeContent() {
+      document.getElementById("closeContent").style.display = "none";
+    }
+    document
+      .getElementById("about-link")
+      .addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var myDiv = document.getElementById("about-container");
+        if (myDiv.style.display === "none") {
+          myDiv.style.display = "block";
+        } else {
+          myDiv.style.display = "none";
+        }
+        closeContent();
+      });
+  </script>
+  <script>
+    const swapBtn = document.getElementById("swap-btn");
+    const registerBTn = document.getElementById("signUpBtn");
+    const loginBTn = document.getElementById("logInButton");
+
+    registerBTn.addEventListener("click", () => {
+      swapBtn.style.left = "125px";
+      window.location.href = "/form";
+    });
+    registerBTn.addEventListener("mouseover", () => {
+      swapBtn.style.left = "125px";
+      registerBTn.style.color = "white";
+      loginBTn.style.color = "black";
+    });
+    registerBTn.addEventListener("mouseout", () => {
+      swapBtn.style.left = "0px";
+      registerBTn.style.color = "black";
+      loginBTn.style.color = "white";
+    });
+    const onlinetest = document.getElementById("onlineTest");
+    onlinetest.addEventListener("click", () => {
+      window.location.href = "/onlineTest";
+    });
+  </script>
+  <script>
+    const ebookBtn = document.getElementById("ebookBtn");
+    ebookBtn.addEventListener("click", () => {
+      window.location.href = "/ebook";
+    });
+  </script>
+
+  <!-- ----- -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Prevent default copy event
+      document.addEventListener("copy", function (e) {
+        e.preventDefault();
+        alert("Copying text is disabled on this site.");
+      });
+
+      // Optionally, prevent other methods like right-click context menu
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      //   alert("Right-click is disabled on this site.");
+      // });
+
+      // Optionally, prevent other shortcuts like Ctrl+C
+      document.addEventListener("keydown", function (e) {
+        // Detect Ctrl+C or Command+C on macOS
+        if ((e.ctrlKey || e.metaKey) && e.key === "c") {
+          e.preventDefault();
+          alert("Copying text is disabled on this site.");
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+  <script>
+    var sideBarIcon = document.getElementById("sideBarIcon");
+    var mainNav = document.getElementById("main-nav");
+    var innerCont = document.getElementById("innerCont");
+
+    function noView() {
+      innerCont.style.background = "none";
+    }
+    function yesView() {
+      innerCont.style.background = "flex";
+    }
+    function fadeS() {
+      innerCont.style.opacity = "0";
+      innerCont.style.scale = ".85";
+      setTimeout(2000, noView());
+    }
+    function fadeE() {
+      innerCont.style.opacity = "1";
+      innerCont.style.scale = "1";
+      setTimeout(2000, yesView());
+    }
+
+    function cllick() {
+      if (sideBarIcon.innerHTML === "close") {
+        sideBarIcon.innerHTML = "menu";
+        mainNav.style.height = "0vh";
+        fadeS();
+
+      } else {
+        sideBarIcon.innerHTML = "close";
+        mainNav.style.height = "100vh";
+        fadeE();
+      }
+    }
+
+  </script>
+  <!-- when you click on the hamburger menu, only the header will be shown and scrolling will be disabled on mobile devices until the menu is closed. -->
+  <script>
+    const hamburgerBtn = document.getElementById('sideBarIcon');
+    const mobileMenu = document.getElementById('main-nav');
+
+    hamburgerBtn.addEventListener('click', () => {
+      // Toggle the menu visibility
+      mobileMenu.classList.toggle('hidden');
+
+      // Toggle body scroll
+      document.body.classList.toggle('no-scroll');
+    });
+
+  </script>
+
+  <script src="./js/main.js"></script>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
