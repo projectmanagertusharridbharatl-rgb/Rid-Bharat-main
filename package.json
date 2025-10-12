@@ -52,5 +52,13 @@
     "license": "ISC",
     "directories": {
         "example": "examples"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RID-Saurabh18/Rid-Bharat-main.git"
+    },
+    "bugs": {
+        "url": "https://github.com/RID-Saurabh18/Rid-Bharat-main/issues"
+    },
+    "homepage": "https://github.com/RID-Saurabh18/Rid-Bharat-main#readme"
 }
