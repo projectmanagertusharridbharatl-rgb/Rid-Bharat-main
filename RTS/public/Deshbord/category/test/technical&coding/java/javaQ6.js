@@ -53,23 +53,39 @@ const questions =
  ];
 
 let currentQuestion = 0;
+function loadQuestion(index) {
+    const question = questions[index];
 
-        function loadQuestion(index) {
-            document.getElementById("question").textContent = questions[index].question;
-            document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
-            const optionsElement = document.getElementById("options");
-            optionsElement.innerHTML = "";
-            questions[index].options.forEach(option => {
-                optionsElement.innerHTML += `<li><input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')"> ${option}</li>`;
-            });
-            updateCircles();
-        }
+    // Question text
+    document.getElementById("question").textContent = question.question;
+    document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
+
+    // Options
+    const optionsElement = document.getElementById("options");
+    optionsElement.innerHTML = "";
+    question.options.forEach(option => {
+        const checked = question.selected === option ? "checked" : "";
+        optionsElement.innerHTML += `<li>
+            <input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')" ${checked}>
+            ${option}
+        </li>`;
+    });
+
+    // Agar question visit ho gaya lekin attempt nahi hua
+    if (!question.attempted) {
+        question.visited = true;
+    }
+
+    updateCircles();
+}
 
         function markAttempted(index, selectedAnswer) {
-            questions[index].
-            questions[index].selected = selectedAnswer;
-            updateCircles();
-        }
+    questions[index].selected = selectedAnswer;
+    questions[index].attempted = true; // Attempt flag set
+    questions[index].visited = true;   // Visited flag bhi set
+    updateCircles();
+}
+
 
         function nextQuestion() {
             if (currentQuestion < questions.length - 1) {
@@ -86,13 +102,25 @@ let currentQuestion = 0;
         }
 
         function updateCircles() {
-            const circleContainer = document.getElementById("circleContainer");
-            circleContainer.innerHTML = "";
-            questions.forEach((q, i) => {
-                let status = i === currentQuestion ? "active" : q.attempted ? "answered" : "not-attempted";
-                circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
-            });
+    const circleContainer = document.getElementById("circleContainer");
+    circleContainer.innerHTML = "";
+
+    questions.forEach((q, i) => {
+        let status = "";
+
+        if (i === currentQuestion) {
+            status = "active"; // Current question
+        } else if (q.attempted) {
+            status = "answered"; // Green
+        } else if (q.visited) {
+            status = "visited"; // White
+        } else {
+            status = "not-attempted"; // Default gray
         }
+
+        circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
+    });
+}
 
         function jumpToQuestion(index) {
             currentQuestion = index;

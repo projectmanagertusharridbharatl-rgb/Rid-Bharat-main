@@ -9,6 +9,25 @@ body {
     color: #333;
 }
 
+ .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+    line-height: 30px;
+    text-align: center;
+    background-color: gray; /* Default */
+    cursor: pointer;
+}
+
+.circle.answered { background-color: green; color: white; }
+.circle.visited { background-color: white; color: black; border: 1px solid gray; }
+.circle.active { border: 2px solid blue; }
+.circle.not-attempted { background-color: gray; color: white; }
+
+   
+
 header {
     background-color: #1a237e;
     color: white;
