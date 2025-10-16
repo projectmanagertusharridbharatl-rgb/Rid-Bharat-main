@@ -2,6 +2,9 @@ let questions = [];
 let currentQuestionIndex = 0;
 let answers = [];
 
+
+
+
 async function loadQuestions() {
     try {
         questions = JSON.parse(localStorage.getItem('questions')) || [];

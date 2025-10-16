@@ -39,7 +39,7 @@
         "xlsx": "^0.18.5"
     },
     "devDependencies": {
-        "nodemon": "^3.1.9"
+        "nodemon": "^3.1.10"
     },
     "keywords": [
         "project",
@@ -52,5 +52,13 @@
     "license": "ISC",
     "directories": {
         "example": "examples"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ridinternanish2005/Rid-Bharat-main.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ridinternanish2005/Rid-Bharat-main/issues"
+    },
+    "homepage": "https://github.com/ridinternanish2005/Rid-Bharat-main#readme"
 }
