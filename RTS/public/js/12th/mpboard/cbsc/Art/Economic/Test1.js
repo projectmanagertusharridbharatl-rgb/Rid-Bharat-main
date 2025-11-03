@@ -1966,7 +1966,7 @@ function startCamera() {
     container.id = "camera-container";
     container.style.position = "fixed";
     container.style.top = "10px";
-    container.style.left = "10px"; // ✅ Left side
+    container.style.left = "10px"; //  Left side
     container.style.width = "130px";
     container.style.height = "130px";
     container.style.zIndex = "9999";
@@ -2029,7 +2029,7 @@ function startCamera() {
         container.style.cursor = "grab";
     });
 
-    // ✅ Resize logic
+    //  Resize logic
     let isResizing = false;
     let startWidth, startHeight, startX, startY;
 
@@ -2055,7 +2055,7 @@ function startCamera() {
         isResizing = false;
     });
 
-    // ✅ Camera stream
+    //  Camera stream
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
             video.srcObject = stream;

@@ -505,36 +505,64 @@ const questions = [
     // Continue adding more questions up to 30
 ];
 
-// Add more questions as needed...
+
 
 let currentQuestion = 0;
-let language = "en"; // Default English
-const circlesPerPage = 70;
-let currentCirclePage = 0;
-let timeLeft = 300;
+let language = "en";
+let timeLeft = 180 * 60; // 180 minutes
 let timerInterval;
 
 function loadQuestion(index) {
-    const questionText = language === "en" ? questions[index].question_en : questions[index].question_hi;
-    const optionsArray = language === "en" ? questions[index].options_en : questions[index].options_hi;
-
-    document.getElementById("question").textContent = `${questions[index].num}. ${questionText}`;
+    const q = questions[index];
+    document.getElementById("question").textContent = `${q.num}. ${
+        language === "en" ? q.question_en : q.question_hi
+    }`;
     document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
 
     const optionsElement = document.getElementById("options");
     optionsElement.innerHTML = "";
 
-    optionsArray.forEach(option => {
-        optionsElement.innerHTML += `<li><input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')"> ${option}</li>`;
+    const options = language === "en" ? q.options_en : q.options_hi;
+
+    options.forEach((option) => {
+        // Check if already selected
+        const isSelected = q.selected === option;
+
+        // ✅ Make the whole box clickable
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option-box";
+        optionDiv.style = `
+            border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
+            background-color: ${isSelected ? "#e7f1ff" : "white"};
+            padding: 10px;
+            border-radius: 8px;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        `;
+
+        // Option content
+        optionDiv.innerHTML = `
+            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} style="margin-right:8px;">
+            ${option}
+        `;
+
+        // ✅ Make whole box clickable
+        optionDiv.addEventListener("click", () => {
+            markAttempted(index, option);
+            loadQuestion(index); // reload to highlight
+        });
+
+        optionsElement.appendChild(optionDiv);
     });
 
-    updateCircles();
+    updateNavigation();
 }
 
 function markAttempted(index, selectedAnswer) {
     questions[index].attempted = true;
     questions[index].selected = selectedAnswer;
-    updateCircles();
+    updateNavigation();
 }
 
 function nextQuestion() {
@@ -551,69 +579,27 @@ function prevQuestion() {
     }
 }
 
-function updateCircles() {
-    const circleContainer = document.getElementById("circleContainer");
-    circleContainer.innerHTML = "";
-    const start = currentCirclePage * circlesPerPage;
-    const end = Math.min(start + circlesPerPage, questions.length);
-
-    for (let i = start; i < end; i++) {
-        const q = questions[i];
-        let status = i === currentQuestion ? "active" : q.attempted ? "answered" : "not-attempted";
-        circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
-    }
-}
-
-function jumpToQuestion(index) {
-    currentQuestion = index;
-    loadQuestion(index);
-}
-
-function prevCirclePage() {
-    if (currentCirclePage > 0) {
-        currentCirclePage--;
-        updateCircles();
-    }
-}
-
-function nextCirclePage() {
-    if ((currentCirclePage + 1) * circlesPerPage < questions.length) {
-        currentCirclePage++;
-        updateCircles();
-    }
-}
-
 function changeLanguage() {
     language = document.getElementById("languageSelect").value;
     loadQuestion(currentQuestion);
 }
 
 function submitQuiz() {
-    let confirmation = confirm("Are you sure you want to submit the test?");
-    if (!confirmation) return;
+    clearInterval(timerInterval);
+    let attempted = 0,
+        notAttempted = 0,
+        score = 0;
 
-    let attempted = 0, notAttempted = 0, score = 0;
-    const results = [];
-
-    questions.forEach(q => {
+    questions.forEach((q) => {
         if (q.attempted) {
             attempted++;
-            if (q.selected === q.answer) score++;
-        } else {
-            notAttempted++;
-        }
-        results.push({ question: q.question_en, selected: q.selected || "Not Answered", correct: q.answer });
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) score++;
+        } else notAttempted++;
     });
 
-    localStorage.setItem("attempted", attempted);
-    localStorage.setItem("notAttempted", notAttempted);
-    localStorage.setItem("score", score);
-    localStorage.setItem("results", JSON.stringify(results));
-
-    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-    if (viewResult) {
-        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
-    }
+    alert(
+        `Quiz submitted!\nAttempted: ${attempted}\nNot Attempted: ${notAttempted}\nScore: ${score}/${questions.length}`
+    );
 }
 
 function startTimer() {
@@ -621,16 +607,34 @@ function startTimer() {
     timerInterval = setInterval(() => {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Time's up! Submitting the quiz automatically.");
+            alert("Time's up!");
             submitQuiz();
         } else {
-            timerElement.textContent = timeLeft;
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time Left: ${hours
+                .toString()
+                .padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
             timeLeft--;
         }
     }, 1000);
 }
 
+function updateNavigation() {
+    const nav = document.getElementById("circleContainer");
+    nav.innerHTML = "";
+    questions.forEach((q, i) => {
+        let color = "gray";
+        if (i === currentQuestion) color = "blue";
+        else if (q.attempted) color = "green";
+        nav.innerHTML += `<div class='circle' style='background-color:${color}' onclick='loadQuestion(${i})'>${i + 1}</div>`;
+    });
+}
+
 window.onload = function () {
-    startTimer();
     loadQuestion(currentQuestion);
+    startTimer();
 };

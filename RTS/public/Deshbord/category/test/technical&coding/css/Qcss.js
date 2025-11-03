@@ -1,138 +1,1350 @@
 const questions = [
-        { num: 1, question: "1 What does the 'contain' property in CSS do?", options: ["Restricts element rendering", "Makes content responsive", "Aligns children", "Creates scrollable container"], answer: "Restricts element rendering", attempted: false, selected: "" },
-        { num: 2, question: "2 Which value of 'object-fit' preserves the aspect ratio and fills the box?", options: ["cover", "contain", "fill", "scale-down"], answer: "cover", attempted: false, selected: "" },
-        { num: 3, question: "3 What is the default stacking context level of an element?", options: ["0", "1", "-1", "auto"], answer: "0", attempted: false, selected: "" },
-        { num: 4, question: "4 How do you create a triangle shape in CSS?", options: ["Using borders", "Using clip-path", "Using transform", "Using box-shadow"], answer: "Using borders", attempted: false, selected: "" },
-        { num: 5, question: "5 Which property allows creating multiple background images?", options: ["background-image", "background-layer", "multi-bg", "background-stack"], answer: "background-image", attempted: false, selected: "" },
-        { num: 6, question: "6 Which function repeats a CSS Grid track pattern?", options: ["repeat()", "grid-repeat()", "track()", "loop()"], answer: "repeat()", attempted: false, selected: "" },
-        { num: 7, question: "7 What does the 'initial' keyword do in CSS?", options: ["Resets to default browser style", "Inherits from parent", "Removes inline styles", "Applies global theme"], answer: "Resets to default browser style", attempted: false, selected: "" },
-        { num: 8, question: "8 Which CSS selector targets every even child?", options: ["nth-child(even)", "nth-child(2n)", "nth-child-odd", "even-child"], answer: "nth-child(2n)", attempted: false, selected: "" },
-        { num: 9, question: "9 Which property specifies whether an element is focusable?", options: ["tabindex", "focus", "outline", "z-index"], answer: "tabindex", attempted: false, selected: "" },
-        { num: 10, question: "10 What is the purpose of the 'touch-action' property?", options: ["Controls how touch gestures behave", "Disables touch events", "Enables zooming", "Triggers haptic feedback"], answer: "Controls how touch gestures behave", attempted: false, selected: "" },
-        { num: 11, question: "11 Which property defines spacing between inline elements?", options: ["letter-spacing", "margin", "word-spacing", "padding-inline"], answer: "word-spacing", attempted: false, selected: "" },
-        { num: 12, question: "12 What CSS function is used for responsive typography?", options: ["clamp()", "scale()", "flex()", "font-adjust()"], answer: "clamp()", attempted: false, selected: "" },
-        { num: 13, question: "13 Which property lets you scroll smoothly when linking to anchors?", options: ["scroll-behavior", "anchor-scroll", "smooth-anchor", "scroll-mode"], answer: "scroll-behavior", attempted: false, selected: "" },
-        { num: 14, question: "14 Which CSS unit is relative to the height of the viewport?", options: ["vh", "em", "rem", "px"], answer: "vh", attempted: false, selected: "" },
-        { num: 15, question: "15 Which CSS pseudo-class applies only on keyboard navigation focus?", options: [":focus-visible", ":focus-only", ":key-focus", ":hover"], answer: ":focus-visible", attempted: false, selected: "" },
-        { num: 16, question: "16 How do you make an element scroll horizontally with overflow?", options: ["overflow-x: scroll", "scroll: x", "horizontal: auto", "scroll-direction: horizontal"], answer: "overflow-x: scroll", attempted: false, selected: "" },
-        { num: 17, question: "17 What is the effect of 'display: flow-root'?", options: ["Creates a new block formatting context", "Hides overflow", "Applies float", "Resets float"], answer: "Creates a new block formatting context", attempted: false, selected: "" },
-        { num: 18, question: "18 Which property changes text direction?", options: ["direction", "writing-mode", "text-align", "flow"], answer: "direction", attempted: false, selected: "" },
-        { num: 19, question: "19 What does the 'place-items' shorthand set?", options: ["align-items and justify-items", "margin and padding", "grid-template and gap", "text-align and float"], answer: "align-items and justify-items", attempted: false, selected: "" },
-        { num: 20, question: "20 What does the ':is()' pseudo-class do?", options: ["Simplifies writing compound selectors", "Applies transitions", "Targets invalid forms", "Negates selectors"], answer: "Simplifies writing compound selectors", attempted: false, selected: "" },
-        { num: 21, question: "21 What property helps with alignment in a CSS Grid?", options: ["justify-items", "align-self", "float", "position"], answer: "justify-items", attempted: false, selected: "" },
-        { num: 22, question: "22 What does 'scroll-snap-type' do?", options: ["Snaps scrolling to defined positions", "Prevents scroll", "Changes scroll axis", "Applies scroll animation"], answer: "Snaps scrolling to defined positions", attempted: false, selected: "" },
-        { num: 23, question: "23 Which property adds animation timing functions?", options: ["animation-timing-function", "animation-speed", "transition-style", "timing-function"], answer: "animation-timing-function", attempted: false, selected: "" },
-        { num: 24, question: "24 What does 'overscroll-behavior' control?", options: ["Scroll chaining", "Scroll speed", "Bounce effect", "Scrollbar visibility"], answer: "Scroll chaining", attempted: false, selected: "" },
-        { num: 25, question: "25 What is the use of ':where()' pseudo-class?", options: ["Adds no specificity", "Targets invalid elements", "Applies global styles", "Overrides hover"], answer: "Adds no specificity", attempted: false, selected: "" },
-        { num: 26, question: "26 What does 'all: unset' do in CSS?", options: ["Removes all inherited and default styles", "Unsets visibility", "Resets fonts", "Removes flex properties"], answer: "Removes all inherited and default styles", attempted: false, selected: "" },
-        { num: 27, question: "27 Which property changes the alignment of text inside a block?", options: ["text-align", "justify-content", "align-text", "content-align"], answer: "text-align", attempted: false, selected: "" },
-        { num: 28, question: "28 What property allows multiline truncation with ellipsis?", options: ["-webkit-line-clamp", "text-overflow", "line-wrap", "text-collapse"], answer: "-webkit-line-clamp", attempted: false, selected: "" },
-        { num: 29, question: "29 Which property applies anti-aliasing to fonts?", options: ["font-smoothing", "-webkit-font-smoothing", "text-rendering", "font-clarity"], answer: "-webkit-font-smoothing", attempted: false, selected: "" },
-        { num: 30, question: "30 What CSS function defines a shape for clipping content?", options: ["clip-path()", "crop()", "shape()", "box-clip()"], answer: "clip-path()", attempted: false, selected: "" },
-        { num: 31, question: "31 Which property creates a reflection effect?", options: ["-webkit-box-reflect", "box-shadow", "filter", "image-reflect"], answer: "-webkit-box-reflect", attempted: false, selected: "" },
-        { num: 32, question: "32 What is the maximum z-index value in modern browsers?", options: ["2147483647", "99999", "1000000", "Infinity"], answer: "2147483647", attempted: false, selected: "" },
-        { num: 33, question: "33 How do you create sticky behavior for an element?", options: ["position: sticky", "position: float", "float: sticky", "sticky-mode: on"], answer: "position: sticky", attempted: false, selected: "" },
-        { num: 34, question: "34 What is the default writing-mode in English text?", options: ["horizontal-tb", "vertical-rl", "ltr", "auto"], answer: "horizontal-tb", attempted: false, selected: "" },
-        { num: 35, question: "35 What does 'column-count' control in multi-column layout?", options: ["Number of columns", "Spacing", "Line-height", "Break behavior"], answer: "Number of columns", attempted: false, selected: "" },
-        { num: 36, question: "36 What does 'unicode-bidi: bidi-override' do?", options: ["Reverses text direction", "Changes text language", "Applies italics", "Disables ligatures"], answer: "Reverses text direction", attempted: false, selected: "" },
-        { num: 37, question: "37 What pseudo-element selects the first line of a block?", options: ["::first-line", ":line-first", "::top-line", ":first-of-type"], answer: "::first-line", attempted: false, selected: "" },
-        { num: 38, question: "38 Which property defines custom markers in list items?", options: ["list-style", "list-marker", "list-symbol", "list-bullet"], answer: "list-style", attempted: false, selected: "" },
-        { num: 39, question: "39 What value of 'display' collapses table borders?", options: ["table", "table-collapse", "table-border-collapse", "collapse"], answer: "table", attempted: false, selected: "" },
-        { num: 40, question: "40 What does 'pointer-events: none' do?", options: ["Disables mouse interaction", "Disables transitions", "Removes focus", "Hides pointer cursor"], answer: "Disables mouse interaction", attempted: false, selected: "" },
-        { num: 41, question: "41 Which property adds 3D transformations?", options: ["transform", "perspective", "translateZ", "rotate3D"], answer: "transform", attempted: false, selected: "" },
-        { num: 42, question: "42 What property prevents content from being resized?", options: ["resize: none", "overflow: hidden", "position: fixed", "scale: 0"], answer: "resize: none", attempted: false, selected: "" },
-        { num: 43, question: "43 What does 'appearance: none' do?", options: ["Removes browser default styles", "Disables color scheme", "Applies transitions", "Enables animations"], answer: "Removes browser default styles", attempted: false, selected: "" },
-        { num: 44, question: "44 Which property adds decorations to text?", options: ["text-decoration", "font-style", "text-effect", "underline"], answer: "text-decoration", attempted: false, selected: "" },
-        { num: 45, question: "45 What is the use of 'backdrop-filter'?", options: ["Applies effects behind an element", "Blurs foreground", "Applies shadow", "Darkens images"], answer: "Applies effects behind an element", attempted: false, selected: "" },
-        { num: 46, question: "46 How do you select the parent of an element in CSS?", options: [":has()", ":parent", "::parent", ":not()"], answer: ":has()", attempted: false, selected: "" },
-        { num: 47, question: "47 Which property adjusts the layout direction of flex items?", options: ["flex-direction", "flow-direction", "align-items", "flex-wrap"], answer: "flex-direction", attempted: false, selected: "" },
-        { num: 48, question: "48 What is the purpose of the ':empty' pseudo-class?", options: ["Selects elements with no content", "Applies when input is cleared", "Used in forms", "Indicates error"], answer: "Selects elements with no content", attempted: false, selected: "" },
-        { num: 49, question: "49 What does the 'quotes' property define in CSS?", options: ["Defines quotation marks", "Adds blockquotes", "Applies italics", "Styles citations"], answer: "Defines quotation marks", attempted: false, selected: "" },
-        { num: 50, question: "50 What does the 'visibility: collapse' property do in tables?", options: ["Hides table rows without affecting layout", "Removes table borders", "Hides table content", "Freezes header"], answer: "Hides table rows without affecting layout", attempted: false, selected: "" }
+  {
+    num: 1,
+    question_en: "How do you define a CSS custom property (variable)?",
+    question_hi: "CSS कस्टम प्रॉपर्टी (वैरिएबल) को कैसे परिभाषित करते हैं?",
+    options_en: [
+      "Using -- followed by the variable name inside a selector",
+      "Using $ followed by the variable name",
+      "Using @variable followed by the name",
+      "Using var() function directly"
+    ],
+    options_hi: [
+      "सेलेक्टर के अंदर -- के साथ वेरिएबल नाम लिखकर",
+      "$ के साथ वेरिएबल नाम लिखकर",
+      "@variable के साथ नाम लिखकर",
+      "सीधे var() फंक्शन का उपयोग करके"
+    ],
+    answer_en: "Using -- followed by the variable name inside a selector",
+    answer_hi: "सेलेक्टर के अंदर -- के साथ वेरिएबल नाम लिखकर",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 2,
+    question_en: "How do you access the value of a CSS variable?",
+    question_hi: "CSS वेरिएबल का मान कैसे प्राप्त करते हैं?",
+    options_en: [
+      "Using var() function",
+      "Using getVariable() function",
+      "Directly writing the variable name",
+      "Using $ sign before variable name"
+    ],
+    options_hi: [
+      "var() फंक्शन का उपयोग करके",
+      "getVariable() फंक्शन का उपयोग करके",
+      "सीधा वेरिएबल नाम लिखकर",
+      "$ साइन के साथ वेरिएबल नाम लिखकर"
+    ],
+    answer_en: "Using var() function",
+    answer_hi: "var() फंक्शन का उपयोग करके",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 3,
+    question_en: "Where are CSS variables typically declared?",
+    question_hi: "CSS वेरिएबल आमतौर पर कहाँ घोषित किए जाते हैं?",
+    options_en: [
+      ":root selector",
+      "body selector",
+      "html selector",
+      "head section"
+    ],
+    options_hi: [
+      ":root सेलेक्टर में",
+      "body सेलेक्टर में",
+      "html सेलेक्टर में",
+      "head सेक्शन में"
+    ],
+    answer_en: ":root selector",
+    answer_hi: ":root सेलेक्टर में",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 4,
+    question_en: "What is the syntax for declaring a CSS variable named --main-color with the value red?",
+    question_hi: "CSS वेरिएबल --main-color को रेड मान के साथ कैसे घोषित करते हैं?",
+    options_en: [
+      "--main-color: red;",
+      "var(--main-color: red);",
+      "$main-color: red;",
+      "main-color: red;"
+    ],
+    options_hi: [
+      "--main-color: red;",
+      "var(--main-color: red);",
+      "$main-color: red;",
+      "main-color: red;"
+    ],
+    answer_en: "--main-color: red;",
+    answer_hi: "--main-color: red;",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 5,
+    question_en: "Can CSS variables inherit values from parent elements?",
+    question_hi: "क्या CSS वेरिएबल पैरेंट एलिमेंट से मान विरासत में ले सकते हैं?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only with !important",
+      "Only inside media queries"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "!important के साथ ही",
+      "सिर्फ मीडिया क्वेरी के अंदर"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 6,
+    question_en: "Which CSS function is used to provide a fallback value for a variable?",
+    question_hi: "CSS में fallback value देने के लिए कौन सा फंक्शन उपयोग किया जाता है?",
+    options_en: [
+      "var()",
+      "fallback()",
+      "default()",
+      "value()"
+    ],
+    options_hi: [
+      "var()",
+      "fallback()",
+      "default()",
+      "value()"
+    ],
+    answer_en: "var()",
+    answer_hi: "var()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 7,
+    question_en: "What happens if a CSS variable is not defined but used?",
+    question_hi: "अगर CSS वेरिएबल परिभाषित नहीं है लेकिन उपयोग किया गया है तो क्या होगा?",
+    options_en: [
+      "It will be ignored or fallback value will be used",
+      "The page will break",
+      "The browser will show an error",
+      "The variable is automatically set to black"
+    ],
+    options_hi: [
+      "इसे अनदेखा किया जाएगा या fallback value उपयोग होगी",
+      "पेज क्रैश हो जाएगा",
+      "ब्राउज़र error दिखाएगा",
+      "वेरिएबल ऑटोमैटिक ब्लैक हो जाएगा"
+    ],
+    answer_en: "It will be ignored or fallback value will be used",
+    answer_hi: "इसे अनदेखा किया जाएगा या fallback value उपयोग होगी",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 8,
+    question_en: "Can CSS variables hold any type of value?",
+    question_hi: "क्या CSS वेरिएबल किसी भी प्रकार का मान रख सकते हैं?",
+    options_en: [
+      "Yes, any valid CSS value",
+      "No, only colors",
+      "No, only numbers",
+      "Only strings"
+    ],
+    options_hi: [
+      "हाँ, कोई भी वैध CSS मान",
+      "नहीं, केवल रंग",
+      "नहीं, केवल संख्याएं",
+      "केवल स्ट्रिंग्स"
+    ],
+    answer_en: "Yes, any valid CSS value",
+    answer_hi: "हाँ, कोई भी वैध CSS मान",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 9,
+    question_en: "How do you override a CSS variable value in a specific selector?",
+    question_hi: "किसी विशेष सेलेक्टर में CSS वेरिएबल का मान कैसे ओवरराइड करते हैं?",
+    options_en: [
+      "Declare the variable with a new value inside that selector",
+      "Use !important with the variable",
+      "Use a different variable name",
+      "Cannot override variables"
+    ],
+    options_hi: [
+      "उस सेलेक्टर के अंदर नए मान के साथ वेरिएबल घोषित करें",
+      "!important का उपयोग करें",
+      "अलग वेरिएबल नाम उपयोग करें",
+      "वेरिएबल ओवरराइड नहीं कर सकते"
+    ],
+    answer_en: "Declare the variable with a new value inside that selector",
+    answer_hi: "उस सेलेक्टर के अंदर नए मान के साथ वेरिएबल घोषित करें",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 10,
+    question_en: "Are CSS variables case sensitive?",
+    question_hi: "क्या CSS वेरिएबल केस सेंसिटिव होते हैं?",
+    options_en: [
+      "Yes",
+      "No",
+      "Depends on browser",
+      "Only in selectors"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "ब्राउज़र पर निर्भर करता है",
+      "केवल सेलेक्टर्स में"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 11,
+    question_en: "Which pseudo-class is commonly used with CSS variables for theming?",
+    question_hi: "थीमिंग के लिए CSS वेरिएबल के साथ कौन सा pseudo-class आमतौर पर उपयोग होता है?",
+    options_en: [
+      ":root",
+      ":hover",
+      ":active",
+      ":focus"
+    ],
+    options_hi: [
+      ":root",
+      ":hover",
+      ":active",
+      ":focus"
+    ],
+    answer_en: ":root",
+    answer_hi: ":root",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 12,
+    question_en: "Can CSS variables be used inside media queries?",
+    question_hi: "क्या CSS वेरिएबल मीडिया क्वेरी के अंदर उपयोग किए जा सकते हैं?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only in some browsers",
+      "Only with JavaScript"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "कुछ ब्राउज़र में ही",
+      "केवल जावास्क्रिप्ट के साथ"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 13,
+    question_en: "How can you provide a fallback value using CSS variables?",
+    question_hi: "CSS वेरिएबल में fallback मान कैसे प्रदान करें?",
+    options_en: [
+      "var(--variable, fallback-value)",
+      "var(fallback-value, --variable)",
+      "--variable: fallback-value;",
+      "Using default() function"
+    ],
+    options_hi: [
+      "var(--variable, fallback-value)",
+      "var(fallback-value, --variable)",
+      "--variable: fallback-value;",
+      "default() फंक्शन का उपयोग"
+    ],
+    answer_en: "var(--variable, fallback-value)",
+    answer_hi: "var(--variable, fallback-value)",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 14,
+    question_en: "Which CSS feature introduced custom properties (variables)?",
+    question_hi: "किस CSS फीचर ने कस्टम प्रॉपर्टीज़ (वेरिएबल) को पेश किया?",
+    options_en: [
+      "CSS Variables Level 1",
+      "CSS Selectors Level 3",
+      "CSS Animations",
+      "CSS Grid"
+    ],
+    options_hi: [
+      "CSS Variables Level 1",
+      "CSS Selectors Level 3",
+      "CSS Animations",
+      "CSS Grid"
+    ],
+    answer_en: "CSS Variables Level 1",
+    answer_hi: "CSS Variables Level 1",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 15,
+    question_en: "Which property can be used with CSS variables for color theming?",
+    question_hi: "रंग थीमिंग के लिए CSS वेरिएबल के साथ कौन सी प्रॉपर्टी उपयोग की जाती है?",
+    options_en: [
+      "color",
+      "font-size",
+      "margin",
+      "border-style"
+    ],
+    options_hi: [
+      "color",
+      "font-size",
+      "margin",
+      "border-style"
+    ],
+    answer_en: "color",
+    answer_hi: "color",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 16,
+    question_en: "Can CSS variables be manipulated using JavaScript?",
+    question_hi: "क्या CSS वेरिएबल को जावास्क्रिप्ट से बदला जा सकता है?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only with jQuery",
+      "Only in some browsers"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "केवल jQuery से",
+      "कुछ ब्राउज़र में ही"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 17,
+    question_en: "Which method is used in JavaScript to change a CSS variable's value?",
+    question_hi: "जावास्क्रिप्ट में CSS वेरिएबल का मान बदलने के लिए कौन सा मेथड उपयोग होता है?",
+    options_en: [
+      "setProperty()",
+      "changeVariable()",
+      "setVariable()",
+      "updateProperty()"
+    ],
+    options_hi: [
+      "setProperty()",
+      "changeVariable()",
+      "setVariable()",
+      "updateProperty()"
+    ],
+    answer_en: "setProperty()",
+    answer_hi: "setProperty()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 18,
+    question_en: "How do you remove a CSS variable from an element using JavaScript?",
+    question_hi: "जावास्क्रिप्ट से CSS वेरिएबल को एलिमेंट से कैसे हटाते हैं?",
+    options_en: [
+      "removeProperty()",
+      "deleteProperty()",
+      "unsetVariable()",
+      "clearProperty()"
+    ],
+    options_hi: [
+      "removeProperty()",
+      "deleteProperty()",
+      "unsetVariable()",
+      "clearProperty()"
+    ],
+    answer_en: "removeProperty()",
+    answer_hi: "removeProperty()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 19,
+    question_en: "Which CSS variables syntax is valid?",
+    question_hi: "निम्नलिखित में से कौन सी CSS वेरिएबल सिंटैक्स सही है?",
+    options_en: [
+      "--my-var: 10px;",
+      "-my-var: 10px;",
+      "my-var: 10px;",
+      "$my-var: 10px;"
+    ],
+    options_hi: [
+      "--my-var: 10px;",
+      "-my-var: 10px;",
+      "my-var: 10px;",
+      "$my-var: 10px;"
+    ],
+    answer_en: "--my-var: 10px;",
+    answer_hi: "--my-var: 10px;",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 20,
+    question_en: "Can CSS variables be used to define font sizes?",
+    question_hi: "क्या CSS वेरिएबल का उपयोग फॉन्ट साइज को परिभाषित करने के लिए किया जा सकता है?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only for responsive fonts",
+      "Only with !important"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "सिर्फ रिस्पॉन्सिव फॉन्ट के लिए",
+      "!important के साथ ही"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 21,
+    question_en: "Are CSS variables supported in all modern browsers?",
+    question_hi: "क्या CSS वेरिएबल सभी आधुनिक ब्राउज़रों में समर्थित हैं?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only in Chrome and Firefox",
+      "Only in desktop browsers"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "सिर्फ Chrome और Firefox में",
+      "सिर्फ डेस्कटॉप ब्राउज़र में"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 22,
+    question_en: "Can CSS variables store URLs as values?",
+    question_hi: "क्या CSS वेरिएबल URLs को मान के रूप में रख सकते हैं?",
+    options_en: [
+      "Yes",
+      "No",
+      "Only base64 encoded URLs",
+      "Only local URLs"
+    ],
+    options_hi: [
+      "हाँ",
+      "नहीं",
+      "सिर्फ base64 एन्कोडेड URLs",
+      "सिर्फ लोकल URLs"
+    ],
+    answer_en: "Yes",
+    answer_hi: "हाँ",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 23,
+    question_en: "Can CSS variables be animated using CSS transitions?",
+    question_hi: "क्या CSS वेरिएबल्स को CSS ट्रांजिशन्स से एनिमेट किया जा सकता है?",
+    options_en: [
+      "No",
+      "Yes",
+      "Only with JavaScript",
+      "Only in Firefox"
+    ],
+    options_hi: [
+      "नहीं",
+      "हाँ",
+      "केवल जावास्क्रिप्ट से",
+      "सिर्फ Firefox में"
+    ],
+    answer_en: "No",
+    answer_hi: "नहीं",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 24,
+    question_en: "What is the default scope of CSS variables?",
+    question_hi: "CSS वेरिएबल्स का डिफ़ॉल्ट स्कोप क्या होता है?",
+    options_en: [
+      "Scoped to the element they are declared on and its descendants",
+      "Global to the entire document",
+      "Only available inside :root",
+      "Scoped to JavaScript only"
+    ],
+    options_hi: [
+      "जिस एलिमेंट पर घोषित होते हैं और उनके बच्चों तक सीमित",
+      "पूरे डॉक्यूमेंट में ग्लोबल",
+      ":root के अंदर ही उपलब्ध",
+      "केवल जावास्क्रिप्ट के लिए सीमित"
+    ],
+    answer_en: "Scoped to the element they are declared on and its descendants",
+    answer_hi: "जिस एलिमेंट पर घोषित होते हैं और उनके बच्चों तक सीमित",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 25,
+    question_en: "What is the primary benefit of using CSS variables?",
+    question_hi: "CSS वेरिएबल्स का मुख्य लाभ क्या है?",
+    options_en: [
+      "Easier to maintain and update values globally",
+      "Faster page loading",
+      "Better SEO",
+      "More animations"
+    ],
+    options_hi: [
+      "मानों को ग्लोबली मेंटेन और अपडेट करना आसान",
+      "पेज तेजी से लोड होता है",
+      "बेहतर SEO",
+      "अधिक एनिमेशन"
+    ],
+    answer_en: "Easier to maintain and update values globally",
+    answer_hi: "मानों को ग्लोबली मेंटेन और अपडेट करना आसान",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 26,
+    question_en: "Which CSS property is used to control the spacing between lines of text?",
+    question_hi: "पाठ की लाइनों के बीच की दूरी को नियंत्रित करने के लिए कौन-सी CSS प्रॉपर्टी का उपयोग होता है?",
+    options_en: [
+      "line-height",
+      "letter-spacing",
+      "word-spacing",
+      "text-indent"
+    ],
+    options_hi: [
+      "line-height",
+      "letter-spacing",
+      "word-spacing",
+      "text-indent"
+    ],
+    answer_en: "line-height",
+    answer_hi: "line-height",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 27,
+    question_en: "What is the default display value of a <div> element?",
+    question_hi: "<div> एलिमेंट का डिफ़ॉल्ट display वैल्यू क्या है?",
+    options_en: [
+      "block",
+      "inline",
+      "inline-block",
+      "none"
+    ],
+    options_hi: [
+      "block",
+      "inline",
+      "inline-block",
+      "none"
+    ],
+    answer_en: "block",
+    answer_hi: "block",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 28,
+    question_en: "How can you apply a style to all elements of a specific class in CSS?",
+    question_hi: "CSS में किसी विशिष्ट क्लास के सभी एलिमेंट्स को स्टाइल कैसे लागू करते हैं?",
+    options_en: [
+      "Using a dot (.) followed by the class name",
+      "Using a hash (#) followed by the class name",
+      "Using the element name",
+      "Using the @class directive"
+    ],
+    options_hi: [
+      "डॉट (.) के साथ क्लास नाम लिखकर",
+      "हैश (#) के साथ क्लास नाम लिखकर",
+      "एलिमेंट नाम का उपयोग करके",
+      "@class निर्देश का उपयोग करके"
+    ],
+    answer_en: "Using a dot (.) followed by the class name",
+    answer_hi: "डॉट (.) के साथ क्लास नाम लिखकर",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 29,
+    question_en: "Which property is used to change the font of an element?",
+    question_hi: "किस प्रॉपर्टी का उपयोग एलिमेंट के फॉन्ट को बदलने के लिए किया जाता है?",
+    options_en: [
+      "font-family",
+      "font-style",
+      "font-weight",
+      "font-variant"
+    ],
+    options_hi: [
+      "font-family",
+      "font-style",
+      "font-weight",
+      "font-variant"
+    ],
+    answer_en: "font-family",
+    answer_hi: "font-family",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 30,
+    question_en: "What does the CSS property 'z-index' control?",
+    question_hi: "CSS प्रॉपर्टी 'z-index' क्या नियंत्रित करती है?",
+    options_en: [
+      "Stacking order of elements",
+      "Opacity of an element",
+      "Font size of text",
+      "Positioning type"
+    ],
+    options_hi: [
+      "एलिमेंट्स के स्टैकिंग ऑर्डर को",
+      "एलिमेंट की अपारदर्शिता को",
+      "पाठ के फॉन्ट साइज को",
+      "पोजिशनिंग टाइप को"
+    ],
+    answer_en: "Stacking order of elements",
+    answer_hi: "एलिमेंट्स के स्टैकिंग ऑर्डर को",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 31,
+    question_en: "Which property is used to add space inside an element’s border?",
+    question_hi: "किस प्रॉपर्टी का उपयोग एलिमेंट की बॉर्डर के अंदर स्पेस जोड़ने के लिए किया जाता है?",
+    options_en: [
+      "padding",
+      "margin",
+      "border-spacing",
+      "gap"
+    ],
+    options_hi: [
+      "padding",
+      "margin",
+      "border-spacing",
+      "gap"
+    ],
+    answer_en: "padding",
+    answer_hi: "padding",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 32,
+    question_en: "How do you make a list with bullets in CSS?",
+    question_hi: "CSS में बुलेट के साथ लिस्ट कैसे बनाते हैं?",
+    options_en: [
+      "list-style-type: disc;",
+      "list-type: bullet;",
+      "list-decoration: bullet;",
+      "list-style: bullet;"
+    ],
+    options_hi: [
+      "list-style-type: disc;",
+      "list-type: bullet;",
+      "list-decoration: bullet;",
+      "list-style: bullet;"
+    ],
+    answer_en: "list-style-type: disc;",
+    answer_hi: "list-style-type: disc;",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 33,
+    question_en: "Which property controls the visibility of an element but keeps the space it occupies?",
+    question_hi: "कौन-सी प्रॉपर्टी एलिमेंट की दृश्यता नियंत्रित करती है लेकिन उसकी जगह को बरकरार रखती है?",
+    options_en: [
+      "visibility",
+      "display",
+      "opacity",
+      "z-index"
+    ],
+    options_hi: [
+      "visibility",
+      "display",
+      "opacity",
+      "z-index"
+    ],
+    answer_en: "visibility",
+    answer_hi: "visibility",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 34,
+    question_en: "What does the CSS 'float' property do?",
+    question_hi: "CSS 'float' प्रॉपर्टी क्या करती है?",
+    options_en: [
+      "Moves an element to the left or right, allowing text to wrap around it",
+      "Positions an element absolutely",
+      "Hides an element",
+      "Changes the background color"
+    ],
+    options_hi: [
+      "एक एलिमेंट को बाईं या दाईं तरफ ले जाकर टेक्स्ट को उसके चारों ओर लपेटने की अनुमति देती है",
+      "एक एलिमेंट को absolute पोजिशन पर रखती है",
+      "एक एलिमेंट को छुपाती है",
+      "बैकग्राउंड कलर बदलती है"
+    ],
+    answer_en: "Moves an element to the left or right, allowing text to wrap around it",
+    answer_hi: "एक एलिमेंट को बाईं या दाईं तरफ ले जाकर टेक्स्ट को उसके चारों ओर लपेटने की अनुमति देती है",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 35,
+    question_en: "How do you select an element with id 'header' in CSS?",
+    question_hi: "CSS में 'header' आईडी वाले एलिमेंट को कैसे सेलेक्ट करते हैं?",
+    options_en: [
+      "#header",
+      ".header",
+      "header",
+      "*header"
+    ],
+    options_hi: [
+      "#header",
+      ".header",
+      "header",
+      "*header"
+    ],
+    answer_en: "#header",
+    answer_hi: "#header",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 36,
+    question_en: "Which CSS property is used to make text bold?",
+    question_hi: "कौन-सी CSS प्रॉपर्टी टेक्स्ट को बोल्ड बनाने के लिए उपयोग होती है?",
+    options_en: [
+      "font-weight",
+      "font-style",
+      "font-variant",
+      "text-transform"
+    ],
+    options_hi: [
+      "font-weight",
+      "font-style",
+      "font-variant",
+      "text-transform"
+    ],
+    answer_en: "font-weight",
+    answer_hi: "font-weight",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 37,
+    question_en: "Which property adds space outside an element's border?",
+    question_hi: "कौन-सी प्रॉपर्टी एलिमेंट की बॉर्डर के बाहर स्पेस जोड़ती है?",
+    options_en: [
+      "margin",
+      "padding",
+      "border-spacing",
+      "gap"
+    ],
+    options_hi: [
+      "margin",
+      "padding",
+      "border-spacing",
+      "gap"
+    ],
+    answer_en: "margin",
+    answer_hi: "margin",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 38,
+    question_en: "What is the use of the CSS 'opacity' property?",
+    question_hi: "CSS 'opacity' प्रॉपर्टी का उपयोग क्या है?",
+    options_en: [
+      "To make an element transparent",
+      "To change font size",
+      "To change element position",
+      "To add border"
+    ],
+    options_hi: [
+      "एक एलिमेंट को पारदर्शी बनाने के लिए",
+      "फॉन्ट साइज बदलने के लिए",
+      "एलिमेंट की पोजिशन बदलने के लिए",
+      "बॉर्डर जोड़ने के लिए"
+    ],
+    answer_en: "To make an element transparent",
+    answer_hi: "एक एलिमेंट को पारदर्शी बनाने के लिए",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 39,
+    question_en: "Which property is used to control the size of an element’s font?",
+    question_hi: "कौन-सी प्रॉपर्टी का उपयोग एलिमेंट के फॉन्ट के साइज को नियंत्रित करने के लिए किया जाता है?",
+    options_en: [
+      "font-size",
+      "font-weight",
+      "font-family",
+      "text-size"
+    ],
+    options_hi: [
+      "font-size",
+      "font-weight",
+      "font-family",
+      "text-size"
+    ],
+    answer_en: "font-size",
+    answer_hi: "font-size",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 40,
+    question_en: "What does the CSS 'position: fixed;' do?",
+    question_hi: "CSS में 'position: fixed;' क्या करता है?",
+    options_en: [
+      "Fixes the element relative to the viewport and it doesn't move on scroll",
+      "Positions element relative to its parent",
+      "Positions element absolutely on the page",
+      "Makes element inline"
+    ],
+    options_hi: [
+      "एलिमेंट को viewport के सापेक्ष फिक्स करता है और स्क्रॉल करने पर नहीं चलता",
+      "एलिमेंट को उसके पैरेंट के सापेक्ष पोजिशन करता है",
+      "एलिमेंट को पेज पर absolute पोजिशन देता है",
+      "एलिमेंट को inline बनाता है"
+    ],
+    answer_en: "Fixes the element relative to the viewport and it doesn't move on scroll",
+    answer_hi: "एलिमेंट को viewport के सापेक्ष फिक्स करता है और स्क्रॉल करने पर नहीं चलता",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 41,
+    question_en: "Which CSS property is used to change the background color of an element?",
+    question_hi: "कौन-सी CSS प्रॉपर्टी एलिमेंट का बैकग्राउंड कलर बदलने के लिए उपयोग होती है?",
+    options_en: [
+      "background-color",
+      "color",
+      "background-image",
+      "border-color"
+    ],
+    options_hi: [
+      "background-color",
+      "color",
+      "background-image",
+      "border-color"
+    ],
+    answer_en: "background-color",
+    answer_hi: "background-color",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 42,
+    question_en: "How do you make an element take up the full width of its container?",
+    question_hi: "किसी एलिमेंट को उसके कंटेनर की पूरी चौड़ाई लेने के लिए कैसे बनाते हैं?",
+    options_en: [
+      "width: 100%;",
+      "width: auto;",
+      "width: fit-content;",
+      "width: max-content;"
+    ],
+    options_hi: [
+      "width: 100%;",
+      "width: auto;",
+      "width: fit-content;",
+      "width: max-content;"
+    ],
+    answer_en: "width: 100%;",
+    answer_hi: "width: 100%;",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 43,
+    question_en: "Which property controls the horizontal alignment of text within an element?",
+    question_hi: "कौन-सी प्रॉपर्टी एलिमेंट के अंदर टेक्स्ट की क्षैतिज संरेखण को नियंत्रित करती है?",
+    options_en: [
+      "text-align",
+      "vertical-align",
+      "align-items",
+      "justify-content"
+    ],
+    options_hi: [
+      "text-align",
+      "vertical-align",
+      "align-items",
+      "justify-content"
+    ],
+    answer_en: "text-align",
+    answer_hi: "text-align",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 44,
+    question_en: "What is the use of the CSS 'overflow' property?",
+    question_hi: "CSS 'overflow' प्रॉपर्टी का उपयोग क्या है?",
+    options_en: [
+      "To control what happens when content overflows an element's box",
+      "To control background color",
+      "To set font size",
+      "To set margin"
+    ],
+    options_hi: [
+      "जब कंटेंट एलिमेंट के बॉक्स से बाहर निकलता है तो उसे नियंत्रित करने के लिए",
+      "बैकग्राउंड कलर नियंत्रित करने के लिए",
+      "फॉन्ट साइज सेट करने के लिए",
+      "मार्जिन सेट करने के लिए"
+    ],
+    answer_en: "To control what happens when content overflows an element's box",
+    answer_hi: "जब कंटेंट एलिमेंट के बॉक्स से बाहर निकलता है तो उसे नियंत्रित करने के लिए",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 45,
+    question_en: "Which CSS unit is relative to the font size of the root element?",
+    question_hi: "कौन-सा CSS यूनिट रूट एलिमेंट के फॉन्ट साइज के सापेक्ष होता है?",
+    options_en: [
+      "rem",
+      "em",
+      "px",
+      "%"
+    ],
+    options_hi: [
+      "rem",
+      "em",
+      "px",
+      "%"
+    ],
+    answer_en: "rem",
+    answer_hi: "rem",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 46,
+    question_en: "Which property is used to set the space between columns in a CSS Grid layout?",
+    question_hi: "CSS Grid लेआउट में कॉलम के बीच स्पेस सेट करने के लिए कौन-सी प्रॉपर्टी का उपयोग होता है?",
+    options_en: [
+      "column-gap",
+      "row-gap",
+      "grid-gap",
+      "gap"
+    ],
+    options_hi: [
+      "column-gap",
+      "row-gap",
+      "grid-gap",
+      "gap"
+    ],
+    answer_en: "column-gap",
+    answer_hi: "column-gap",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 47,
+    question_en: "How do you include an external CSS file in an HTML document?",
+    question_hi: "HTML डॉक्यूमेंट में बाहरी CSS फ़ाइल कैसे शामिल करते हैं?",
+    options_en: [
+      "<link rel=\"stylesheet\" href=\"style.css\">",
+      "<script src=\"style.css\"></script>",
+      "<style src=\"style.css\"></style>",
+      "<css src=\"style.css\"></css>"
+    ],
+    options_hi: [
+      "<link rel=\"stylesheet\" href=\"style.css\">",
+      "<script src=\"style.css\"></script>",
+      "<style src=\"style.css\"></style>",
+      "<css src=\"style.css\"></css>"
+    ],
+    answer_en: "<link rel=\"stylesheet\" href=\"style.css\">",
+    answer_hi: "<link rel=\"stylesheet\" href=\"style.css\">",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 48,
+    question_en: "What does the CSS property 'display: none;' do?",
+    question_hi: "CSS प्रॉपर्टी 'display: none;' क्या करती है?",
+    options_en: [
+      "Hides the element and removes it from the layout",
+      "Makes the element invisible but keeps its space",
+      "Makes the element inline",
+      "Displays the element as block"
+    ],
+    options_hi: [
+      "एलिमेंट को छुपाती है और लेआउट से हटा देती है",
+      "एलिमेंट को अदृश्य बनाती है लेकिन उसकी जगह रखती है",
+      "एलिमेंट को inline बनाती है",
+      "एलिमेंट को block के रूप में दिखाती है"
+    ],
+    answer_en: "Hides the element and removes it from the layout",
+    answer_hi: "एलिमेंट को छुपाती है और लेआउट से हटा देती है",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 49,
+    question_en: "Which pseudo-class is used to select an element when the mouse pointer is over it?",
+    question_hi: "कौन-सा pseudo-class उस एलिमेंट को सेलेक्ट करता है जिस पर माउस पॉइंटर होता है?",
+    options_en: [
+      ":hover",
+      ":active",
+      ":focus",
+      ":visited"
+    ],
+    options_hi: [
+      ":hover",
+      ":active",
+      ":focus",
+      ":visited"
+    ],
+    answer_en: ":hover",
+    answer_hi: ":hover",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 50,
+    question_en: "What does the 'box-sizing: border-box;' CSS property do?",
+    question_hi: "'box-sizing: border-box;' CSS प्रॉपर्टी क्या करती है?",
+    options_en: [
+      "Includes padding and border in the element’s total width and height",
+      "Sets the box model to content-box",
+      "Removes margin from element",
+      "Sets the element’s display to block"
+    ],
+    options_hi: [
+      "एलिमेंट की कुल चौड़ाई और ऊंचाई में padding और border को शामिल करता है",
+      "box मॉडल को content-box सेट करता है",
+      "एलिमेंट से margin हटाता है",
+      "एलिमेंट का display block करता है"
+    ],
+    answer_en: "Includes padding and border in the element’s total width and height",
+    answer_hi: "एलिमेंट की कुल चौड़ाई और ऊंचाई में padding और border को शामिल करता है",
+    attempted: false,
+    selected: ""
+  }
+  // Continue adding more questions 51 to 100
 ];
 
-    let currentQuestion = 0;
 
-        function loadQuestion(index) {
-            document.getElementById("question").textContent = questions[index].question;
-            document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
-            const optionsElement = document.getElementById("options");
-            optionsElement.innerHTML = "";
-            questions[index].options.forEach(option => {
-                optionsElement.innerHTML += `<li><input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')"> ${option}</li>`;
-            });
-            updateCircles();
-        }
+let currentQuestion = 0; 
+let language = "en";
+let timeLeft = 180 * 60; // 180 minutes
+let timerInterval;
 
-        function markAttempted(index, selectedAnswer) {
-            questions[index].attempted = true;
-            questions[index].selected = selectedAnswer;
-            updateCircles();
-        }
+// ----------------- Quiz Logic -----------------
+function loadQuestion(index) {
+    const q = questions[index];
+    document.getElementById("question").textContent = `${q.num}. ${
+        language === "en" ? q.question_en : q.question_hi
+    }`;
+    document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
 
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                loadQuestion(currentQuestion);
-            }
-        }
+    const optionsElement = document.getElementById("options");
+    optionsElement.innerHTML = "";
 
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion(currentQuestion);
-            }
-        }
+    const options = language === "en" ? q.options_en : q.options_hi;
 
-        function updateCircles() {
-            const circleContainer = document.getElementById("circleContainer");
-            circleContainer.innerHTML = "";
-            questions.forEach((q, i) => {
-                let status = i === currentQuestion ? "active" : q.attempted ? "answered" : "not-attempted";
-                circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
-            });
-        }
+    options.forEach((option) => {
+        const isSelected = q.selected === option;
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option-box";
+        optionDiv.style = `
+            border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
+            background-color: ${isSelected ? "#e7f1ff" : "white"};
+            padding: 10px;
+            border-radius: 8px;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        `;
 
-        function jumpToQuestion(index) {
-            currentQuestion = index;
+        optionDiv.innerHTML = `
+            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} style="margin-right:8px;">
+            ${option}
+        `;
+
+        optionDiv.addEventListener("click", () => {
+            markAttempted(index, option);
             loadQuestion(index);
-        }
+        });
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+        optionsElement.appendChild(optionDiv);
+    });
+
+    updateNavigation();
+}
+
+function markAttempted(index, selectedAnswer) {
+    questions[index].attempted = true;
+    questions[index].selected = selectedAnswer;
+    updateNavigation();
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function changeLanguage() {
+    language = document.getElementById("languageSelect").value;
+    loadQuestion(currentQuestion);
+}
+
+function submitQuiz() {
+    clearInterval(timerInterval);
+    let attempted = 0,
+        notAttempted = 0,
+        score = 0;
+
+    questions.forEach((q) => {
+        if (q.attempted) {
+            attempted++;
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) score++;
+        } else notAttempted++;
+    });
+
+    alert(
+        `Quiz submitted!\nAttempted: ${attempted}\nNot Attempted: ${notAttempted}\nScore: ${score}/${questions.length}`
+    );
+}
+
+function startTimer() {
+    const timerElement = document.getElementById("timer");
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time's up!");
+            submitQuiz();
+        } else {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time Left: ${hours
+                .toString()
+                .padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timeLeft--;
+        }
+    }, 1000);
+}
+
+function updateNavigation() {
+    const nav = document.getElementById("circleContainer");
+    nav.innerHTML = "";
+    questions.forEach((q, i) => {
+        let color = "gray";
+        if (i === currentQuestion) color = "blue";
+        else if (q.attempted) color = "green";
+        nav.innerHTML += `<div class='circle' style='background-color:${color}' onclick='loadQuestion(${i})'>${i + 1}</div>`;
+    });
+}
+
+// ----------------- Camera & Movement Logic -----------------
+let videoStream;
+let movementCount = 0;
+
+function startCamera() {
+    const container = document.createElement("div");
+    container.id = "camera-container";
+    container.style.position = "fixed";
+    container.style.top = "10px";
+    container.style.left = "10px"; // ✅ Left side
+    container.style.width = "130px";
+    container.style.height = "130px";
+    container.style.zIndex = "9999";
+    container.style.borderRadius = "50%";
+    container.style.overflow = "hidden";
+    container.style.border = "3px solid red";
+    container.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    container.style.cursor = "grab";
+    container.style.minWidth = "80px";
+    container.style.minHeight = "80px";
+    container.style.maxWidth = "250px";
+    container.style.maxHeight = "250px";
+    container.style.background = "#000";
+    document.body.appendChild(container);
+
+    const video = document.createElement("video");
+    video.setAttribute("autoplay", true);
+    video.setAttribute("playsinline", true);
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    container.appendChild(video);
+
+    // ✅ Resize handle
+    const resizeHandle = document.createElement("div");
+    resizeHandle.style.position = "absolute";
+    resizeHandle.style.bottom = "2px";
+    resizeHandle.style.right = "2px";
+    resizeHandle.style.width = "15px";
+    resizeHandle.style.height = "15px";
+    resizeHandle.style.background = "rgba(255,255,255,0.7)";
+    resizeHandle.style.borderRadius = "4px";
+    resizeHandle.style.cursor = "se-resize";
+    container.appendChild(resizeHandle);
+
+    // ✅ Drag logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    container.addEventListener("mousedown", (e) => {
+        if (e.target === resizeHandle) return;
+        isDragging = true;
+        offsetX = e.clientX - container.offsetLeft;
+        offsetY = e.clientY - container.offsetTop;
+        container.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - offsetX;
+        let y = e.clientY - offsetY;
+        x = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, y));
+        container.style.left = `${x}px`;
+        container.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        container.style.cursor = "grab";
+    });
+
+    // ✅ Resize logic
+    let isResizing = false;
+    let startWidth, startHeight, startX, startY;
+
+    resizeHandle.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        isResizing = true;
+        startWidth = container.offsetWidth;
+        startHeight = container.offsetHeight;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isResizing) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const newSize = Math.max(80, Math.min(250, Math.max(startWidth + dx, startHeight + dy)));
+        container.style.width = `${newSize}px`;
+        container.style.height = `${newSize}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isResizing = false;
+    });
+
+    // ✅ Camera stream
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            videoStream = stream;
+            detectMovement(video);
+        })
+        .catch(err => {
+            console.error("Camera error:", err);
+            alert("Camera not accessible!");
+        });
+}
+
+function detectMovement(video) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 160;
+    canvas.height = 160;
+    let lastImageData = null;
+
+    setInterval(() => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        if (lastImageData) {
+            let diff = 0;
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                diff += Math.abs(imageData.data[i] - lastImageData.data[i]);
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
-
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
+            if (diff > 1000000) {
+                movementCount++;
+                if (movementCount === 1) {
+                    alert("⚠️ Alert 1: Face is not move");
+                } else if (movementCount === 2) {
+                    alert("⚠️ Alert 2: Head is not move");
+                } else if (movementCount === 3) {
+                    alert("⚠️ Alert 3: Test series is restarting...");
+                    restartTest();
                 }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/view-result.html";
             }
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+        lastImageData = imageData;
+    }, 2000);
+}
+
+function restartTest() {
+    if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+    }
+    const camContainer = document.getElementById("camera-container");
+    if (camContainer) camContainer.remove();
+
+    movementCount = 0;
+    currentQuestion = 0;
+    timeLeft = 180 * 60;
+
+    questions.forEach(q => {
+        q.attempted = false;
+        q.selected = null;
+    });
+
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera();
+}
+
+// ----------------- Page Load -----------------
+window.onload = function () {
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera(); // ✅ Camera starts with test
+};

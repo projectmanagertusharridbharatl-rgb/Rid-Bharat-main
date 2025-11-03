@@ -1,138 +1,853 @@
-const questions = [
-{ num: 1, question: "1 What does 'typeof null' return in JavaScript?", options: ["object", "null", "undefined", "string"], answer: "object", attempted: false, selected: "" },
-  { num: 2, question: "2 Which method removes the last element from an array?", options: ["pop()", "shift()", "slice()", "splice()"], answer: "pop()", attempted: false, selected: "" },
-  { num: 3, question: "3 What is the result of 3 + '3' in JavaScript?", options: ["6", "33", "NaN", "TypeError"], answer: "33", attempted: false, selected: "" },
-  { num: 4, question: "4 Which keyword is used to declare a constant in JavaScript?", options: ["let", "var", "const", "define"], answer: "const", attempted: false, selected: "" },
-  { num: 5, question: "5 What does 'NaN' stand for?", options: ["Not a Node", "Not a Number", "Null and None", "No assigned Number"], answer: "Not a Number", attempted: false, selected: "" },
-  { num: 6, question: "6 How do you check if a variable is an array?", options: ["typeof variable", "variable.isArray()", "Array.isArray(variable)", "variable instanceof Array"], answer: "Array.isArray(variable)", attempted: false, selected: "" },
-  { num: 7, question: "7 What is the output of console.log(0.1 + 0.2 === 0.3)?", options: ["true", "false", "NaN", "TypeError"], answer: "false", attempted: false, selected: "" },
-  { num: 8, question: "8 Which function is used to execute code after a delay?", options: ["setTimeout()", "setInterval()", "delay()", "wait()"], answer: "setTimeout()", attempted: false, selected: "" },
-  { num: 9, question: "9 What does the 'this' keyword refer to in a global context?", options: ["The current function", "The DOM window object", "undefined", "null"], answer: "The DOM window object", attempted: false, selected: "" },
-  { num: 10, question: "10 What is the output of console.log([] == ![])?", options: ["true", "false", "TypeError", "undefined"], answer: "true", attempted: false, selected: "" },
-  { num: 11, question: "11 Which method joins array elements into a string?", options: ["concat()", "join()", "split()", "merge()"], answer: "join()", attempted: false, selected: "" },
-  { num: 12, question: "12 What is the purpose of 'use strict' in JavaScript?", options: ["Enforces stricter type checking", "Enables modern syntax", "Prevents silent errors", "Optimizes performance"], answer: "Prevents silent errors", attempted: false, selected: "" },
-  { num: 13, question: "13 What is the output of console.log(typeof undefined)?", options: ["undefined", "null", "object", "string"], answer: "undefined", attempted: false, selected: "" },
-  { num: 14, question: "14 Which loop is best for iterating over object properties?", options: ["for loop", "while loop", "for...in loop", "do...while loop"], answer: "for...in loop", attempted: false, selected: "" },
-  { num: 15, question: "15 What does 'JSON.parse()' do?", options: ["Converts JSON to a string", "Parses JSON into a JavaScript object", "Validates JSON", "Encodes JSON"], answer: "Parses JSON into a JavaScript object", attempted: false, selected: "" },
-  { num: 16, question: "16 What is the output of console.log(1 == '1')?", options: ["true", "false", "TypeError", "NaN"], answer: "true", attempted: false, selected: "" },
-  { num: 17, question: "17 Which method adds elements to the beginning of an array?", options: ["push()", "unshift()", "shift()", "prepend()"], answer: "unshift()", attempted: false, selected: "" },
-  { num: 18, question: "18 What is a closure in JavaScript?", options: ["A function bundled with its lexical scope", "A way to close a program", "A type of loop", "A built-in method"], answer: "A function bundled with its lexical scope", attempted: false, selected: "" },
-  { num: 19, question: "19 What does 'let' provide that 'var' does not?", options: ["Global scope", "Hoisting", "Block scope", "Reassignment"], answer: "Block scope", attempted: false, selected: "" },
-  { num: 20, question: "20 What is the output of console.log(2 + '2' - 1)?", options: ["21", "3", "23", "NaN"], answer: "21", attempted: false, selected: "" },
-  { num: 21, question: "21 Which method removes whitespace from both ends of a string?", options: ["trim()", "strip()", "clean()", "removeSpace()"], answer: "trim()", attempted: false, selected: "" },
-  { num: 22, question: "22 What is the purpose of 'event.preventDefault()'?", options: ["Stops event propagation", "Prevents default browser behavior", "Removes an event listener", "Triggers an event manually"], answer: "Prevents default browser behavior", attempted: false, selected: "" },
-  { num: 23, question: "23 What is the output of console.log([] + [])?", options: ["[]", "[object Object]", "'' (empty string)", "undefined"], answer: "'' (empty string)", attempted: false, selected: "" },
-  { num: 24, question: "24 Which operator returns the remainder of a division?", options: ["%", "/", "*", "**"], answer: "%", attempted: false, selected: "" },
-  { num: 25, question: "25 What does 'isNaN()' check for?", options: ["If a value is not a number", "If a value is null", "If a value is undefined", "If a value is zero"], answer: "If a value is not a number", attempted: false, selected: "" },
-  { num: 26, question: "26 What is the output of console.log(typeof [])?", options: ["array", "object", "undefined", "null"], answer: "object", attempted: false, selected: "" },
-  { num: 27, question: "27 Which method creates a new array with filtered elements?", options: ["map()", "filter()", "reduce()", "forEach()"], answer: "filter()", attempted: false, selected: "" },
-  { num: 28, question: "28 What is the output of console.log('5' - 3)?", options: ["2", "8", "NaN", "TypeError"], answer: "2", attempted: false, selected: "" },
-  { num: 29, question: "29 What does 'localStorage' do?", options: ["Stores data temporarily", "Stores data persistently in the browser", "Clears cookies", "Manages server storage"], answer: "Stores data persistently in the browser", attempted: false, selected: "" },
-  { num: 30, question: "30 Which method converts a string to lowercase?", options: ["toLowerCase()", "toLower()", "lowerCase()", "convertLower()"], answer: "toLowerCase()", attempted: false, selected: "" },
-  { num: 31, question: "31 What is the output of console.log(!!'false')?", options: ["true", "false", "undefined", "TypeError"], answer: "true", attempted: false, selected: "" },
-  { num: 32, question: "32 What does 'Array.prototype.map()' return?", options: ["A new array", "The original array", "A single value", "undefined"], answer: "A new array", attempted: false, selected: "" },
-  { num: 33, question: "33 What is the output of console.log(1 === '1')?", options: ["true", "false", "TypeError", "NaN"], answer: "false", attempted: false, selected: "" },
-  { num: 34, question: "34 Which method reverses an array in place?", options: ["reverse()", "sort()", "rotate()", "flip()"], answer: "reverse()", attempted: false, selected: "" },
-  { num: 35, question: "35 What is the purpose of 'bind()' in JavaScript?", options: ["To bind events", "To create a new function with a fixed 'this'", "To concatenate strings", "To merge objects"], answer: "To create a new function with a fixed 'this'", attempted: false, selected: "" },
-  { num: 36, question: "36 What is the output of console.log(typeof NaN)?", options: ["number", "NaN", "undefined", "string"], answer: "number", attempted: false, selected: "" },
-  { num: 37, question: "37 Which method checks if an array includes a value?", options: ["contains()", "includes()", "has()", "indexOf()"], answer: "includes()", attempted: false, selected: "" },
-  { num: 38, question: "38 What is the output of console.log('b' + 'a' + + 'a' + 'a')?", options: ["baaa", "baNaNa", "baa", "TypeError"], answer: "baNaNa", attempted: false, selected: "" },
-  { num: 39, question: "39 What does 'async/await' do?", options: ["Makes code synchronous", "Simplifies asynchronous code", "Replaces callbacks", "Optimizes loops"], answer: "Simplifies asynchronous code", attempted: false, selected: "" },
-  { num: 40, question: "40 Which method returns the first index of a value in an array?", options: ["find()", "indexOf()", "search()", "locate()"], answer: "indexOf()", attempted: false, selected: "" },
-  { num: 41, question: "41 What is the output of console.log(!!0)?", options: ["true", "false", "0", "TypeError"], answer: "false", attempted: false, selected: "" },
-  { num: 42, question: "42 What does 'Object.keys()' return?", options: ["An array of keys", "An array of values", "An object", "A string"], answer: "An array of keys", attempted: false, selected: "" },
-  { num: 43, question: "43 What is the output of console.log(10 == '10')?", options: ["true", "false", "TypeError", "NaN"], answer: "true", attempted: false, selected: "" },
-  { num: 44, question: "44 Which method executes a function after repeated intervals?", options: ["setTimeout()", "setInterval()", "delay()", "repeat()"], answer: "setInterval()", attempted: false, selected: "" },
-  { num: 45, question: "45 What is the purpose of 'JSON.stringify()'?", options: ["Converts an object to JSON string", "Parses JSON", "Validates JSON", "Compresses JSON"], answer: "Converts an object to JSON string", attempted: false, selected: "" },
-  { num: 46, question: "46 What is the output of console.log([] == false)?", options: ["true", "false", "TypeError", "undefined"], answer: "true", attempted: false, selected: "" },
-  { num: 47, question: "47 Which method flattens nested arrays?", options: ["flat()", "flatten()", "join()", "concat()"], answer: "flat()", attempted: false, selected: "" },
-  { num: 48, question: "48 What is the output of console.log(3 > 2 > 1)?", options: ["true", "false", "TypeError", "NaN"], answer: "false", attempted: false, selected: "" },
-  { num: 49, question: "49 What does 'Promise.resolve()' do?", options: ["Rejects a promise", "Creates a resolved promise", "Pauses execution", "Checks promise state"], answer: "Creates a resolved promise", attempted: false, selected: "" },
-  { num: 50, question: "50 Which method converts a string to an integer?", options: ["parseInt()", "toInteger()", "convertToInt()", "Number()"], answer: "parseInt()", attempted: false, selected: "" },
+const questions= [
+  {
+    num: 1,
+    question_en: "What does `var` keyword do in JavaScript?",
+    question_hi: "`var` कीवर्ड JavaScript में क्या करता है?",
+    options_en: ["Declares a variable", "Creates a function", "Declares a constant", "Deletes a variable"],
+    options_hi: ["एक वेरिएबल घोषित करता है", "एक फंक्शन बनाता है", "एक कॉन्स्टेंट घोषित करता है", "एक वेरिएबल हटाता है"],
+    answer_en: "Declares a variable",
+    answer_hi: "एक वेरिएबल घोषित करता है",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 2,
+    question_en: "Which method converts an object to JSON?",
+    question_hi: "कौन-सा मेथड ऑब्जेक्ट को JSON में बदलता है?",
+    options_en: ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "Object.stringify()"],
+    options_hi: ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "Object.stringify()"],
+    answer_en: "JSON.stringify()",
+    answer_hi: "JSON.stringify()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 3,
+    question_en: "Which operator is used for strict equality?",
+    question_hi: "कड़ी समानता के लिए कौन सा ऑपरेटर उपयोग होता है?",
+    options_en: ["===", "==", "!==", "="],
+    options_hi: ["===", "==", "!==", "="],
+    answer_en: "===",
+    answer_hi: "===",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 4,
+    question_en: "Which keyword declares a constant variable?",
+    question_hi: "कौन-सा कीवर्ड एक स्थायी वेरिएबल घोषित करता है?",
+    options_en: ["const", "let", "var", "constant"],
+    options_hi: ["const", "let", "var", "constant"],
+    answer_en: "const",
+    answer_hi: "const",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 5,
+    question_en: "Which function is used to parse a string to integer?",
+    question_hi: "कौन-सा फंक्शन स्ट्रिंग को पूर्णांक में बदलता है?",
+    options_en: ["parseInt()", "parseFloat()", "Number()", "String()"],
+    options_hi: ["parseInt()", "parseFloat()", "Number()", "String()"],
+    answer_en: "parseInt()",
+    answer_hi: "parseInt()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 6,
+    question_en: "Which method adds an element at the end of an array?",
+    question_hi: "कौन-सा मेथड ऐरे के अंत में एलिमेंट जोड़ता है?",
+    options_en: ["push()", "pop()", "shift()", "unshift()"],
+    options_hi: ["push()", "pop()", "shift()", "unshift()"],
+    answer_en: "push()",
+    answer_hi: "push()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 7,
+    question_en: "Which method removes the last element of an array?",
+    question_hi: "कौन-सा मेथड ऐरे का आखिरी एलिमेंट हटाता है?",
+    options_en: ["pop()", "push()", "shift()", "unshift()"],
+    options_hi: ["pop()", "push()", "shift()", "unshift()"],
+    answer_en: "pop()",
+    answer_hi: "pop()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 8,
+    question_en: "Which keyword is used to create a class in JavaScript?",
+    question_hi: "JavaScript में क्लास बनाने के लिए कौन-सा कीवर्ड उपयोग होता है?",
+    options_en: ["class", "function", "object", "new"],
+    options_hi: ["class", "function", "object", "new"],
+    answer_en: "class",
+    answer_hi: "class",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 9,
+    question_en: "Which method executes a function for each array element?",
+    question_hi: "कौन-सा मेथड ऐरे के प्रत्येक एलिमेंट पर फंक्शन चलाता है?",
+    options_en: ["forEach()", "map()", "filter()", "reduce()"],
+    options_hi: ["forEach()", "map()", "filter()", "reduce()"],
+    answer_en: "forEach()",
+    answer_hi: "forEach()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 10,
+    question_en: "Which operator is used to concatenate strings?",
+    question_hi: "स्ट्रिंग जोड़ने के लिए कौन-सा ऑपरेटर उपयोग होता है?",
+    options_en: ["+", "-", "*", "&"],
+    options_hi: ["+", "-", "*", "&"],
+    answer_en: "+",
+    answer_hi: "+",
+    attempted: false,
+    selected: ""
+  },
+
+
+  {
+    num: 11,
+    question_en: "Which method creates a new array with elements that pass a test?",
+    question_hi: "कौन-सा मेथड एक नया ऐरे बनाता है जिसमें केवल टेस्ट पास करने वाले एलिमेंट होंगे?",
+    options_en: ["filter()", "map()", "reduce()", "forEach()"],
+    options_hi: ["filter()", "map()", "reduce()", "forEach()"],
+    answer_en: "filter()",
+    answer_hi: "filter()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 12,
+    question_en: "Which method creates a new array by transforming elements?",
+    question_hi: "कौन-सा मेथड एलिमेंट्स को बदलकर नया ऐरे बनाता है?",
+    options_en: ["map()", "filter()", "reduce()", "forEach()"],
+    options_hi: ["map()", "filter()", "reduce()", "forEach()"],
+    answer_en: "map()",
+    answer_hi: "map()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 13,
+    question_en: "Which method reduces an array to a single value?",
+    question_hi: "कौन-सा मेथड ऐरे को एक सिंगल वैल्यू में बदलता है?",
+    options_en: ["reduce()", "map()", "filter()", "forEach()"],
+    options_hi: ["reduce()", "map()", "filter()", "forEach()"],
+    answer_en: "reduce()",
+    answer_hi: "reduce()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 14,
+    question_en: "Which method splits a string into an array?",
+    question_hi: "कौन-सा मेथड स्ट्रिंग को ऐरे में बदलता है?",
+    options_en: ["split()", "join()", "slice()", "substring()"],
+    options_hi: ["split()", "join()", "slice()", "substring()"],
+    answer_en: "split()",
+    answer_hi: "split()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 15,
+    question_en: "Which method joins array elements into a string?",
+    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को स्ट्रिंग में जोड़ता है?",
+    options_en: ["join()", "split()", "concat()", "push()"],
+    options_hi: ["join()", "split()", "concat()", "push()"],
+    answer_en: "join()",
+    answer_hi: "join()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 16,
+    question_en: "Which operator is used to check if a value exists in an array?",
+    question_hi: "कौन-सा ऑपरेटर यह जांचने के लिए उपयोग होता है कि वैल्यू ऐरे में है या नहीं?",
+    options_en: ["includes()", "indexOf()", "in", "contains()"],
+    options_hi: ["includes()", "indexOf()", "in", "contains()"],
+    answer_en: "includes()",
+    answer_hi: "includes()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 17,
+    question_en: "Which keyword is used for asynchronous operations?",
+    question_hi: "एसिंक्रोनस ऑपरेशन्स के लिए कौन-सा कीवर्ड उपयोग होता है?",
+    options_en: ["async", "await", "then", "promise"],
+    options_hi: ["async", "await", "then", "promise"],
+    answer_en: "async",
+    answer_hi: "async",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 18,
+    question_en: "Which method is used to parse a JSON string?",
+    question_hi: "JSON स्ट्रिंग को पार्स करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
+    options_hi: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
+    answer_en: "JSON.parse()",
+    answer_hi: "JSON.parse()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 19,
+    question_en: "Which operator is used to assign a value?",
+    question_hi: "किस ऑपरेटर का उपयोग वैल्यू असाइन करने के लिए होता है?",
+    options_en: ["=", "==", "===", "+="],
+    options_hi: ["=", "==", "===", "+="],
+    answer_en: "=",
+    answer_hi: "=",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 20,
+    question_en: "Which statement is used for conditional execution?",
+    question_hi: "शर्तीय निष्पादन के लिए कौन-सा स्टेटमेंट उपयोग होता है?",
+    options_en: ["if", "for", "while", "switch"],
+    options_hi: ["if", "for", "while", "switch"],
+    answer_en: "if",
+    answer_hi: "if",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 21,
+    question_en: "Which keyword creates a block-scoped variable?",
+    question_hi: "कौन-सा कीवर्ड ब्लॉक स्कोप्ड वेरिएबल बनाता है?",
+    options_en: ["let", "var", "const", "block"],
+    options_hi: ["let", "var", "const", "block"],
+    answer_en: "let",
+    answer_hi: "let",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 22,
+    question_en: "Which method adds elements to the beginning of an array?",
+    question_hi: "कौन-सा मेथड ऐरे की शुरुआत में एलिमेंट जोड़ता है?",
+    options_en: ["unshift()", "push()", "shift()", "concat()"],
+    options_hi: ["unshift()", "push()", "shift()", "concat()"],
+    answer_en: "unshift()",
+    answer_hi: "unshift()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 23,
+    question_en: "Which method removes the first element of an array?",
+    question_hi: "कौन-सा मेथड ऐरे का पहला एलिमेंट हटाता है?",
+    options_en: ["shift()", "pop()", "push()", "unshift()"],
+    options_hi: ["shift()", "pop()", "push()", "unshift()"],
+    answer_en: "shift()",
+    answer_hi: "shift()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 24,
+    question_en: "Which function is used to call a function with a specific 'this' value?",
+    question_hi: "कौन-सा फंक्शन एक विशेष 'this' वैल्यू के साथ फंक्शन कॉल करने के लिए उपयोग होता है?",
+    options_en: ["call()", "apply()", "bind()", "execute()"],
+    options_hi: ["call()", "apply()", "bind()", "execute()"],
+    answer_en: "call()",
+    answer_hi: "call()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 25,
+    question_en: "Which function allows passing arguments as an array?",
+    question_hi: "कौन-सा फंक्शन आर्गुमेंट्स को ऐरे के रूप में पास करने की अनुमति देता है?",
+    options_en: ["apply()", "call()", "bind()", "execute()"],
+    options_hi: ["apply()", "call()", "bind()", "execute()"],
+    answer_en: "apply()",
+    answer_hi: "apply()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 26,
+    question_en: "Which method creates a shallow copy of an array?",
+    question_hi: "कौन-सा मेथड ऐरे की शैलो कॉपी बनाता है?",
+    options_en: ["slice()", "splice()", "concat()", "copy()"],
+    options_hi: ["slice()", "splice()", "concat()", "copy()"],
+    answer_en: "slice()",
+    answer_hi: "slice()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 27,
+    question_en: "Which method changes the contents of an array?",
+    question_hi: "कौन-सा मेथड ऐरे की सामग्री बदलता है?",
+    options_en: ["splice()", "slice()", "concat()", "push()"],
+    options_hi: ["splice()", "slice()", "concat()", "push()"],
+    answer_en: "splice()",
+    answer_hi: "splice()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 28,
+    question_en: "Which statement is used to handle exceptions?",
+    question_hi: "एक्सेप्शन को हैंडल करने के लिए कौन-सा स्टेटमेंट उपयोग होता है?",
+    options_en: ["try...catch", "if...else", "switch", "for"],
+    options_hi: ["try...catch", "if...else", "switch", "for"],
+    answer_en: "try...catch",
+    answer_hi: "try...catch",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 29,
+    question_en: "Which operator is used for logical AND?",
+    question_hi: "लॉजिकल AND के लिए कौन-सा ऑपरेटर उपयोग होता है?",
+    options_en: ["&&", "||", "!", "&"],
+    options_hi: ["&&", "||", "!", "&"],
+    answer_en: "&&",
+    answer_hi: "&&",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 30,
+    question_en: "Which operator is used for logical OR?",
+    question_hi: "लॉजिकल OR के लिए कौन-सा ऑपरेटर उपयोग होता है?",
+    options_en: ["||", "&&", "!", "|"],
+    options_hi: ["||", "&&", "!", "|"],
+    answer_en: "||",
+    answer_hi: "||",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 31,
+    question_en: "Which keyword is used to refer to the current object?",
+    question_hi: "कौन-सा कीवर्ड वर्तमान ऑब्जेक्ट को संदर्भित करने के लिए उपयोग होता है?",
+    options_en: ["this", "self", "current", "object"],
+    options_hi: ["this", "self", "current", "object"],
+    answer_en: "this",
+    answer_hi: "this",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 32,
+    question_en: "Which method sorts the elements of an array?",
+    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को सॉर्ट करता है?",
+    options_en: ["sort()", "reverse()", "map()", "filter()"],
+    options_hi: ["sort()", "reverse()", "map()", "filter()"],
+    answer_en: "sort()",
+    answer_hi: "sort()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 33,
+    question_en: "Which method reverses the elements of an array?",
+    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को रिवर्स करता है?",
+    options_en: ["reverse()", "sort()", "map()", "filter()"],
+    options_hi: ["reverse()", "sort()", "map()", "filter()"],
+    answer_en: "reverse()",
+    answer_hi: "reverse()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 34,
+    question_en: "Which operator is used for comparison (less than)?",
+    question_hi: "कौन-सा ऑपरेटर तुलना (छोटा) के लिए उपयोग होता है?",
+    options_en: ["<", ">", "<=", ">="],
+    options_hi: ["<", ">", "<=", ">="],
+    answer_en: "<",
+    answer_hi: "<",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 35,
+    question_en: "Which operator is used for comparison (greater than)?",
+    question_hi: "कौन-सा ऑपरेटर तुलना (बड़ा) के लिए उपयोग होता है?",
+    options_en: [">", "<", ">=", "<="],
+    options_hi: [">", "<", ">=", "<="],
+    answer_en: ">",
+    answer_hi: ">",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 36,
+    question_en: "Which method merges two or more arrays?",
+    question_hi: "कौन-सा मेथड दो या अधिक ऐरे को मर्ज करता है?",
+    options_en: ["concat()", "push()", "merge()", "join()"],
+    options_hi: ["concat()", "push()", "merge()", "join()"],
+    answer_en: "concat()",
+    answer_hi: "concat()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 37,
+    question_en: "Which keyword is used to define a function?",
+    question_hi: "कौन-सा कीवर्ड फंक्शन को डिफाइन करने के लिए उपयोग होता है?",
+    options_en: ["function", "func", "def", "method"],
+    options_hi: ["function", "func", "def", "method"],
+    answer_en: "function",
+    answer_hi: "function",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 38,
+    question_en: "Which method checks if a string starts with specific characters?",
+    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग किसी विशेष कैरेक्टर से शुरू होती है?",
+    options_en: ["startsWith()", "endsWith()", "includes()", "match()"],
+    options_hi: ["startsWith()", "endsWith()", "includes()", "match()"],
+    answer_en: "startsWith()",
+    answer_hi: "startsWith()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 39,
+    question_en: "Which method checks if a string ends with specific characters?",
+    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग किसी विशेष कैरेक्टर पर खत्म होती है?",
+    options_en: ["endsWith()", "startsWith()", "includes()", "match()"],
+    options_hi: ["endsWith()", "startsWith()", "includes()", "match()"],
+    answer_en: "endsWith()",
+    answer_hi: "endsWith()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 40,
+    question_en: "Which method checks if a string includes a substring?",
+    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग में कोई सबस्ट्रिंग शामिल है?",
+    options_en: ["includes()", "indexOf()", "search()", "match()"],
+    options_hi: ["includes()", "indexOf()", "search()", "match()"],
+    answer_en: "includes()",
+    answer_hi: "includes()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 41,
+    question_en: "Which keyword defines a promise in JavaScript?",
+    question_hi: "कौन-सा कीवर्ड JavaScript में प्रॉमिस को डिफाइन करता है?",
+    options_en: ["Promise", "Async", "Await", "Defer"],
+    options_hi: ["Promise", "Async", "Await", "Defer"],
+    answer_en: "Promise",
+    answer_hi: "Promise",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 42,
+    question_en: "Which method attaches a handler for resolved promises?",
+    question_hi: "कौन-सा मेथड हल किए गए प्रॉमिस के लिए हैंडलर अटैच करता है?",
+    options_en: ["then()", "catch()", "finally()", "all()"],
+    options_hi: ["then()", "catch()", "finally()", "all()"],
+    answer_en: "then()",
+    answer_hi: "then()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 43,
+    question_en: "Which method handles rejected promises?",
+    question_hi: "कौन-सा मेथड रिजेक्टेड प्रॉमिस को हैंडल करता है?",
+    options_en: ["catch()", "then()", "finally()", "all()"],
+    options_hi: ["catch()", "then()", "finally()", "all()"],
+    answer_en: "catch()",
+    answer_hi: "catch()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 44,
+    question_en: "Which method executes code regardless of promise outcome?",
+    question_hi: "कौन-सा मेथड प्रॉमिस के परिणाम की परवाह किए बिना कोड चलाता है?",
+    options_en: ["finally()", "then()", "catch()", "all()"],
+    options_hi: ["finally()", "then()", "catch()", "all()"],
+    answer_en: "finally()",
+    answer_hi: "finally()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 45,
+    question_en: "Which method returns a promise when all promises are resolved?",
+    question_hi: "कौन-सा मेथड तब प्रॉमिस लौटाता है जब सभी प्रॉमिस हल हो जाएँ?",
+    options_en: ["Promise.all()", "Promise.any()", "Promise.race()", "Promise.resolve()"],
+    options_hi: ["Promise.all()", "Promise.any()", "Promise.race()", "Promise.resolve()"],
+    answer_en: "Promise.all()",
+    answer_hi: "Promise.all()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 46,
+    question_en: "Which method returns a promise when any promise is resolved?",
+    question_hi: "कौन-सा मेथड तब प्रॉमिस लौटाता है जब कोई भी प्रॉमिस हल हो जाए?",
+    options_en: ["Promise.any()", "Promise.all()", "Promise.race()", "Promise.resolve()"],
+    options_hi: ["Promise.any()", "Promise.all()", "Promise.race()", "Promise.resolve()"],
+    answer_en: "Promise.any()",
+    answer_hi: "Promise.any()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 47,
+    question_en: "Which method returns a promise that resolves or rejects as soon as one promise settles?",
+    question_hi: "कौन-सा मेथड वह प्रॉमिस लौटाता है जो तुरंत हल या रिजेक्ट होता है जब एक प्रॉमिस पूरा होता है?",
+    options_en: ["Promise.race()", "Promise.all()", "Promise.any()", "Promise.resolve()"],
+    options_hi: ["Promise.race()", "Promise.all()", "Promise.any()", "Promise.resolve()"],
+    answer_en: "Promise.race()",
+    answer_hi: "Promise.race()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 48,
+    question_en: "Which method converts a number to a string?",
+    question_hi: "कौन-सा मेथड नंबर को स्ट्रिंग में बदलता है?",
+    options_en: ["toString()", "String()", "Number()", "valueOf()"],
+    options_hi: ["toString()", "String()", "Number()", "valueOf()"],
+    answer_en: "toString()",
+    answer_hi: "toString()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 49,
+    question_en: "Which method converts a string to a number?",
+    question_hi: "कौन-सा मेथड स्ट्रिंग को नंबर में बदलता है?",
+    options_en: ["Number()", "parseInt()", "parseFloat()", "All of the above"],
+    options_hi: ["Number()", "parseInt()", "parseFloat()", "उपरोक्त सभी"],
+    answer_en: "All of the above",
+    answer_hi: "उपरोक्त सभी",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 50,
+    question_en: "Which method returns the index of the first occurrence of a value in an array?",
+    question_hi: "कौन-सा मेथड ऐरे में किसी वैल्यू के पहले occurrence का इंडेक्स लौटाता है?",
+    options_en: ["indexOf()", "lastIndexOf()", "findIndex()", "search()"],
+    options_hi: ["indexOf()", "lastIndexOf()", "findIndex()", "search()"],
+    answer_en: "indexOf()",
+    answer_hi: "indexOf()",
+    attempted: false,
+    selected: ""
+  }
 ];
 
-    let currentQuestion = 0;
 
-        function loadQuestion(index) {
-            document.getElementById("question").textContent = questions[index].question;
-            document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
-            const optionsElement = document.getElementById("options");
-            optionsElement.innerHTML = "";
-            questions[index].options.forEach(option => {
-                optionsElement.innerHTML += `<li><input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')"> ${option}</li>`;
-            });
-            updateCircles();
-        }
 
-        function markAttempted(index, selectedAnswer) {
-            questions[index].attempted = true;
-            questions[index].selected = selectedAnswer;
-            updateCircles();
-        }
 
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                loadQuestion(currentQuestion);
-            }
-        }
+let currentQuestion = 0; 
+let language = "en";
+let timeLeft = 180 * 60; // 180 minutes
+let timerInterval;
 
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion(currentQuestion);
-            }
-        }
+// ----------------- Quiz Logic -----------------
+function loadQuestion(index) {
+    const q = questions[index];
+    document.getElementById("question").textContent = `${q.num}. ${
+        language === "en" ? q.question_en : q.question_hi
+    }`;
+    document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
 
-        function updateCircles() {
-            const circleContainer = document.getElementById("circleContainer");
-            circleContainer.innerHTML = "";
-            questions.forEach((q, i) => {
-                let status = i === currentQuestion ? "active" : q.attempted ? "answered" : "not-attempted";
-                circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
-            });
-        }
+    const optionsElement = document.getElementById("options");
+    optionsElement.innerHTML = "";
 
-        function jumpToQuestion(index) {
-            currentQuestion = index;
+    const options = language === "en" ? q.options_en : q.options_hi;
+
+    options.forEach((option) => {
+        const isSelected = q.selected === option;
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option-box";
+        optionDiv.style = `
+            border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
+            background-color: ${isSelected ? "#e7f1ff" : "white"};
+            padding: 10px;
+            border-radius: 8px;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        `;
+
+        optionDiv.innerHTML = `
+            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} style="margin-right:8px;">
+            ${option}
+        `;
+
+        optionDiv.addEventListener("click", () => {
+            markAttempted(index, option);
             loadQuestion(index);
-        }
+        });
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+        optionsElement.appendChild(optionDiv);
+    });
+
+    updateNavigation();
+}
+
+function markAttempted(index, selectedAnswer) {
+    questions[index].attempted = true;
+    questions[index].selected = selectedAnswer;
+    updateNavigation();
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function changeLanguage() {
+    language = document.getElementById("languageSelect").value;
+    loadQuestion(currentQuestion);
+}
+
+function submitQuiz() {
+    clearInterval(timerInterval);
+    let attempted = 0,
+        notAttempted = 0,
+        score = 0;
+
+    questions.forEach((q) => {
+        if (q.attempted) {
+            attempted++;
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) score++;
+        } else notAttempted++;
+    });
+
+    alert(
+        `Quiz submitted!\nAttempted: ${attempted}\nNot Attempted: ${notAttempted}\nScore: ${score}/${questions.length}`
+    );
+}
+
+function startTimer() {
+    const timerElement = document.getElementById("timer");
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time's up!");
+            submitQuiz();
+        } else {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time Left: ${hours
+                .toString()
+                .padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timeLeft--;
+        }
+    }, 1000);
+}
+
+function updateNavigation() {
+    const nav = document.getElementById("circleContainer");
+    nav.innerHTML = "";
+    questions.forEach((q, i) => {
+        let color = "gray";
+        if (i === currentQuestion) color = "blue";
+        else if (q.attempted) color = "green";
+        nav.innerHTML += `<div class='circle' style='background-color:${color}' onclick='loadQuestion(${i})'>${i + 1}</div>`;
+    });
+}
+
+// ----------------- Camera & Movement Logic -----------------
+let videoStream;
+let movementCount = 0;
+
+function startCamera() {
+    const container = document.createElement("div");
+    container.id = "camera-container";
+    container.style.position = "fixed";
+    container.style.top = "10px";
+    container.style.left = "10px"; // ✅ Left side
+    container.style.width = "130px";
+    container.style.height = "130px";
+    container.style.zIndex = "9999";
+    container.style.borderRadius = "50%";
+    container.style.overflow = "hidden";
+    container.style.border = "3px solid red";
+    container.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    container.style.cursor = "grab";
+    container.style.minWidth = "80px";
+    container.style.minHeight = "80px";
+    container.style.maxWidth = "250px";
+    container.style.maxHeight = "250px";
+    container.style.background = "#000";
+    document.body.appendChild(container);
+
+    const video = document.createElement("video");
+    video.setAttribute("autoplay", true);
+    video.setAttribute("playsinline", true);
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    container.appendChild(video);
+
+    // ✅ Resize handle
+    const resizeHandle = document.createElement("div");
+    resizeHandle.style.position = "absolute";
+    resizeHandle.style.bottom = "2px";
+    resizeHandle.style.right = "2px";
+    resizeHandle.style.width = "15px";
+    resizeHandle.style.height = "15px";
+    resizeHandle.style.background = "rgba(255,255,255,0.7)";
+    resizeHandle.style.borderRadius = "4px";
+    resizeHandle.style.cursor = "se-resize";
+    container.appendChild(resizeHandle);
+
+    // ✅ Drag logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    container.addEventListener("mousedown", (e) => {
+        if (e.target === resizeHandle) return;
+        isDragging = true;
+        offsetX = e.clientX - container.offsetLeft;
+        offsetY = e.clientY - container.offsetTop;
+        container.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - offsetX;
+        let y = e.clientY - offsetY;
+        x = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, y));
+        container.style.left = `${x}px`;
+        container.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        container.style.cursor = "grab";
+    });
+
+    // ✅ Resize logic
+    let isResizing = false;
+    let startWidth, startHeight, startX, startY;
+
+    resizeHandle.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        isResizing = true;
+        startWidth = container.offsetWidth;
+        startHeight = container.offsetHeight;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isResizing) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const newSize = Math.max(80, Math.min(250, Math.max(startWidth + dx, startHeight + dy)));
+        container.style.width = `${newSize}px`;
+        container.style.height = `${newSize}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isResizing = false;
+    });
+
+    // ✅ Camera stream
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            videoStream = stream;
+            detectMovement(video);
+        })
+        .catch(err => {
+            console.error("Camera error:", err);
+            alert("Camera not accessible!");
+        });
+}
+
+function detectMovement(video) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 160;
+    canvas.height = 160;
+    let lastImageData = null;
+
+    setInterval(() => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        if (lastImageData) {
+            let diff = 0;
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                diff += Math.abs(imageData.data[i] - lastImageData.data[i]);
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
-
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
+            if (diff > 1000000) {
+                movementCount++;
+                if (movementCount === 1) {
+                    alert("⚠️ Alert 1: Face is not move");
+                } else if (movementCount === 2) {
+                    alert("⚠️ Alert 2: Head is not move");
+                } else if (movementCount === 3) {
+                    alert("⚠️ Alert 3: Test series is restarting...");
+                    restartTest();
                 }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
             }
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+        lastImageData = imageData;
+    }, 2000);
+}
+
+function restartTest() {
+    if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+    }
+    const camContainer = document.getElementById("camera-container");
+    if (camContainer) camContainer.remove();
+
+    movementCount = 0;
+    currentQuestion = 0;
+    timeLeft = 180 * 60;
+
+    questions.forEach(q => {
+        q.attempted = false;
+        q.selected = null;
+    });
+
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera();
+}
+
+// ----------------- Page Load -----------------
+window.onload = function () {
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera(); // ✅ Camera starts with test
+};

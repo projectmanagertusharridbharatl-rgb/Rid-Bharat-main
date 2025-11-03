@@ -1,138 +1,853 @@
 const questions = [
-  { num: 1, question: "1 What is a lambda function in Python?", options: ["Anonymous function", "Class method", "Loop function", "Recursive function"], answer: "Anonymous function", attempted: false, selected: "" },
-  { num: 2, question: "2 What does the `map()` function do?", options: ["Applies a function to each item in an iterable", "Maps keys to values", "Converts list to dict", "Sorts a list"], answer: "Applies a function to each item in an iterable", attempted: false, selected: "" },
-  { num: 3, question: "3 What is the output of: list(map(lambda x: x*x, [1, 2, 3]))?", options: ["[1, 4, 9]", "[1, 2, 3]", "[2, 4, 6]", "[1, 8, 27]"], answer: "[1, 4, 9]", attempted: false, selected: "" },
-  { num: 4, question: "4 Which module in Python is used for regular expressions?", options: ["re", "regex", "pyregex", "match"], answer: "re", attempted: false, selected: "" },
-  { num: 5, question: "5 What does the `*args` syntax do in a function?", options: ["Pass variable number of arguments", "Create a list", "Create a dictionary", "Pass default values"], answer: "Pass variable number of arguments", attempted: false, selected: "" },
-  { num: 6, question: "6 What is the purpose of `**kwargs` in Python functions?", options: ["Pass variable keyword arguments", "Pass list of arguments", "Return multiple values", "Catch exceptions"], answer: "Pass variable keyword arguments", attempted: false, selected: "" },
-  { num: 7, question: "7 What does the `filter()` function return?", options: ["Filtered iterable", "List", "String", "Boolean"], answer: "Filtered iterable", attempted: false, selected: "" },
-  { num: 8, question: "8 What does `zip()` do in Python?", options: ["Combine iterables into tuples", "Compress data", "Unzip files", "Concatenate strings"], answer: "Combine iterables into tuples", attempted: false, selected: "" },
-  { num: 9, question: "9 What is a generator?", options: ["Function that yields values", "Function that returns list", "Recursive function", "Threaded function"], answer: "Function that yields values", attempted: false, selected: "" },
-  { num: 10, question: "10 What keyword is used to create a generator?", options: ["yield", "return", "generate", "create"], answer: "yield", attempted: false, selected: "" },
-  { num: 11, question: "11 Which decorator is used to define a static method?", options: ["@staticmethod", "@classmethod", "@static", "@method"], answer: "@staticmethod", attempted: false, selected: "" },
-  { num: 12, question: "12 Which method is called when an object is created?", options: ["__init__", "__str__", "__new__", "__create__"], answer: "__init__", attempted: false, selected: "" },
-  { num: 13, question: "13 What is the purpose of `__str__` method?", options: ["Returns string representation", "Initializes class", "Deletes object", "Creates object"], answer: "Returns string representation", attempted: false, selected: "" },
-  { num: 14, question: "14 What does `self` represent in a class?", options: ["Current instance", "Class name", "Module", "Parent class"], answer: "Current instance", attempted: false, selected: "" },
-  { num: 15, question: "15 What does `isinstance()` check?", options: ["Object type", "Object value", "Object identity", "Function return"], answer: "Object type", attempted: false, selected: "" },
-  { num: 16, question: "16 What does `__name__ == '__main__'` mean?", options: ["Script is run directly", "Module is imported", "Function call", "Class method"], answer: "Script is run directly", attempted: false, selected: "" },
-  { num: 17, question: "17 Which exception is raised for division by zero?", options: ["ZeroDivisionError", "ValueError", "ArithmeticError", "MathError"], answer: "ZeroDivisionError", attempted: false, selected: "" },
-  { num: 18, question: "18 What is the output of: `bool([])`?", options: ["False", "True", "None", "Error"], answer: "False", attempted: false, selected: "" },
-  { num: 19, question: "19 What is list comprehension?", options: ["Compact way to create list", "Function", "Loop", "Class"], answer: "Compact way to create list", attempted: false, selected: "" },
-  { num: 20, question: "20 What is the result of `[x for x in range(3) if x % 2 == 0]`?", options: ["[0, 2]", "[1, 2]", "[0, 1]", "[2]"], answer: "[0, 2]", attempted: false, selected: "" },
-  { num: 21, question: "21 What does `set()` do?", options: ["Removes duplicates", "Sorts list", "Creates tuple", "Adds elements"], answer: "Removes duplicates", attempted: false, selected: "" },
-  { num: 22, question: "22 What does `enumerate()` return?", options: ["Index and value pairs", "Sorted list", "Mapped list", "Zipped list"], answer: "Index and value pairs", attempted: false, selected: "" },
-  { num: 23, question: "23 What is the output of `'abc'.upper()`?", options: ["ABC", "abc", "Abc", "aBc"], answer: "ABC", attempted: false, selected: "" },
-  { num: 24, question: "24 What is a docstring in Python?", options: ["Documentation string", "Function name", "Comment", "Variable"], answer: "Documentation string", attempted: false, selected: "" },
-  { num: 25, question: "25 Which symbol is used for multi-line docstring?", options: ['"""', "'''", "//", "#"], answer: '"""', attempted: false, selected: "" },
-  { num: 26, question: "26 What does `try` block do?", options: ["Handles exceptions", "Runs loops", "Returns values", "Declares class"], answer: "Handles exceptions", attempted: false, selected: "" },
-  { num: 27, question: "27 Which block runs after `try` if no error occurs?", options: ["else", "except", "finally", "catch"], answer: "else", attempted: false, selected: "" },
-  { num: 28, question: "28 Which function opens a file in Python?", options: ["open()", "file()", "read()", "load()"], answer: "open()", attempted: false, selected: "" },
-  { num: 29, question: "29 Which mode opens file for writing?", options: ["'w'", "'r'", "'a'", "'x'"], answer: "'w'", attempted: false, selected: "" },
-  { num: 30, question: "30 What does `with open()` ensure?", options: ["Auto close file", "Create file", "Delete file", "None"], answer: "Auto close file", attempted: false, selected: "" },
-  { num: 31, question: "31 What is a context manager?", options: ["Manages resources", "Defines class", "Runs loop", "Handles list"], answer: "Manages resources", attempted: false, selected: "" },
-  { num: 32, question: "32 What does `os` module handle?", options: ["Operating system tasks", "Graphics", "UI", "Sound"], answer: "Operating system tasks", attempted: false, selected: "" },
-  { num: 33, question: "33 Which module supports JSON parsing?", options: ["json", "os", "sys", "pickle"], answer: "json", attempted: false, selected: "" },
-  { num: 34, question: "34 What is `pickle` used for?", options: ["Serializing objects", "Parsing HTML", "Debugging", "Compressing files"], answer: "Serializing objects", attempted: false, selected: "" },
-  { num: 35, question: "35 Which statement can be used with `for` to get index?", options: ["enumerate()", "range()", "index()", "zip()"], answer: "enumerate()", attempted: false, selected: "" },
-  { num: 36, question: "36 What is monkey patching?", options: ["Changing behavior at runtime", "Adding comments", "Debugging", "Unit testing"], answer: "Changing behavior at runtime", attempted: false, selected: "" },
-  { num: 37, question: "37 What is duck typing?", options: ["Behavior matters more than type", "Type checking", "Polymorphism", "Multithreading"], answer: "Behavior matters more than type", attempted: false, selected: "" },
-  { num: 38, question: "38 What is `__slots__` used for?", options: ["Memory optimization", "Function overloading", "Class inheritance", "File handling"], answer: "Memory optimization", attempted: false, selected: "" },
-  { num: 39, question: "39 Which module allows multi-threading?", options: ["threading", "os", "time", "math"], answer: "threading", attempted: false, selected: "" },
-  { num: 40, question: "40 What is GIL in Python?", options: ["Global Interpreter Lock", "Global Import Log", "Generic Instance Loader", "Graphical Interface Library"], answer: "Global Interpreter Lock", attempted: false, selected: "" },
-  { num: 41, question: "41 What is a metaclass?", options: ["Class of a class", "Instance method", "Static method", "Data attribute"], answer: "Class of a class", attempted: false, selected: "" },
-  { num: 42, question: "42 Which module is used for unit testing?", options: ["unittest", "pytest", "testit", "validate"], answer: "unittest", attempted: false, selected: "" },
-  { num: 43, question: "43 What is a frozen set?", options: ["Immutable set", "Locked list", "Sorted dictionary", "Tuple set"], answer: "Immutable set", attempted: false, selected: "" },
-  { num: 44, question: "44 What is the use of `super()`?", options: ["Call parent methods", "Override variables", "Create object", "Check type"], answer: "Call parent methods", attempted: false, selected: "" },
-  { num: 45, question: "45 What is list slicing `a[::-1]` used for?", options: ["Reverse list", "Copy list", "Sort list", "Split list"], answer: "Reverse list", attempted: false, selected: "" },
-  { num: 46, question: "46 What does `@property` do?", options: ["Creates getter", "Creates setter", "Creates private var", "Creates static method"], answer: "Creates getter", attempted: false, selected: "" },
-  { num: 47, question: "47 What is `__repr__()` used for?", options: ["Developer representation", "Print object", "User output", "String reverse"], answer: "Developer representation", attempted: false, selected: "" },
-  { num: 48, question: "48 What does `id()` return?", options: ["Object memory address", "Type of object", "Length of list", "Hash value"], answer: "Object memory address", attempted: false, selected: "" },
-  { num: 49, question: "49 What is `any([])` output?", options: ["False", "True", "Error", "None"], answer: "False", attempted: false, selected: "" },
-  { num: 50, question: "50 Which method creates class instance from string?", options: ["eval()", "exec()", "input()", "str()"], answer: "eval()", attempted: false, selected: "" }
+  {
+    "num": 1,
+    "question_en": "What is the output of print(2 ** 3)?",
+    "question_hi": "print(2 ** 3) का आउटपुट क्या होगा?",
+    "options_en": ["6", "8", "9", "5"],
+    "options_hi": ["6", "8", "9", "5"],
+    "answer_en": "8",
+    "answer_hi": "8",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 2,
+    "question_en": "Which keyword is used to create a function in Python?",
+    "question_hi": "Python में function बनाने के लिए कौन-सा keyword उपयोग होता है?",
+    "options_en": ["function", "def", "define", "func"],
+    "options_hi": ["function", "def", "define", "func"],
+    "answer_en": "def",
+    "answer_hi": "def",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 3,
+    "question_en": "What data type is the result of: type(3.5)?",
+    "question_hi": "type(3.5) का परिणाम किस डेटा टाइप का होगा?",
+    "options_en": ["int", "float", "str", "complex"],
+    "options_hi": ["int", "float", "str", "complex"],
+    "answer_en": "float",
+    "answer_hi": "float",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 4,
+    "question_en": "What is the correct file extension for Python files?",
+    "question_hi": "Python फ़ाइलों के लिए सही फ़ाइल एक्सटेंशन क्या है?",
+    "options_en": [".py", ".pt", ".pyt", ".python"],
+    "options_hi": [".py", ".pt", ".pyt", ".python"],
+    "answer_en": ".py",
+    "answer_hi": ".py",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 5,
+    "question_en": "What does the 'len()' function do?",
+    "question_hi": "'len()' function क्या करता है?",
+    "options_en": ["Returns length", "Returns type", "Counts digits", "Checks truth value"],
+    "options_hi": ["लंबाई return करता है", "Type return करता है", "Digits count करता है", "Truth value check करता है"],
+    "answer_en": "Returns length",
+    "answer_hi": "लंबाई return करता है",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 6,
+    "question_en": "How do you start a comment in Python?",
+    "question_hi": "Python में comment कैसे शुरू करते हैं?",
+    "options_en": ["//", "/*", "#", "--"],
+    "options_hi": ["//", "/*", "#", "--"],
+    "answer_en": "#",
+    "answer_hi": "#",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 7,
+    "question_en": "What is the output of: print('5' + '5')?",
+    "question_hi": "print('5' + '5') का आउटपुट क्या होगा?",
+    "options_en": ["10", "55", "TypeError", "5"],
+    "options_hi": ["10", "55", "TypeError", "5"],
+    "answer_en": "55",
+    "answer_hi": "55",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 8,
+    "question_en": "What is the correct way to create a dictionary?",
+    "question_hi": "Dictionary बनाने का सही तरीका क्या है?",
+    "options_en": ["{}", "[]", "()", "<>"],
+    "options_hi": ["{}", "[]", "()", "<>"],
+    "answer_en": "{}",
+    "answer_hi": "{}",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 9,
+    "question_en": "Which method can add an item to a list?",
+    "question_hi": "List में item add करने के लिए कौन-सा method है?",
+    "options_en": ["add()", "append()", "insert()", "extend()"],
+    "options_hi": ["add()", "append()", "insert()", "extend()"],
+    "answer_en": "append()",
+    "answer_hi": "append()",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 10,
+    "question_en": "What is the output of type(True)?",
+    "question_hi": "type(True) का आउटपुट क्या होगा?",
+    "options_en": ["bool", "int", "str", "float"],
+    "options_hi": ["bool", "int", "str", "float"],
+    "answer_en": "bool",
+    "answer_hi": "bool",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 11,
+    "question_en": "How do you create a variable with the numeric value 5?",
+    "question_hi": "5 value वाला variable कैसे बनाते हैं?",
+    "options_en": ["num = 5", "int num = 5", "num := 5", "num == 5"],
+    "options_hi": ["num = 5", "int num = 5", "num := 5", "num == 5"],
+    "answer_en": "num = 5",
+    "answer_hi": "num = 5",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 12,
+    "question_en": "What will print(type([])) return?",
+    "question_hi": "print(type([])) क्या return करेगा?",
+    "options_en": ["list", "<class 'list'>", "[]", "object"],
+    "options_hi": ["list", "<class 'list'>", "[]", "object"],
+    "answer_en": "<class 'list'>",
+    "answer_hi": "<class 'list'>",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 13,
+    "question_en": "What is used to handle exceptions in Python?",
+    "question_hi": "Python में exceptions handle करने के लिए क्या use होता है?",
+    "options_en": ["catch", "handle", "try/except", "trap"],
+    "options_hi": ["catch", "handle", "try/except", "trap"],
+    "answer_en": "try/except",
+    "answer_hi": "try/except",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 14,
+    "question_en": "Which operator is used for floor division?",
+    "question_hi": "Floor division के लिए कौन-सा operator use होता है?",
+    "options_en": ["/", "%", "//", "**"],
+    "options_hi": ["/", "%", "//", "**"],
+    "answer_en": "//",
+    "answer_hi": "//",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 15,
+    "question_en": "How do you insert comments in Python?",
+    "question_hi": "Python में comment कैसे डालते हैं?",
+    "options_en": ["# comment", "// comment", "/* comment */", "-- comment"],
+    "options_hi": ["# comment", "// comment", "/* comment */", "-- comment"],
+    "answer_en": "# comment",
+    "answer_hi": "# comment",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 16,
+    "question_en": "What is the output of bool(0)?",
+    "question_hi": "bool(0) का आउटपुट क्या होगा?",
+    "options_en": ["True", "False", "0", "None"],
+    "options_hi": ["True", "False", "0", "None"],
+    "answer_en": "False",
+    "answer_hi": "False",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 17,
+    "question_en": "Which data structure is immutable?",
+    "question_hi": "कौन-सा data structure immutable है?",
+    "options_en": ["list", "set", "dict", "tuple"],
+    "options_hi": ["list", "set", "dict", "tuple"],
+    "answer_en": "tuple",
+    "answer_hi": "tuple",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 18,
+    "question_en": "What is the purpose of the pass statement?",
+    "question_hi": "pass statement का उद्देश्य क्या है?",
+    "options_en": ["Skip iteration", "End loop", "Do nothing", "Break loop"],
+    "options_hi": ["Iteration skip करना", "Loop end करना", "कुछ नहीं करना", "Loop break करना"],
+    "answer_en": "Do nothing",
+    "answer_hi": "कुछ नहीं करना",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 19,
+    "question_en": "Which module is used to generate random numbers?",
+    "question_hi": "Random numbers generate करने के लिए कौन-सा module use होता है?",
+    "options_en": ["math", "random", "os", "sys"],
+    "options_hi": ["math", "random", "os", "sys"],
+    "answer_en": "random",
+    "answer_hi": "random",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 20,
+    "question_en": "What does the 'in' keyword check?",
+    "question_hi": "'in' keyword क्या check करता है?",
+    "options_en": ["Existence in sequence", "Assignment", "Type", "Conversion"],
+    "options_hi": ["Sequence में existence", "Assignment", "Type", "Conversion"],
+    "answer_en": "Existence in sequence",
+    "answer_hi": "Sequence में existence",
+    "attempted": false,
+    "selected": ""
+  },
+
+    {
+    "num": 21,
+    "question_en": "What is the correct way to define a class?",
+    "question_hi": "Class define करने का सही तरीका क्या है?",
+    "options_en": ["def MyClass:", "class MyClass:", "MyClass:", "define MyClass:"],
+    "options_hi": ["def MyClass:", "class MyClass:", "MyClass:", "define MyClass:"],
+    "answer_en": "class MyClass:",
+    "answer_hi": "class MyClass:",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 22,
+    "question_en": "Which method is called when an object is created?",
+    "question_hi": "Object create होने पर कौन-सा method call होता है?",
+    "options_en": ["__start__", "__create__", "__init__", "__make__"],
+    "options_hi": ["__start__", "__create__", "__init__", "__make__"],
+    "answer_en": "__init__",
+    "answer_hi": "__init__",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 23,
+    "question_en": "How do you access values in a list?",
+    "question_hi": "List में values access करने का तरीका क्या है?",
+    "options_en": ["list{0}", "list[0]", "list(0)", "list<0>"],
+    "options_hi": ["list{0}", "list[0]", "list(0)", "list<0>"],
+    "answer_en": "list[0]",
+    "answer_hi": "list[0]",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 24,
+    "question_en": "What is the correct syntax to define a lambda function?",
+    "question_hi": "Lambda function define करने का सही syntax क्या है?",
+    "options_en": ["lambda x: x+1", "def x(): x+1", "func x: x+1", "lambda = x+1"],
+    "options_hi": ["lambda x: x+1", "def x(): x+1", "func x: x+1", "lambda = x+1"],
+    "answer_en": "lambda x: x+1",
+    "answer_hi": "lambda x: x+1",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 25,
+    "question_en": "What is the purpose of 'self' in Python classes?",
+    "question_hi": "Python classes में 'self' का उद्देश्य क्या है?",
+    "options_en": ["Refers to class", "Refers to instance", "Refers to method", "Refers to file"],
+    "options_hi": ["Class को refer करता है", "Instance को refer करता है", "Method को refer करता है", "File को refer करता है"],
+    "answer_en": "Refers to instance",
+    "answer_hi": "Instance को refer करता है",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 26,
+    "question_en": "Which keyword is used to inherit a class?",
+    "question_hi": "Class inherit करने के लिए कौन-सा keyword है?",
+    "options_en": ["inherit", "extends", "super", "class"],
+    "options_hi": ["inherit", "extends", "super", "class"],
+    "answer_en": "class",
+    "answer_hi": "class",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 27,
+    "question_en": "Which method returns the number of items in a list?",
+    "question_hi": "List में items की संख्या return करने वाला method कौन-सा है?",
+    "options_en": ["size()", "length()", "len()", "count()"],
+    "options_hi": ["size()", "length()", "len()", "count()"],
+    "answer_en": "len()",
+    "answer_hi": "len()",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 28,
+    "question_en": "What is slicing used for in Python?",
+    "question_hi": "Python में slicing का उपयोग किस लिए किया जाता है?",
+    "options_en": ["Copy elements", "Access parts of sequence", "Sort items", "Update values"],
+    "options_hi": ["Elements copy करना", "Sequence के parts access करना", "Items sort करना", "Values update करना"],
+    "answer_en": "Access parts of sequence",
+    "answer_hi": "Sequence के parts access करना",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 29,
+    "question_en": "Which statement is used to exit a loop?",
+    "question_hi": "Loop exit करने के लिए कौन-सा statement use होता है?",
+    "options_en": ["exit", "stop", "end", "break"],
+    "options_hi": ["exit", "stop", "end", "break"],
+    "answer_en": "break",
+    "answer_hi": "break",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 30,
+    "question_en": "How do you convert a string to an integer?",
+    "question_hi": "String को integer में convert करने का तरीका क्या है?",
+    "options_en": ["int('5')", "str(5)", "float('5')", "toInt('5')"],
+    "options_hi": ["int('5')", "str(5)", "float('5')", "toInt('5')"],
+    "answer_en": "int('5')",
+    "answer_hi": "int('5')",
+    "attempted": false,
+    "selected": ""
+  },
+
+
+    {
+    "num": 31,
+    "question_en": "What does the open() function return?",
+    "question_hi": "open() function क्या return करता है?",
+    "options_en": ["File object", "String", "List", "Boolean"],
+    "options_hi": ["File object", "String", "List", "Boolean"],
+    "answer_en": "File object",
+    "answer_hi": "File object",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 32,
+    "question_en": "Which keyword is used to define an anonymous function?",
+    "question_hi": "Anonymous function define करने के लिए कौन-सा keyword है?",
+    "options_en": ["anon", "lambda", "func", "def"],
+    "options_hi": ["anon", "lambda", "func", "def"],
+    "answer_en": "lambda",
+    "answer_hi": "lambda",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 33,
+    "question_en": "What is the output of: 'abc'.upper()?",
+    "question_hi": "'abc'.upper() का आउटपुट क्या होगा?",
+    "options_en": ["abc", "ABC", "Abc", "Syntax Error"],
+    "options_hi": ["abc", "ABC", "Abc", "Syntax Error"],
+    "answer_en": "ABC",
+    "answer_hi": "ABC",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 34,
+    "question_en": "How do you handle an exception?",
+    "question_hi": "Exception को handle करने का तरीका क्या है?",
+    "options_en": ["try/except", "if/else", "catch/finally", "try/catch"],
+    "options_hi": ["try/except", "if/else", "catch/finally", "try/catch"],
+    "answer_en": "try/except",
+    "answer_hi": "try/except",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 35,
+    "question_en": "What is a correct way to define a list?",
+    "question_hi": "List define करने का सही तरीका क्या है?",
+    "options_en": ["(1,2,3)", "{1,2,3}", "[1,2,3]", "<1,2,3>"],
+    "options_hi": ["(1,2,3)", "{1,2,3}", "[1,2,3]", "<1,2,3>"],
+    "answer_en": "[1,2,3]",
+    "answer_hi": "[1,2,3]",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 36,
+    "question_en": "Which function is used to get user input?",
+    "question_hi": "User input लेने के लिए कौन-सा function use होता है?",
+    "options_en": ["scanf()", "input()", "get()", "read()"],
+    "options_hi": ["scanf()", "input()", "get()", "read()"],
+    "answer_en": "input()",
+    "answer_hi": "input()",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 37,
+    "question_en": "How to remove whitespace from a string?",
+    "question_hi": "String से whitespace कैसे हटाएँ?",
+    "options_en": ["strip()", "trim()", "remove()", "erase()"],
+    "options_hi": ["strip()", "trim()", "remove()", "erase()"],
+    "answer_en": "strip()",
+    "answer_hi": "strip()",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 38,
+    "question_en": "What does the 'is' operator compare?",
+    "question_hi": "'is' operator क्या compare करता है?",
+    "options_en": ["Values", "Memory locations", "Types", "Keys"],
+    "options_hi": ["Values", "Memory locations", "Types", "Keys"],
+    "answer_en": "Memory locations",
+    "answer_hi": "Memory locations",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 39,
+    "question_en": "Which statement is used to skip iteration in a loop?",
+    "question_hi": "Loop में iteration skip करने के लिए कौन-सा statement use होता है?",
+    "options_en": ["break", "pass", "continue", "exit"],
+    "options_hi": ["break", "pass", "continue", "exit"],
+    "answer_en": "continue",
+    "answer_hi": "continue",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 40,
+    "question_en": "What is the result of: 10 % 3?",
+    "question_hi": "10 % 3 का परिणाम क्या होगा?",
+    "options_en": ["1", "3", "0", "10"],
+    "options_hi": ["1", "3", "0", "10"],
+    "answer_en": "1",
+    "answer_hi": "1",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 41,
+    "question_en": "How do you check if a value exists in a dictionary?",
+    "question_hi": "Dictionary में value exist करती है या नहीं कैसे check करें?",
+    "options_en": ["in", "has", "exists", "check"],
+    "options_hi": ["in", "has", "exists", "check"],
+    "answer_en": "in",
+    "answer_hi": "in",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 42,
+    "question_en": "Which keyword is used to create a generator?",
+    "question_hi": "Generator create करने के लिए कौन-सा keyword use होता है?",
+    "options_en": ["generate", "yield", "return", "yield return"],
+    "options_hi": ["generate", "yield", "return", "yield return"],
+    "answer_en": "yield",
+    "answer_hi": "yield",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 43,
+    "question_en": "Which function is used to sort a list in Python?",
+    "question_hi": "Python में list sort करने के लिए कौन-सा function use होता है?",
+    "options_en": ["sorted()", "order()", "arrange()", "sortlist()"],
+    "options_hi": ["sorted()", "order()", "arrange()", "sortlist()"],
+    "answer_en": "sorted()",
+    "answer_hi": "sorted()",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 44,
+    "question_en": "What will type(None) return?",
+    "question_hi": "type(None) क्या return करेगा?",
+    "options_en": ["NoneType", "null", "None", "undefined"],
+    "options_hi": ["NoneType", "null", "None", "undefined"],
+    "answer_en": "NoneType",
+    "answer_hi": "NoneType",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 45,
+    "question_en": "What is the default return value of a function if not specified?",
+    "question_hi": "Function में return value specify न करने पर default value क्या होती है?",
+    "options_en": ["None", "0", "False", "Empty string"],
+    "options_hi": ["None", "0", "False", "Empty string"],
+    "answer_en": "None",
+    "answer_hi": "None",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 46,
+    "question_en": "What is the output of: bool('False')?",
+    "question_hi": "bool('False') का आउटपुट क्या होगा?",
+    "options_en": ["False", "True", "Error", "None"],
+    "options_hi": ["False", "True", "Error", "None"],
+    "answer_en": "True",
+    "answer_hi": "True",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 47,
+    "question_en": "What is the use of 'with' statement in file handling?",
+    "question_hi": "File handling में 'with' statement का उपयोग क्या है?",
+    "options_en": ["Manages file context", "Closes file manually", "Opens in GUI", "Locks file"],
+    "options_hi": ["Manages file context", "Closes file manually", "Opens in GUI", "Locks file"],
+    "answer_en": "Manages file context",
+    "answer_hi": "Manages file context",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 48,
+    "question_en": "How do you install external packages in Python?",
+    "question_hi": "Python में external packages कैसे install करते हैं?",
+    "options_en": ["pip install package", "install package", "python install", "pkg add package"],
+    "options_hi": ["pip install package", "install package", "python install", "pkg add package"],
+    "answer_en": "pip install package",
+    "answer_hi": "pip install package",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 49,
+    "question_en": "What is the use of 'enumerate()'?",
+    "question_hi": "'enumerate()' का उपयोग क्या है?",
+    "options_en": ["Index and value", "Count items", "Loop once", "Map items"],
+    "options_hi": ["Index and value", "Count items", "Loop once", "Map items"],
+    "answer_en": "Index and value",
+    "answer_hi": "Index and value",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 50,
+    "question_en": "How do you create a set in Python?",
+    "question_hi": "Python में set कैसे बनाते हैं?",
+    "options_en": ["set()", "{}", "[]", "set[]"],
+    "options_hi": ["set()", "{}", "[]", "set[]"],
+    "answer_en": "set()",
+    "answer_hi": "set()",
+    "attempted": false,
+    "selected": ""
+  }
 ];
 
-let currentQuestion = 0;
 
-    function loadQuestion(index) {
-        document.getElementById("question").textContent = questions[index].question;
-        document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
-        const optionsElement = document.getElementById("options");
-        optionsElement.innerHTML = "";
-        questions[index].options.forEach(option => {
-            optionsElement.innerHTML += `<li><input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')"> ${option}</li>`;
-        });
-        updateCircles();
-    }
+let currentQuestion = 0; 
+let language = "en";
+let timeLeft = 180 * 60; // 180 minutes
+let timerInterval;
 
-    function markAttempted(index, selectedAnswer) {
-        questions[index].attempted = true;
-        questions[index].selected = selectedAnswer;
-        updateCircles();
-    }
+// ----------------- Quiz Logic -----------------
+function loadQuestion(index) {
+    const q = questions[index];
+    document.getElementById("question").textContent = `${q.num}. ${
+        language === "en" ? q.question_en : q.question_hi
+    }`;
+    document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
 
-    function nextQuestion() {
-        if (currentQuestion < questions.length - 1) {
-            currentQuestion++;
-            loadQuestion(currentQuestion);
-        }
-    }
+    const optionsElement = document.getElementById("options");
+    optionsElement.innerHTML = "";
 
-    function prevQuestion() {
-        if (currentQuestion > 0) {
-            currentQuestion--;
-            loadQuestion(currentQuestion);
-        }
-    }
+    const options = language === "en" ? q.options_en : q.options_hi;
 
-    function updateCircles() {
-        const circleContainer = document.getElementById("circleContainer");
-        circleContainer.innerHTML = "";
-        questions.forEach((q, i) => {
-            let status = i === currentQuestion ? "active" : q.attempted ? "answered" : "not-attempted";
-            circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
-        });
-    }
+    options.forEach((option) => {
+        const isSelected = q.selected === option;
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option-box";
+        optionDiv.style = `
+            border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
+            background-color: ${isSelected ? "#e7f1ff" : "white"};
+            padding: 10px;
+            border-radius: 8px;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        `;
 
-    function jumpToQuestion(index) {
-        currentQuestion = index;
-        loadQuestion(index);
-    }
+        optionDiv.innerHTML = `
+            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} style="margin-right:8px;">
+            ${option}
+        `;
 
-    function submitQuiz() {
-        let confirmation = confirm("Are you sure you want to submit the test?");
-        
-        if (!confirmation) {
-            return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
-        }
-
-        let attempted = 0;
-        let notAttempted = 0;
-        let score = 0;
-        const results = [];
-
-        questions.forEach(q => {
-            if (q.attempted) {
-                attempted++;
-                if (q.selected === q.answer) {
-                    score++;
-                }
-            } else {
-                notAttempted++;
-            }
-            results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
+        optionDiv.addEventListener("click", () => {
+            markAttempted(index, option);
+            loadQuestion(index);
         });
 
-        localStorage.setItem("attempted", attempted);
-        localStorage.setItem("notAttempted", notAttempted);
-        localStorage.setItem("score", score);
-        localStorage.setItem("results", JSON.stringify(results));
+        optionsElement.appendChild(optionDiv);
+    });
 
-        // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-        let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-        if (viewResult) {
-            window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
-        }
-    }
-    window.onload = () => {
+    updateNavigation();
+}
+
+function markAttempted(index, selectedAnswer) {
+    questions[index].attempted = true;
+    questions[index].selected = selectedAnswer;
+    updateNavigation();
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
         loadQuestion(currentQuestion);
-    };
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function changeLanguage() {
+    language = document.getElementById("languageSelect").value;
+    loadQuestion(currentQuestion);
+}
+
+function submitQuiz() {
+    clearInterval(timerInterval);
+    let attempted = 0,
+        notAttempted = 0,
+        score = 0;
+
+    questions.forEach((q) => {
+        if (q.attempted) {
+            attempted++;
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) score++;
+        } else notAttempted++;
+    });
+
+    alert(
+        `Quiz submitted!\nAttempted: ${attempted}\nNot Attempted: ${notAttempted}\nScore: ${score}/${questions.length}`
+    );
+}
+
+function startTimer() {
+    const timerElement = document.getElementById("timer");
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time's up!");
+            submitQuiz();
+        } else {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time Left: ${hours
+                .toString()
+                .padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timeLeft--;
+        }
+    }, 1000);
+}
+
+function updateNavigation() {
+    const nav = document.getElementById("circleContainer");
+    nav.innerHTML = "";
+    questions.forEach((q, i) => {
+        let color = "gray";
+        if (i === currentQuestion) color = "blue";
+        else if (q.attempted) color = "green";
+        nav.innerHTML += `<div class='circle' style='background-color:${color}' onclick='loadQuestion(${i})'>${i + 1}</div>`;
+    });
+}
+
+// ----------------- Camera & Movement Logic -----------------
+let videoStream;
+let movementCount = 0;
+
+function startCamera() {
+    const container = document.createElement("div");
+    container.id = "camera-container";
+    container.style.position = "fixed";
+    container.style.top = "10px";
+    container.style.left = "10px"; // ✅ Left side
+    container.style.width = "130px";
+    container.style.height = "130px";
+    container.style.zIndex = "9999";
+    container.style.borderRadius = "50%";
+    container.style.overflow = "hidden";
+    container.style.border = "3px solid red";
+    container.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    container.style.cursor = "grab";
+    container.style.minWidth = "80px";
+    container.style.minHeight = "80px";
+    container.style.maxWidth = "250px";
+    container.style.maxHeight = "250px";
+    container.style.background = "#000";
+    document.body.appendChild(container);
+
+    const video = document.createElement("video");
+    video.setAttribute("autoplay", true);
+    video.setAttribute("playsinline", true);
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    container.appendChild(video);
+
+    // ✅ Resize handle
+    const resizeHandle = document.createElement("div");
+    resizeHandle.style.position = "absolute";
+    resizeHandle.style.bottom = "2px";
+    resizeHandle.style.right = "2px";
+    resizeHandle.style.width = "15px";
+    resizeHandle.style.height = "15px";
+    resizeHandle.style.background = "rgba(255,255,255,0.7)";
+    resizeHandle.style.borderRadius = "4px";
+    resizeHandle.style.cursor = "se-resize";
+    container.appendChild(resizeHandle);
+
+    // ✅ Drag logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    container.addEventListener("mousedown", (e) => {
+        if (e.target === resizeHandle) return;
+        isDragging = true;
+        offsetX = e.clientX - container.offsetLeft;
+        offsetY = e.clientY - container.offsetTop;
+        container.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - offsetX;
+        let y = e.clientY - offsetY;
+        x = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, y));
+        container.style.left = `${x}px`;
+        container.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        container.style.cursor = "grab";
+    });
+
+    // ✅ Resize logic
+    let isResizing = false;
+    let startWidth, startHeight, startX, startY;
+
+    resizeHandle.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        isResizing = true;
+        startWidth = container.offsetWidth;
+        startHeight = container.offsetHeight;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isResizing) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const newSize = Math.max(80, Math.min(250, Math.max(startWidth + dx, startHeight + dy)));
+        container.style.width = `${newSize}px`;
+        container.style.height = `${newSize}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isResizing = false;
+    });
+
+    // ✅ Camera stream
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            videoStream = stream;
+            detectMovement(video);
+        })
+        .catch(err => {
+            console.error("Camera error:", err);
+            alert("Camera not accessible!");
+        });
+}
+
+function detectMovement(video) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 160;
+    canvas.height = 160;
+    let lastImageData = null;
+
+    setInterval(() => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        if (lastImageData) {
+            let diff = 0;
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                diff += Math.abs(imageData.data[i] - lastImageData.data[i]);
+            }
+
+            if (diff > 1000000) {
+                movementCount++;
+                if (movementCount === 1) {
+                    alert("⚠️ Alert 1: Face is not move");
+                } else if (movementCount === 2) {
+                    alert("⚠️ Alert 2: Head is not move");
+                } else if (movementCount === 3) {
+                    alert("⚠️ Alert 3: Test series is restarting...");
+                    restartTest();
+                }
+            }
+        }
+        lastImageData = imageData;
+    }, 2000);
+}
+
+function restartTest() {
+    if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+    }
+    const camContainer = document.getElementById("camera-container");
+    if (camContainer) camContainer.remove();
+
+    movementCount = 0;
+    currentQuestion = 0;
+    timeLeft = 180 * 60;
+
+    questions.forEach(q => {
+        q.attempted = false;
+        q.selected = null;
+    });
+
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera();
+}
+
+// ----------------- Page Load -----------------
+window.onload = function () {
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera(); // ✅ Camera starts with test
+};
+
