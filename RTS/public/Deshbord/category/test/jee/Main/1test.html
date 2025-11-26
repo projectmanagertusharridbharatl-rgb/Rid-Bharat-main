@@ -1,63 +1,58 @@
-  <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Application JEE</title>
-    <link rel="stylesheet" href="/rts/css/jee/jee.css">
-</head>
+    <link rel="stylesheet" href="/rts/css/jee/jee.css" />
+  </head>
 
-<body>
-  
-
+  <body>
     <div class="main-container">
-        <div class="quiz-container">
-            <div class="question-header">
-                <h2>JEE Test 1</h2>
-                <div class="timer"> <span id="timer"></span> </div>
-            </div>
-
-            <select id="languageSelect" onchange="changeLanguage()" class="language-select">
-                <option value="en">English</option>
-                <option value="hi">हिंदी</option>
-            </select>
-
-            <p id="questionCounter"></p>
-            <div id="question"></div>
-            <ul class="options" id="options"></ul>
-
-            <div class="buttons">
-                <button class="btn" onclick="prevQuestion()">Previous</button>
-                <button class="btn btn-next" onclick="nextQuestion()">Next</button>
-            </div>
+      <div class="quiz-container">
+        <div class="question-header">
+          <h2>JEE Test 1</h2>
+          <div class="timer"><span id="timer"></span></div>
         </div>
 
-        <div class="sidebar">
-            <div class="sidebar-content">
-                <div class="status-indicator">
-                    <p class="answered"><span></span> Answered</p>
-                    <p class="not-attempted"><span></span> Not Attempted</p>
-                    <p class="marked"><span></span> Marked</p>
-                    <p class="visited"><span></span> Visited</p>
-                    <div class="circles-container" id="circleContainer"></div>
-                    <button class="/rts/btn submit-btn" onclick="submitQuiz()">Submit Test</button>
-                </div>
-            </div>
+        <select
+          id="languageSelect"
+          onchange="changeLanguage()"
+          class="language-select"
+        >
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+        </select>
+
+        <p id="questionCounter"></p>
+        <div id="question"></div>
+        <ul class="options" id="options"></ul>
+
+        <div class="buttons">
+          <button class="btn" onclick="prevQuestion()">Previous</button>
+          <button class="btn btn-next" onclick="nextQuestion()">Next</button>
         </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="sidebar-content">
+          <div class="status-indicator">
+            <p class="answered"><span></span> Answered</p>
+            <p class="not-attempted"><span></span> Not Attempted</p>
+            <p class="marked"><span></span> Marked</p>
+            <p class="visited"><span></span> Visited</p>
+            <div class="circles-container" id="circleContainer"></div>
+            <button class="/rts/btn submit-btn" onclick="submitQuiz()">
+              Submit Test
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="/rts/js/jee/mains/fast-test.js"></script>
-</body>
-
+  </body>
 </html>
-
-
-
-
-
-
-
 
 <!--  trayl -->
 
@@ -909,31 +904,6 @@
 </body>
 </html> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 
 
 <!DOCTYPE html>
@@ -1113,7 +1083,7 @@
             </div>
             
             <!-- Monitoring Status Indicator -->
-            <!-- <div class="monitor-status active" id="monitorStatus">
+<!-- <div class="monitor-status active" id="monitorStatus">
                 <i class="fas fa-shield-alt"></i>
                 <span>Monitoring Active</span>
             </div>
@@ -1145,12 +1115,12 @@
                 </div>
                 
                 <!-- Movement Monitor Section -->
-                <!-- <div class="monitor-container">
+<!-- <div class="monitor-container">
                     <h3>Movement Monitor</h3>
                     <p>Excessive mouse movements will trigger warnings</p>
                      -->
-                    <!-- Camera Detection Section -->
-                    <!-- <div class="camera-section">
+<!-- Camera Detection Section -->
+<!-- <div class="camera-section">
                         <h4>Camera Monitoring</h4>
                         <div class="camera-feed">
                             <video id="cameraFeed" autoplay playsinline></video>
@@ -1165,9 +1135,9 @@
             </div>
         </div>
     </div> -->
-    
-    <!-- Warning Modal -->
-    <!-- <div class="warning-modal" id="warningModal">
+
+<!-- Warning Modal -->
+<!-- <div class="warning-modal" id="warningModal">
         <div class="warning-content">
             <h2>⚠️ Warning!</h2>
             <p id="warningMessage">Excessive movement detected! Please remain focused on the test.</p>
@@ -1175,8 +1145,8 @@
         </div>
     </div>
      -->
-    <!-- Alarm -->
-    <!-- <div class="alarm" id="alarm"></div>
+<!-- Alarm -->
+<!-- <div class="alarm" id="alarm"></div>
     
     <script>
         // Monitoring state
@@ -1359,4 +1329,5 @@
         }
     </script>
 </body>
-</html> --> --> -->
+</html> -->
+--> -->

@@ -22,7 +22,9 @@ const port = process.env.PORT || 9191;
 // Database connection
 connectDB();
 
+// ======================
 // Middleware configuration
+// ======================
 const configureMiddleware = () => {
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,7 +32,7 @@ const configureMiddleware = () => {
   app.use(express.json({ limit: "100mb" }));
   app.use(express.urlencoded({ limit: "100mb", extended: true }));
   app.use(cookieParser());
-  
+
   app.use(
     fileUpload({
       useTempFiles: true,
@@ -38,7 +40,7 @@ const configureMiddleware = () => {
       limits: { fileSize: 100 * 1024 * 1024 },
     })
   );
-  
+
   app.use(
     session({
       secret: crypto.randomBytes(64).toString("hex"),
@@ -47,20 +49,24 @@ const configureMiddleware = () => {
       cookie: { secure: false },
     })
   );
-  
+
   app.use(passport.initialize());
   app.use(passport.session());
   require("./config/passport")(passport);
 };
 
+// ======================
 // View engine setup
+// ======================
 const configureViews = () => {
   app.set("view engine", "ejs");
   app.set("views", path.join(__dirname, "views"));
   app.use(express.static(path.join(__dirname, "public")));
 };
 
+// ======================
 // Route handlers
+// ======================
 const configureRoutes = () => {
   // API Routes
   const bookRoutes = require("./routes/bookRoutes");
@@ -84,15 +90,16 @@ const configureRoutes = () => {
   // RTS Integration
   app.use("/RTS/public", express.static(path.join(__dirname, "RTS", "public")));
   app.use("/rts", express.static(path.join(__dirname, "RTS", "public")));
-  
+
   app.get("/rts/main", (req, res) => {
     res.sendFile(path.join(__dirname, "RTS", "public", "main.html"));
   });
 
-  // View Routes
+  // Models
   const Organisation = require("./models/Organisation");
   const Book = require("./models/Book");
 
+  // View Routes
   app.get("/books", async (req, res) => {
     try {
       const books = await Book.find({});
@@ -111,6 +118,7 @@ const configureRoutes = () => {
     });
   });
 
+  // Organisation Dashboard
   app.get("/organization-dashboard", authenticateJWT, async (req, res) => {
     try {
       const organization = await Organisation.findOne();
@@ -135,15 +143,20 @@ const configureRoutes = () => {
     }
   });
 
-  // Static HTML Routes
+  // Role protected pages
   const roleMiddleware = (role) => (req, res, next) => {
     if (req.user && req.user.role === role) return next();
     res.redirect("/login");
   };
 
-  app.get("/organisation", authenticateJWT, roleMiddleware("organisation"), (req, res) => {
-    res.render("register-org");
-  });
+  app.get(
+    "/organisation",
+    authenticateJWT,
+    roleMiddleware("organisation"),
+    (req, res) => {
+      res.render("register-org");
+    }
+  );
 
   app.get("/teacher", authenticateJWT, roleMiddleware("teacher"), (req, res) => {
     res.sendFile(path.join(__dirname, "public", "teacher.html"));
@@ -157,12 +170,17 @@ const configureRoutes = () => {
     res.sendFile(path.join(__dirname, "public", "Admin/admin.html"));
   });
 
+  // Static HTML Pages
   app.get("/reset-password", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "Reset-Password/reset-password.html"));
+    res.sendFile(
+      path.join(__dirname, "public", "Reset-Password/reset-password.html")
+    );
   });
 
   app.get("/forgot-password", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "Forgot-Password/forgot-password.html"));
+    res.sendFile(
+      path.join(__dirname, "public", "Forgot-Password/forgot-password.html")
+    );
   });
 
   app.get("/form", (req, res) => {
@@ -178,15 +196,13 @@ const configureRoutes = () => {
   });
 
   app.get("/verify", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "Certificate-Verification/verify.html"));
+    res.sendFile(
+      path.join(__dirname, "public", "Certificate-Verification/verify.html")
+    );
   });
 
   app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
-  });
-
-  app.get("/ebook", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "ebook.html"));
   });
 
   app.get("/searchResult", (req, res) => {
@@ -197,6 +213,7 @@ const configureRoutes = () => {
     res.sendFile(path.join(__dirname, "public", "serverpdf.html"));
   });
 
+  // PDF Route
   app.get("/get-pdf", (req, res) => {
     const pdfPath = path.join(__dirname, "ebookdata", "azenglish.pdf");
     const pdfStream = fs.createReadStream(pdfPath);
@@ -205,7 +222,7 @@ const configureRoutes = () => {
     pdfStream.pipe(res);
   });
 
-  // Logout route
+  // Logout
   app.get("/logout", (req, res) => {
     if (req.session) {
       req.session.destroy((err) => {
@@ -225,13 +242,15 @@ const configureRoutes = () => {
     res.json({ duration });
   });
 
-  // Catch-all 404
+  // 404 Page
   app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, "public", "404/404.html"));
   });
 };
 
-// Configure the application
+// ======================
+// App Initialization
+// ======================
 configureMiddleware();
 configureViews();
 configureRoutes();

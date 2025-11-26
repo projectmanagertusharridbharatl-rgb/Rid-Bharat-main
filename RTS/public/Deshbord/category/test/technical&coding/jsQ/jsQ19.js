@@ -1,538 +1,19 @@
-const questions= [
+const questions = [
   {
     num: 1,
-    question_en: "What does `var` keyword do in JavaScript?",
-    question_hi: "`var` कीवर्ड JavaScript में क्या करता है?",
-    options_en: ["Declares a variable", "Creates a function", "Declares a constant", "Deletes a variable"],
-    options_hi: ["एक वेरिएबल घोषित करता है", "एक फंक्शन बनाता है", "एक कॉन्स्टेंट घोषित करता है", "एक वेरिएबल हटाता है"],
-    answer_en: "Declares a variable",
-    answer_hi: "एक वेरिएबल घोषित करता है",
+    question_en: "What is the output of `console.log([] == false)`?",
+    question_hi: "`console.log([] == false)` का आउटपुट क्या है?",
+    options_en: ["true", "false", "undefined", "Error"],
+    options_hi: ["true", "false", "undefined", "एरर"],
+    answer_en: "true",
+    answer_hi: "true",
     attempted: false,
     selected: ""
   },
   {
     num: 2,
-    question_en: "Which method converts an object to JSON?",
-    question_hi: "कौन-सा मेथड ऑब्जेक्ट को JSON में बदलता है?",
-    options_en: ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "Object.stringify()"],
-    options_hi: ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "Object.stringify()"],
-    answer_en: "JSON.stringify()",
-    answer_hi: "JSON.stringify()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 3,
-    question_en: "Which operator is used for strict equality?",
-    question_hi: "कड़ी समानता के लिए कौन सा ऑपरेटर उपयोग होता है?",
-    options_en: ["===", "==", "!==", "="],
-    options_hi: ["===", "==", "!==", "="],
-    answer_en: "===",
-    answer_hi: "===",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 4,
-    question_en: "Which keyword declares a constant variable?",
-    question_hi: "कौन-सा कीवर्ड एक स्थायी वेरिएबल घोषित करता है?",
-    options_en: ["const", "let", "var", "constant"],
-    options_hi: ["const", "let", "var", "constant"],
-    answer_en: "const",
-    answer_hi: "const",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 5,
-    question_en: "Which function is used to parse a string to integer?",
-    question_hi: "कौन-सा फंक्शन स्ट्रिंग को पूर्णांक में बदलता है?",
-    options_en: ["parseInt()", "parseFloat()", "Number()", "String()"],
-    options_hi: ["parseInt()", "parseFloat()", "Number()", "String()"],
-    answer_en: "parseInt()",
-    answer_hi: "parseInt()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 6,
-    question_en: "Which method adds an element at the end of an array?",
-    question_hi: "कौन-सा मेथड ऐरे के अंत में एलिमेंट जोड़ता है?",
-    options_en: ["push()", "pop()", "shift()", "unshift()"],
-    options_hi: ["push()", "pop()", "shift()", "unshift()"],
-    answer_en: "push()",
-    answer_hi: "push()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 7,
-    question_en: "Which method removes the last element of an array?",
-    question_hi: "कौन-सा मेथड ऐरे का आखिरी एलिमेंट हटाता है?",
-    options_en: ["pop()", "push()", "shift()", "unshift()"],
-    options_hi: ["pop()", "push()", "shift()", "unshift()"],
-    answer_en: "pop()",
-    answer_hi: "pop()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 8,
-    question_en: "Which keyword is used to create a class in JavaScript?",
-    question_hi: "JavaScript में क्लास बनाने के लिए कौन-सा कीवर्ड उपयोग होता है?",
-    options_en: ["class", "function", "object", "new"],
-    options_hi: ["class", "function", "object", "new"],
-    answer_en: "class",
-    answer_hi: "class",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 9,
-    question_en: "Which method executes a function for each array element?",
-    question_hi: "कौन-सा मेथड ऐरे के प्रत्येक एलिमेंट पर फंक्शन चलाता है?",
-    options_en: ["forEach()", "map()", "filter()", "reduce()"],
-    options_hi: ["forEach()", "map()", "filter()", "reduce()"],
-    answer_en: "forEach()",
-    answer_hi: "forEach()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 10,
-    question_en: "Which operator is used to concatenate strings?",
-    question_hi: "स्ट्रिंग जोड़ने के लिए कौन-सा ऑपरेटर उपयोग होता है?",
-    options_en: ["+", "-", "*", "&"],
-    options_hi: ["+", "-", "*", "&"],
-    answer_en: "+",
-    answer_hi: "+",
-    attempted: false,
-    selected: ""
-  },
-
-
-  {
-    num: 11,
-    question_en: "Which method creates a new array with elements that pass a test?",
-    question_hi: "कौन-सा मेथड एक नया ऐरे बनाता है जिसमें केवल टेस्ट पास करने वाले एलिमेंट होंगे?",
-    options_en: ["filter()", "map()", "reduce()", "forEach()"],
-    options_hi: ["filter()", "map()", "reduce()", "forEach()"],
-    answer_en: "filter()",
-    answer_hi: "filter()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 12,
-    question_en: "Which method creates a new array by transforming elements?",
-    question_hi: "कौन-सा मेथड एलिमेंट्स को बदलकर नया ऐरे बनाता है?",
-    options_en: ["map()", "filter()", "reduce()", "forEach()"],
-    options_hi: ["map()", "filter()", "reduce()", "forEach()"],
-    answer_en: "map()",
-    answer_hi: "map()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 13,
-    question_en: "Which method reduces an array to a single value?",
-    question_hi: "कौन-सा मेथड ऐरे को एक सिंगल वैल्यू में बदलता है?",
-    options_en: ["reduce()", "map()", "filter()", "forEach()"],
-    options_hi: ["reduce()", "map()", "filter()", "forEach()"],
-    answer_en: "reduce()",
-    answer_hi: "reduce()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 14,
-    question_en: "Which method splits a string into an array?",
-    question_hi: "कौन-सा मेथड स्ट्रिंग को ऐरे में बदलता है?",
-    options_en: ["split()", "join()", "slice()", "substring()"],
-    options_hi: ["split()", "join()", "slice()", "substring()"],
-    answer_en: "split()",
-    answer_hi: "split()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 15,
-    question_en: "Which method joins array elements into a string?",
-    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को स्ट्रिंग में जोड़ता है?",
-    options_en: ["join()", "split()", "concat()", "push()"],
-    options_hi: ["join()", "split()", "concat()", "push()"],
-    answer_en: "join()",
-    answer_hi: "join()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 16,
-    question_en: "Which operator is used to check if a value exists in an array?",
-    question_hi: "कौन-सा ऑपरेटर यह जांचने के लिए उपयोग होता है कि वैल्यू ऐरे में है या नहीं?",
-    options_en: ["includes()", "indexOf()", "in", "contains()"],
-    options_hi: ["includes()", "indexOf()", "in", "contains()"],
-    answer_en: "includes()",
-    answer_hi: "includes()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 17,
-    question_en: "Which keyword is used for asynchronous operations?",
-    question_hi: "एसिंक्रोनस ऑपरेशन्स के लिए कौन-सा कीवर्ड उपयोग होता है?",
-    options_en: ["async", "await", "then", "promise"],
-    options_hi: ["async", "await", "then", "promise"],
-    answer_en: "async",
-    answer_hi: "async",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 18,
-    question_en: "Which method is used to parse a JSON string?",
-    question_hi: "JSON स्ट्रिंग को पार्स करने के लिए कौन-सा मेथड उपयोग होता है?",
-    options_en: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
-    options_hi: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
-    answer_en: "JSON.parse()",
-    answer_hi: "JSON.parse()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 19,
-    question_en: "Which operator is used to assign a value?",
-    question_hi: "किस ऑपरेटर का उपयोग वैल्यू असाइन करने के लिए होता है?",
-    options_en: ["=", "==", "===", "+="],
-    options_hi: ["=", "==", "===", "+="],
-    answer_en: "=",
-    answer_hi: "=",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 20,
-    question_en: "Which statement is used for conditional execution?",
-    question_hi: "शर्तीय निष्पादन के लिए कौन-सा स्टेटमेंट उपयोग होता है?",
-    options_en: ["if", "for", "while", "switch"],
-    options_hi: ["if", "for", "while", "switch"],
-    answer_en: "if",
-    answer_hi: "if",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 21,
-    question_en: "Which keyword creates a block-scoped variable?",
-    question_hi: "कौन-सा कीवर्ड ब्लॉक स्कोप्ड वेरिएबल बनाता है?",
-    options_en: ["let", "var", "const", "block"],
-    options_hi: ["let", "var", "const", "block"],
-    answer_en: "let",
-    answer_hi: "let",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 22,
-    question_en: "Which method adds elements to the beginning of an array?",
-    question_hi: "कौन-सा मेथड ऐरे की शुरुआत में एलिमेंट जोड़ता है?",
-    options_en: ["unshift()", "push()", "shift()", "concat()"],
-    options_hi: ["unshift()", "push()", "shift()", "concat()"],
-    answer_en: "unshift()",
-    answer_hi: "unshift()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 23,
-    question_en: "Which method removes the first element of an array?",
-    question_hi: "कौन-सा मेथड ऐरे का पहला एलिमेंट हटाता है?",
-    options_en: ["shift()", "pop()", "push()", "unshift()"],
-    options_hi: ["shift()", "pop()", "push()", "unshift()"],
-    answer_en: "shift()",
-    answer_hi: "shift()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 24,
-    question_en: "Which function is used to call a function with a specific 'this' value?",
-    question_hi: "कौन-सा फंक्शन एक विशेष 'this' वैल्यू के साथ फंक्शन कॉल करने के लिए उपयोग होता है?",
-    options_en: ["call()", "apply()", "bind()", "execute()"],
-    options_hi: ["call()", "apply()", "bind()", "execute()"],
-    answer_en: "call()",
-    answer_hi: "call()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 25,
-    question_en: "Which function allows passing arguments as an array?",
-    question_hi: "कौन-सा फंक्शन आर्गुमेंट्स को ऐरे के रूप में पास करने की अनुमति देता है?",
-    options_en: ["apply()", "call()", "bind()", "execute()"],
-    options_hi: ["apply()", "call()", "bind()", "execute()"],
-    answer_en: "apply()",
-    answer_hi: "apply()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 26,
-    question_en: "Which method creates a shallow copy of an array?",
-    question_hi: "कौन-सा मेथड ऐरे की शैलो कॉपी बनाता है?",
-    options_en: ["slice()", "splice()", "concat()", "copy()"],
-    options_hi: ["slice()", "splice()", "concat()", "copy()"],
-    answer_en: "slice()",
-    answer_hi: "slice()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 27,
-    question_en: "Which method changes the contents of an array?",
-    question_hi: "कौन-सा मेथड ऐरे की सामग्री बदलता है?",
-    options_en: ["splice()", "slice()", "concat()", "push()"],
-    options_hi: ["splice()", "slice()", "concat()", "push()"],
-    answer_en: "splice()",
-    answer_hi: "splice()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 28,
-    question_en: "Which statement is used to handle exceptions?",
-    question_hi: "एक्सेप्शन को हैंडल करने के लिए कौन-सा स्टेटमेंट उपयोग होता है?",
-    options_en: ["try...catch", "if...else", "switch", "for"],
-    options_hi: ["try...catch", "if...else", "switch", "for"],
-    answer_en: "try...catch",
-    answer_hi: "try...catch",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 29,
-    question_en: "Which operator is used for logical AND?",
-    question_hi: "लॉजिकल AND के लिए कौन-सा ऑपरेटर उपयोग होता है?",
-    options_en: ["&&", "||", "!", "&"],
-    options_hi: ["&&", "||", "!", "&"],
-    answer_en: "&&",
-    answer_hi: "&&",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 30,
-    question_en: "Which operator is used for logical OR?",
-    question_hi: "लॉजिकल OR के लिए कौन-सा ऑपरेटर उपयोग होता है?",
-    options_en: ["||", "&&", "!", "|"],
-    options_hi: ["||", "&&", "!", "|"],
-    answer_en: "||",
-    answer_hi: "||",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 31,
-    question_en: "Which keyword is used to refer to the current object?",
-    question_hi: "कौन-सा कीवर्ड वर्तमान ऑब्जेक्ट को संदर्भित करने के लिए उपयोग होता है?",
-    options_en: ["this", "self", "current", "object"],
-    options_hi: ["this", "self", "current", "object"],
-    answer_en: "this",
-    answer_hi: "this",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 32,
-    question_en: "Which method sorts the elements of an array?",
-    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को सॉर्ट करता है?",
-    options_en: ["sort()", "reverse()", "map()", "filter()"],
-    options_hi: ["sort()", "reverse()", "map()", "filter()"],
-    answer_en: "sort()",
-    answer_hi: "sort()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 33,
-    question_en: "Which method reverses the elements of an array?",
-    question_hi: "कौन-सा मेथड ऐरे के एलिमेंट्स को रिवर्स करता है?",
-    options_en: ["reverse()", "sort()", "map()", "filter()"],
-    options_hi: ["reverse()", "sort()", "map()", "filter()"],
-    answer_en: "reverse()",
-    answer_hi: "reverse()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 34,
-    question_en: "Which operator is used for comparison (less than)?",
-    question_hi: "कौन-सा ऑपरेटर तुलना (छोटा) के लिए उपयोग होता है?",
-    options_en: ["<", ">", "<=", ">="],
-    options_hi: ["<", ">", "<=", ">="],
-    answer_en: "<",
-    answer_hi: "<",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 35,
-    question_en: "Which operator is used for comparison (greater than)?",
-    question_hi: "कौन-सा ऑपरेटर तुलना (बड़ा) के लिए उपयोग होता है?",
-    options_en: [">", "<", ">=", "<="],
-    options_hi: [">", "<", ">=", "<="],
-    answer_en: ">",
-    answer_hi: ">",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 36,
-    question_en: "Which method merges two or more arrays?",
-    question_hi: "कौन-सा मेथड दो या अधिक ऐरे को मर्ज करता है?",
-    options_en: ["concat()", "push()", "merge()", "join()"],
-    options_hi: ["concat()", "push()", "merge()", "join()"],
-    answer_en: "concat()",
-    answer_hi: "concat()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 37,
-    question_en: "Which keyword is used to define a function?",
-    question_hi: "कौन-सा कीवर्ड फंक्शन को डिफाइन करने के लिए उपयोग होता है?",
-    options_en: ["function", "func", "def", "method"],
-    options_hi: ["function", "func", "def", "method"],
-    answer_en: "function",
-    answer_hi: "function",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 38,
-    question_en: "Which method checks if a string starts with specific characters?",
-    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग किसी विशेष कैरेक्टर से शुरू होती है?",
-    options_en: ["startsWith()", "endsWith()", "includes()", "match()"],
-    options_hi: ["startsWith()", "endsWith()", "includes()", "match()"],
-    answer_en: "startsWith()",
-    answer_hi: "startsWith()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 39,
-    question_en: "Which method checks if a string ends with specific characters?",
-    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग किसी विशेष कैरेक्टर पर खत्म होती है?",
-    options_en: ["endsWith()", "startsWith()", "includes()", "match()"],
-    options_hi: ["endsWith()", "startsWith()", "includes()", "match()"],
-    answer_en: "endsWith()",
-    answer_hi: "endsWith()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 40,
-    question_en: "Which method checks if a string includes a substring?",
-    question_hi: "कौन-सा मेथड जांचता है कि स्ट्रिंग में कोई सबस्ट्रिंग शामिल है?",
-    options_en: ["includes()", "indexOf()", "search()", "match()"],
-    options_hi: ["includes()", "indexOf()", "search()", "match()"],
-    answer_en: "includes()",
-    answer_hi: "includes()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 41,
-    question_en: "Which keyword defines a promise in JavaScript?",
-    question_hi: "कौन-सा कीवर्ड JavaScript में प्रॉमिस को डिफाइन करता है?",
-    options_en: ["Promise", "Async", "Await", "Defer"],
-    options_hi: ["Promise", "Async", "Await", "Defer"],
-    answer_en: "Promise",
-    answer_hi: "Promise",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 42,
-    question_en: "Which method attaches a handler for resolved promises?",
-    question_hi: "कौन-सा मेथड हल किए गए प्रॉमिस के लिए हैंडलर अटैच करता है?",
-    options_en: ["then()", "catch()", "finally()", "all()"],
-    options_hi: ["then()", "catch()", "finally()", "all()"],
-    answer_en: "then()",
-    answer_hi: "then()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 43,
-    question_en: "Which method handles rejected promises?",
-    question_hi: "कौन-सा मेथड रिजेक्टेड प्रॉमिस को हैंडल करता है?",
-    options_en: ["catch()", "then()", "finally()", "all()"],
-    options_hi: ["catch()", "then()", "finally()", "all()"],
-    answer_en: "catch()",
-    answer_hi: "catch()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 44,
-    question_en: "Which method executes code regardless of promise outcome?",
-    question_hi: "कौन-सा मेथड प्रॉमिस के परिणाम की परवाह किए बिना कोड चलाता है?",
-    options_en: ["finally()", "then()", "catch()", "all()"],
-    options_hi: ["finally()", "then()", "catch()", "all()"],
-    answer_en: "finally()",
-    answer_hi: "finally()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 45,
-    question_en: "Which method returns a promise when all promises are resolved?",
-    question_hi: "कौन-सा मेथड तब प्रॉमिस लौटाता है जब सभी प्रॉमिस हल हो जाएँ?",
-    options_en: ["Promise.all()", "Promise.any()", "Promise.race()", "Promise.resolve()"],
-    options_hi: ["Promise.all()", "Promise.any()", "Promise.race()", "Promise.resolve()"],
-    answer_en: "Promise.all()",
-    answer_hi: "Promise.all()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 46,
-    question_en: "Which method returns a promise when any promise is resolved?",
-    question_hi: "कौन-सा मेथड तब प्रॉमिस लौटाता है जब कोई भी प्रॉमिस हल हो जाए?",
-    options_en: ["Promise.any()", "Promise.all()", "Promise.race()", "Promise.resolve()"],
-    options_hi: ["Promise.any()", "Promise.all()", "Promise.race()", "Promise.resolve()"],
-    answer_en: "Promise.any()",
-    answer_hi: "Promise.any()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 47,
-    question_en: "Which method returns a promise that resolves or rejects as soon as one promise settles?",
-    question_hi: "कौन-सा मेथड वह प्रॉमिस लौटाता है जो तुरंत हल या रिजेक्ट होता है जब एक प्रॉमिस पूरा होता है?",
-    options_en: ["Promise.race()", "Promise.all()", "Promise.any()", "Promise.resolve()"],
-    options_hi: ["Promise.race()", "Promise.all()", "Promise.any()", "Promise.resolve()"],
-    answer_en: "Promise.race()",
-    answer_hi: "Promise.race()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 48,
-    question_en: "Which method converts a number to a string?",
-    question_hi: "कौन-सा मेथड नंबर को स्ट्रिंग में बदलता है?",
-    options_en: ["toString()", "String()", "Number()", "valueOf()"],
-    options_hi: ["toString()", "String()", "Number()", "valueOf()"],
-    answer_en: "toString()",
-    answer_hi: "toString()",
-    attempted: false,
-    selected: ""
-  },
-  {
-    num: 49,
-    question_en: "Which method converts a string to a number?",
-    question_hi: "कौन-सा मेथड स्ट्रिंग को नंबर में बदलता है?",
+    question_en: "Which method is used to convert a string to a number?",
+    question_hi: "स्ट्रिंग को नंबर में बदलने के लिए कौन-सा मेथड उपयोग होता है?",
     options_en: ["Number()", "parseInt()", "parseFloat()", "All of the above"],
     options_hi: ["Number()", "parseInt()", "parseFloat()", "उपरोक्त सभी"],
     answer_en: "All of the above",
@@ -541,19 +22,534 @@ const questions= [
     selected: ""
   },
   {
+    num: 3,
+    question_en: "What does the `delete` operator do in JavaScript?",
+    question_hi: "`delete` ऑपरेटर JavaScript में क्या करता है?",
+    options_en: ["Deletes object properties", "Deletes variables", "Deletes functions", "All of the above"],
+    options_hi: ["ऑब्जेक्ट प्रॉपर्टीज डिलीट करता है", "वेरिएबल्स डिलीट करता है", "फंक्शन्स डिलीट करता है", "उपरोक्त सभी"],
+    answer_en: "Deletes object properties",
+    answer_hi: "ऑब्जेक्ट प्रॉपर्टीज डिलीट करता है",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 4,
+    question_en: "Which method is used to add elements to the end of an array?",
+    question_hi: "ऐरे के अंत में एलिमेंट जोड़ने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["push()", "pop()", "shift()", "unshift()"],
+    options_hi: ["push()", "pop()", "shift()", "unshift()"],
+    answer_en: "push()",
+    answer_hi: "push()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 5,
+    question_en: "What is the purpose of `console.warn()`?",
+    question_hi: "`console.warn()` का उद्देश्य क्या है?",
+    options_en: ["Display warning messages", "Display error messages", "Display info messages", "Clear console"],
+    options_hi: ["वार्निंग मैसेज दिखाना", "एरर मैसेज दिखाना", "इनफॉर्मेशन मैसेज दिखाना", "कंसोल क्लियर करना"],
+    answer_en: "Display warning messages",
+    answer_hi: "वार्निंग मैसेज दिखाना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 6,
+    question_en: "Which method is used to round a number to the nearest integer?",
+    question_hi: "नंबर को नजदीकी इंटीजर में राउंड करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["Math.round()", "Math.floor()", "Math.ceil()", "Math.trunc()"],
+    options_hi: ["Math.round()", "Math.floor()", "Math.ceil()", "Math.trunc()"],
+    answer_en: "Math.round()",
+    answer_hi: "Math.round()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 7,
+    question_en: "What is the output of `console.log(typeof undefined)`?",
+    question_hi: "`console.log(typeof undefined)` का आउटपुट क्या है?",
+    options_en: ["undefined", "null", "object", "string"],
+    options_hi: ["undefined", "null", "object", "string"],
+    answer_en: "undefined",
+    answer_hi: "undefined",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 8,
+    question_en: "Which method is used to remove the first element from an array?",
+    question_hi: "ऐरे से पहला एलिमेंट हटाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["shift()", "pop()", "unshift()", "push()"],
+    options_hi: ["shift()", "pop()", "unshift()", "push()"],
+    answer_en: "shift()",
+    answer_hi: "shift()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 9,
+    question_en: "What is the purpose of `!==` operator?",
+    question_hi: "`!==` ऑपरेटर का उद्देश्य क्या है?",
+    options_en: ["Strict inequality comparison", "Assignment", "Loose inequality comparison", "Type conversion"],
+    options_hi: ["स्ट्रिक्ट इनइक्वलिटी कम्पेरिजन", "असाइनमेंट", "लूज इनइक्वलिटी कम्पेरिजन", "टाइप कन्वर्जन"],
+    answer_en: "Strict inequality comparison",
+    answer_hi: "स्ट्रिक्ट इनइक्वलिटी कम्पेरिजन",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 10,
+    question_en: "Which method is used to add elements to the beginning of an array?",
+    question_hi: "ऐरे की शुरुआत में एलिमेंट जोड़ने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["unshift()", "push()", "shift()", "pop()"],
+    options_hi: ["unshift()", "push()", "shift()", "pop()"],
+    answer_en: "unshift()",
+    answer_hi: "unshift()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 11,
+    question_en: "What is the output of `console.log('5' * 3)`?",
+    question_hi: "`console.log('5' * 3)` का आउटपुट क्या है?",
+    options_en: ["15", "53", "NaN", "Error"],
+    options_hi: ["15", "53", "NaN", "एरर"],
+    answer_en: "15",
+    answer_hi: "15",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 12,
+    question_en: "Which property is used to find the length of an array?",
+    question_hi: "ऐरे की लंबाई ढूंढने के लिए कौन-सा प्रॉपर्टी उपयोग होता है?",
+    options_en: ["length", "size", "count", "getLength()"],
+    options_hi: ["length", "size", "count", "getLength()"],
+    answer_en: "length",
+    answer_hi: "length",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 13,
+    question_en: "What is the purpose of `function` keyword?",
+    question_hi: "`function` कीवर्ड का उद्देश्य क्या है?",
+    options_en: ["Define a function", "Call a function", "Return from function", "All of the above"],
+    options_hi: ["फंक्शन डिफाइन करना", "फंक्शन कॉल करना", "फंक्शन से रिटर्न करना", "उपरोक्त सभी"],
+    answer_en: "Define a function",
+    answer_hi: "फंक्शन डिफाइन करना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 14,
+    question_en: "Which method is used to convert a JSON string to JavaScript object?",
+    question_hi: "JSON स्ट्रिंग को JavaScript ऑब्जेक्ट में बदलने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
+    options_hi: ["JSON.parse()", "JSON.stringify()", "Object.parse()", "String.parse()"],
+    answer_en: "JSON.parse()",
+    answer_hi: "JSON.parse()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 15,
+    question_en: "What is the purpose of `continue` statement in a loop?",
+    question_hi: "लूप में `continue` स्टेटमेंट का उद्देश्य क्या है?",
+    options_en: ["Skip current iteration", "Exit the loop", "Stop the program", "Restart the loop"],
+    options_hi: ["करंट इटरेशन स्किप करना", "लूप से बाहर निकलना", "प्रोग्राम रोकना", "लूप रीस्टार्ट करना"],
+    answer_en: "Skip current iteration",
+    answer_hi: "करंट इटरेशन स्किप करना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 16,
+    question_en: "Which method is used to get the current date?",
+    question_hi: "करेंट डेट पाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["new Date()", "Date.now()", "Date.current()", "getCurrentDate()"],
+    options_hi: ["new Date()", "Date.now()", "Date.current()", "getCurrentDate()"],
+    answer_en: "new Date()",
+    answer_hi: "new Date()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 17,
+    question_en: "What is the purpose of `undefined` in JavaScript?",
+    question_hi: "JavaScript में `undefined` का उद्देश्य क्या है?",
+    options_en: ["Represent uninitialized variables", "Represent missing properties", "Both A and B", "None of the above"],
+    options_hi: ["अनइनिशियलाइज्ड वेरिएबल्स रिप्रेजेंट करना", "मिसिंग प्रॉपर्टीज रिप्रेजेंट करना", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 18,
+    question_en: "Which method is used to check if a string contains a substring?",
+    question_hi: "स्ट्रिंग में सबस्ट्रिंग है या नहीं चेक करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["includes()", "contains()", "has()", "find()"],
+    options_hi: ["includes()", "contains()", "has()", "find()"],
+    answer_en: "includes()",
+    answer_hi: "includes()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 19,
+    question_en: "What is the output of `console.log(Boolean(0))`?",
+    question_hi: "`console.log(Boolean(0))` का आउटपुट क्या है?",
+    options_en: ["false", "true", "0", "1"],
+    options_hi: ["false", "true", "0", "1"],
+    answer_en: "false",
+    answer_hi: "false",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 20,
+    question_en: "Which method is used to execute a function repeatedly?",
+    question_hi: "फंक्शन को बार-बार एक्जीक्यूट करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["setInterval()", "setTimeout()", "delay()", "repeat()"],
+    options_hi: ["setInterval()", "setTimeout()", "delay()", "repeat()"],
+    answer_en: "setInterval()",
+    answer_hi: "setInterval()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 21,
+    question_en: "What is the purpose of `const` keyword?",
+    question_hi: "`const` कीवर्ड का उद्देश्य क्या है?",
+    options_en: ["Declare constant variables", "Declare block-scoped variables", "Both A and B", "None of the above"],
+    options_hi: ["कॉन्स्टेंट वेरिएबल्स डिक्लेयर करना", "ब्लॉक-स्कोप्ड वेरिएबल्स डिक्लेयर करना", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 22,
+    question_en: "Which method is used to remove elements from an array?",
+    question_hi: "ऐरे से एलिमेंट्स हटाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["splice()", "slice()", "split()", "cut()"],
+    options_hi: ["splice()", "slice()", "split()", "cut()"],
+    answer_en: "splice()",
+    answer_hi: "splice()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 23,
+    question_en: "What is the output of `console.log(3 ** 2)`?",
+    question_hi: "`console.log(3 ** 2)` का आउटपुट क्या है?",
+    options_en: ["9", "6", "8", "5"],
+    options_hi: ["9", "6", "8", "5"],
+    answer_en: "9",
+    answer_hi: "9",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 24,
+    question_en: "Which method is used to find the minimum value?",
+    question_hi: "मिनिमम वैल्यू ढूंढने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["Math.min()", "Math.max()", "Array.min()", "Number.min()"],
+    options_hi: ["Math.min()", "Math.max()", "Array.min()", "Number.min()"],
+    answer_en: "Math.min()",
+    answer_hi: "Math.min()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 25,
+    question_en: "What is the purpose of `throw` statement?",
+    question_hi: "`throw` स्टेटमेंट का उद्देश्य क्या है?",
+    options_en: ["Throw an exception", "Create an error", "Both A and B", "None of the above"],
+    options_hi: ["एक्सेप्शन थ्रो करना", "एरर बनाना", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 26,
+    question_en: "Which method is used to repeat a string?",
+    question_hi: "स्ट्रिंग को रिपीट करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["repeat()", "copy()", "duplicate()", "multiply()"],
+    options_hi: ["repeat()", "copy()", "duplicate()", "multiply()"],
+    answer_en: "repeat()",
+    answer_hi: "repeat()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 27,
+    question_en: "What is the output of `console.log({} + [])`?",
+    question_hi: "`console.log({} + [])` का आउटपुट क्या है?",
+    options_en: ["[object Object]", "{}", "[]", "0"],
+    options_hi: ["[object Object]", "{}", "[]", "0"],
+    answer_en: "[object Object]",
+    answer_hi: "[object Object]",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 28,
+    question_en: "Which method is used to check if a variable is defined?",
+    question_hi: "वेरिएबल डिफाइंड है या नहीं चेक करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["typeof variable !== 'undefined'", "variable !== undefined", "Both A and B", "None of the above"],
+    options_hi: ["typeof variable !== 'undefined'", "variable !== undefined", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 29,
+    question_en: "What is the purpose of `document.querySelector()`?",
+    question_hi: "`document.querySelector()` का उद्देश्य क्या है?",
+    options_en: ["Select first matching element", "Select all matching elements", "Create element", "Remove element"],
+    options_hi: ["पहला मैचिंग एलिमेंट सेलेक्ट करना", "सभी मैचिंग एलिमेंट्स सेलेक्ट करना", "एलिमेंट बनाना", "एलिमेंट हटाना"],
+    answer_en: "Select first matching element",
+    answer_hi: "पहला मैचिंग एलिमेंट सेलेक्ट करना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 30,
+    question_en: "Which operator is used for loose equality comparison?",
+    question_hi: "लूज इक्वलिटी कम्पेरिजन के लिए कौन-सा ऑपरेटर उपयोग होता है?",
+    options_en: ["==", "===", "!=", "!=="],
+    options_hi: ["==", "===", "!=", "!=="],
+    answer_en: "==",
+    answer_hi: "==",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 31,
+    question_en: "What is the output of `console.log('Hello'.charAt(1))`?",
+    question_hi: "`console.log('Hello'.charAt(1))` का आउटपुट क्या है?",
+    options_en: ["'e'", "'H'", "'l'", "Error"],
+    options_hi: ["'e'", "'H'", "'l'", "एरर"],
+    answer_en: "'e'",
+    answer_hi: "'e'",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 32,
+    question_en: "Which method is used to convert a number to exponential notation?",
+    question_hi: "नंबर को एक्सपोनेंशियल नोटेशन में बदलने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["toExponential()", "toFixed()", "toPrecision()", "toString()"],
+    options_hi: ["toExponential()", "toFixed()", "toPrecision()", "toString()"],
+    answer_en: "toExponential()",
+    answer_hi: "toExponential()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 33,
+    question_en: "What is the purpose of `Array.prototype.forEach()`?",
+    question_hi: "`Array.prototype.forEach()` का उद्देश्य क्या है?",
+    options_en: ["Execute function for each element", "Create new array", "Filter elements", "Reduce array"],
+    options_hi: ["प्रत्येक एलिमेंट के लिए फंक्शन चलाना", "नया ऐरे बनाना", "एलिमेंट्स फिल्टर करना", "ऐरे रिड्यूस करना"],
+    answer_en: "Execute function for each element",
+    answer_hi: "प्रत्येक एलिमेंट के लिए फंक्शन चलाना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 34,
+    question_en: "Which method is used to sort an array?",
+    question_hi: "ऐरे को सॉर्ट करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["sort()", "order()", "arrange()", "sequence()"],
+    options_hi: ["sort()", "order()", "arrange()", "sequence()"],
+    answer_en: "sort()",
+    answer_hi: "sort()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 35,
+    question_en: "What is the output of `console.log(1 == true)`?",
+    question_hi: "`console.log(1 == true)` का आउटपुट क्या है?",
+    options_en: ["true", "false", "1", "Error"],
+    options_hi: ["true", "false", "1", "एरर"],
+    answer_en: "true",
+    answer_hi: "true",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 36,
+    question_en: "Which method is used to extract part of an array?",
+    question_hi: "ऐरे का हिस्सा निकालने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["slice()", "splice()", "split()", "cut()"],
+    options_hi: ["slice()", "splice()", "split()", "cut()"],
+    answer_en: "slice()",
+    answer_hi: "slice()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 37,
+    question_en: "What is the purpose of `confirm()` method?",
+    question_hi: "`confirm()` मेथड का उद्देश्य क्या है?",
+    options_en: ["Show confirmation dialog", "Show alert dialog", "Show prompt dialog", "Log message"],
+    options_hi: ["कन्फर्मेशन डायलॉग दिखाना", "अलर्ट डायलॉग दिखाना", "प्रॉम्प्ट डायलॉग दिखाना", "मैसेज लॉग करना"],
+    answer_en: "Show confirmation dialog",
+    answer_hi: "कन्फर्मेशन डायलॉग दिखाना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 38,
+    question_en: "Which method is used to calculate power of a number?",
+    question_hi: "नंबर की पावर कैलकुलेट करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["Math.pow()", "Math.power()", "Math.exp()", "Number.pow()"],
+    options_hi: ["Math.pow()", "Math.power()", "Math.exp()", "Number.pow()"],
+    answer_en: "Math.pow()",
+    answer_hi: "Math.pow()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 39,
+    question_en: "What is the output of `console.log(typeof [1, 2, 3])`?",
+    question_hi: "`console.log(typeof [1, 2, 3])` का आउटपुट क्या है?",
+    options_en: ["object", "array", "undefined", "string"],
+    options_hi: ["object", "array", "undefined", "string"],
+    answer_en: "object",
+    answer_hi: "object",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 40,
+    question_en: "Which method is used to remove whitespace from start of string?",
+    question_hi: "स्ट्रिंग की शुरुआत से व्हाइटस्पेस हटाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["trimStart()", "trim()", "trimEnd()", "strip()"],
+    options_hi: ["trimStart()", "trim()", "trimEnd()", "strip()"],
+    answer_en: "trimStart()",
+    answer_hi: "trimStart()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 41,
+    question_en: "What is the purpose of `return` statement?",
+    question_hi: "`return` स्टेटमेंट का उद्देश्य क्या है?",
+    options_en: ["Return value from function", "Stop function execution", "Both A and B", "None of the above"],
+    options_hi: ["फंक्शन से वैल्यू लौटाना", "फंक्शन एक्जीक्यूशन रोकना", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 42,
+    question_en: "Which method is used to get part of a string?",
+    question_hi: "स्ट्रिंग का हिस्सा पाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["substring()", "slice()", "substr()", "All of the above"],
+    options_hi: ["substring()", "slice()", "substr()", "उपरोक्त सभी"],
+    answer_en: "All of the above",
+    answer_hi: "उपरोक्त सभी",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 43,
+    question_en: "What is the output of `console.log(!!'Hello')`?",
+    question_hi: "`console.log(!!'Hello')` का आउटपुट क्या है?",
+    options_en: ["true", "false", "'Hello'", "Error"],
+    options_hi: ["true", "false", "'Hello'", "एरर"],
+    answer_en: "true",
+    answer_hi: "true",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 44,
+    question_en: "Which method is used to clear a timer?",
+    question_hi: "टाइमर क्लियर करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["clearInterval()", "clearTimeout()", "Both A and B", "None of the above"],
+    options_hi: ["clearInterval()", "clearTimeout()", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 45,
+    question_en: "What is the purpose of `document.querySelectorAll()`?",
+    question_hi: "`document.querySelectorAll()` का उद्देश्य क्या है?",
+    options_en: ["Select all matching elements", "Select first element", "Create elements", "Remove elements"],
+    options_hi: ["सभी मैचिंग एलिमेंट्स सेलेक्ट करना", "पहला एलिमेंट सेलेक्ट करना", "एलिमेंट्स बनाना", "एलिमेंट्स हटाना"],
+    answer_en: "Select all matching elements",
+    answer_hi: "सभी मैचिंग एलिमेंट्स सेलेक्ट करना",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 46,
+    question_en: "Which method is used to check if string starts with substring?",
+    question_hi: "स्ट्रिंग सबस्ट्रिंग से शुरू होती है या नहीं चेक करने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["startsWith()", "endsWith()", "includes()", "contains()"],
+    options_hi: ["startsWith()", "endsWith()", "includes()", "contains()"],
+    answer_en: "startsWith()",
+    answer_hi: "startsWith()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 47,
+    question_en: "What is the output of `console.log({} === {})`?",
+    question_hi: "`console.log({} === {})` का आउटपुट क्या है?",
+    options_en: ["false", "true", "undefined", "Error"],
+    options_hi: ["false", "true", "undefined", "एरर"],
+    answer_en: "false",
+    answer_hi: "false",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 48,
+    question_en: "Which method is used to remove whitespace from both ends?",
+    question_hi: "दोनों सिरों से व्हाइटस्पेस हटाने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["trim()", "trimStart()", "trimEnd()", "strip()"],
+    options_hi: ["trim()", "trimStart()", "trimEnd()", "strip()"],
+    answer_en: "trim()",
+    answer_hi: "trim()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 49,
+    question_en: "What is the purpose of `instanceof` operator?",
+    question_hi: "`instanceof` ऑपरेटर का उद्देश्य क्या है?",
+    options_en: ["Check object type", "Check if object is instance of class", "Both A and B", "None of the above"],
+    options_hi: ["ऑब्जेक्ट टाइप चेक करना", "चेक करना ऑब्जेक्ट क्लास का इंस्टेंस है", "A और B दोनों", "उपरोक्त में से कोई नहीं"],
+    answer_en: "Both A and B",
+    answer_hi: "A और B दोनों",
+    attempted: false,
+    selected: ""
+  },
+  {
     num: 50,
-    question_en: "Which method returns the index of the first occurrence of a value in an array?",
-    question_hi: "कौन-सा मेथड ऐरे में किसी वैल्यू के पहले occurrence का इंडेक्स लौटाता है?",
-    options_en: ["indexOf()", "lastIndexOf()", "findIndex()", "search()"],
-    options_hi: ["indexOf()", "lastIndexOf()", "findIndex()", "search()"],
-    answer_en: "indexOf()",
-    answer_hi: "indexOf()",
+    question_en: "Which method is used to find square root?",
+    question_hi: "स्क्वायर रूट ढूंढने के लिए कौन-सा मेथड उपयोग होता है?",
+    options_en: ["Math.sqrt()", "Math.root()", "Math.squareRoot()", "Number.sqrt()"],
+    options_hi: ["Math.sqrt()", "Math.root()", "Math.squareRoot()", "Number.sqrt()"],
+    answer_en: "Math.sqrt()",
+    answer_hi: "Math.sqrt()",
     attempted: false,
     selected: ""
   }
 ];
-
-
 
 
 
@@ -631,6 +627,8 @@ function changeLanguage() {
     loadQuestion(currentQuestion);
 }
 
+
+
 function submitQuiz() {
     clearInterval(timerInterval);
     let attempted = 0,
@@ -681,44 +679,49 @@ function jumpToQuestion(index) {
             loadQuestion(index);
         }
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+      function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+
+            // check correct answer
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
-
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
-                }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
-            }
+        } else {
+            notAttempted++;
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+
+        // push result
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // store in localStorage
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // ask for result page
+    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
+    if (viewResult) {
+        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+    }
+}
+
 
 
 function updateNavigation() {

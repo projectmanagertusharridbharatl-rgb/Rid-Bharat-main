@@ -1,166 +1,909 @@
 const questions = [
-  { num: 1, question: "Which keyword is used to define a subclass of an abstract class?", options: ["extends", "inherits", "implements", "super"], answer: "extends", attempted: false, selected: "" },
-  { num: 2, question: "What is the extension of compiled Java bytecode files?", options: [".java", ".class", ".jar", ".exe"], answer: ".class", attempted: false, selected: "" },
-  { num: 3, question: "Which component converts Java source code into bytecode?", options: ["JVM", "JRE", "JIT", "Javac"], answer: "Javac", attempted: false, selected: "" },
-  { num: 4, question: "Which keyword is used to stop a thread temporarily?", options: ["pause", "sleep", "wait", "halt"], answer: "sleep", attempted: false, selected: "" },
-  { num: 5, question: "Which keyword is used to define a block that must execute regardless of exception?", options: ["try", "catch", "finally", "throw"], answer: "finally", attempted: false, selected: "" },
-  { num: 6, question: "Which of the following represents a valid Java array declaration?", options: ["int arr[];", "int arr;", "arr int[];", "array int;"], answer: "int arr[];", attempted: false, selected: "" },
-  { num: 7, question: "Which method can be used to get the current thread in Java?", options: ["Thread.get()", "Thread.run()", "Thread.currentThread()", "Thread.active()"], answer: "Thread.currentThread()", attempted: false, selected: "" },
-  { num: 8, question: "Which keyword is used to make a variable belong to the class rather than an instance?", options: ["final", "static", "constant", "shared"], answer: "static", attempted: false, selected: "" },
-  { num: 9, question: "Which operator is used to create an instance of a class?", options: ["instanceof", "create", "new", "object"], answer: "new", attempted: false, selected: "" },
-  { num: 10, question: "Which collection class allows key-value pairs with duplicate values but unique keys?", options: ["Set", "List", "Map", "Vector"], answer: "Map", attempted: false, selected: "" },
-  { num: 11, question: "Which exception is thrown when an array is accessed out of its bounds?", options: ["IOException", "NullPointerException", "ArrayIndexOutOfBoundsException", "ClassCastException"], answer: "ArrayIndexOutOfBoundsException", attempted: false, selected: "" },
-  { num: 12, question: "Which of these keywords is used for method overloading?", options: ["overload", "override", "sameName", "None of these"], answer: "None of these", attempted: false, selected: "" },
-  { num: 13, question: "What is the output type of System.out.println()?", options: ["int", "void", "String", "boolean"], answer: "void", attempted: false, selected: "" },
-  { num: 14, question: "Which class provides mathematical functions like sqrt() and pow()?", options: ["System", "Math", "Number", "Calculator"], answer: "Math", attempted: false, selected: "" },
-  { num: 15, question: "Which method is called just before an object is garbage collected?", options: ["finalize()", "delete()", "dispose()", "clear()"], answer: "finalize()", attempted: false, selected: "" },
-  { num: 16, question: "Which of these is not a valid Java access modifier?", options: ["private", "protected", "default", "external"], answer: "external", attempted: false, selected: "" },
-  { num: 17, question: "Which keyword is used to define a method that must be implemented by subclasses?", options: ["final", "static", "abstract", "implements"], answer: "abstract", attempted: false, selected: "" },
-  { num: 18, question: "What is the parent package of all Java packages?", options: ["java", "lang", "util", "root"], answer: "java", attempted: false, selected: "" },
-  { num: 19, question: "Which statement is used to throw an exception manually?", options: ["throws", "throw", "raise", "error"], answer: "throw", attempted: false, selected: "" },
-  { num: 20, question: "Which of these allows dynamic method dispatch in Java?", options: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"], answer: "Polymorphism", attempted: false, selected: "" },
-  { num: 21, question: "Which of these keywords is used to refer to the superclass version of a variable or method?", options: ["this", "super", "extends", "parent"], answer: "super", attempted: false, selected: "" },
-  { num: 22, question: "Which interface is used to iterate over a collection?", options: ["Iterator", "Iterable", "Loop", "Collection"], answer: "Iterator", attempted: false, selected: "" },
-  { num: 23, question: "Which class is the root of the Java exception hierarchy?", options: ["Throwable", "Exception", "Error", "RuntimeException"], answer: "Throwable", attempted: false, selected: "" },
-  { num: 24, question: "Which keyword is used to make a class unmodifiable?", options: ["static", "final", "sealed", "const"], answer: "final", attempted: false, selected: "" },
-  { num: 25, question: "Which operator is used for bitwise OR in Java?", options: ["||", "|", "or", "&&"], answer: "|", attempted: false, selected: "" },
-  { num: 26, question: "Which function is used to find the absolute value of a number?", options: ["Math.abs()", "Math.absolute()", "Math.value()", "Math.positive()"], answer: "Math.abs()", attempted: false, selected: "" },
-  { num: 27, question: "Which of these is not a valid String method?", options: ["concat()", "length()", "append()", "toLowerCase()"], answer: "append()", attempted: false, selected: "" },
-  { num: 28, question: "Which class is used to take formatted input from console?", options: ["Scanner", "BufferedReader", "Console", "InputReader"], answer: "Scanner", attempted: false, selected: "" },
-  { num: 29, question: "Which keyword is used to create a thread by implementing an interface?", options: ["Runnable", "Thread", "Executor", "Task"], answer: "Runnable", attempted: false, selected: "" },
-  { num: 30, question: "Which type of variable is shared among all instances of a class?", options: ["local", "instance", "static", "final"], answer: "static", attempted: false, selected: "" },
-  { num: 31, question: "Which method of Object class is used to compare two objects?", options: ["equals()", "compare()", "==", "isEqual()"], answer: "equals()", attempted: false, selected: "" },
-  { num: 32, question: "Which Java operator is used for conditional branching?", options: ["?", ":", "?:", "->"], answer: "?:", attempted: false, selected: "" },
-  { num: 33, question: "Which keyword prevents a variable from being changed once initialized?", options: ["static", "final", "const", "volatile"], answer: "final", attempted: false, selected: "" },
-  { num: 34, question: "Which keyword is used to catch multiple exceptions together?", options: ["multi", "catch", "multi-catch", "pipe"], answer: "multi-catch", attempted: false, selected: "" },
-  { num: 35, question: "Which class provides methods for manipulating arrays?", options: ["Collections", "Arrays", "List", "System"], answer: "Arrays", attempted: false, selected: "" },
-  { num: 36, question: "Which method is used to get the current time in milliseconds?", options: ["System.getTime()", "System.nanoTime()", "System.currentTimeMillis()", "Date.now()"], answer: "System.currentTimeMillis()", attempted: false, selected: "" },
-  { num: 37, question: "Which keyword allows using a class from another package?", options: ["package", "include", "import", "use"], answer: "import", attempted: false, selected: "" },
-  { num: 38, question: "Which keyword allows a subclass to access superclass constructors?", options: ["extends", "super", "this", "base"], answer: "super", attempted: false, selected: "" },
-  { num: 39, question: "Which method can convert a string to an integer?", options: ["Integer.parseInt()", "String.toInt()", "Integer.value()", "parseInt()"], answer: "Integer.parseInt()", attempted: false, selected: "" },
-  { num: 40, question: "Which Java concept is achieved using interfaces?", options: ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"], answer: "Abstraction", attempted: false, selected: "" },
-  { num: 41, question: "Which of these methods belongs to the Thread class?", options: ["run()", "execute()", "start()", "both run() and start()"], answer: "both run() and start()", attempted: false, selected: "" },
-  { num: 42, question: "Which keyword is used to indicate that a method cannot be overridden?", options: ["final", "static", "const", "sealed"], answer: "final", attempted: false, selected: "" },
-  { num: 43, question: "Which class is used to store elements in key-value format maintaining insertion order?", options: ["HashMap", "TreeMap", "LinkedHashMap", "Hashtable"], answer: "LinkedHashMap", attempted: false, selected: "" },
-  { num: 44, question: "Which of these is not a valid collection type?", options: ["List", "Set", "Map", "Record"], answer: "Record", attempted: false, selected: "" },
-  { num: 45, question: "Which keyword is used to prevent inheritance of a class?", options: ["static", "final", "sealed", "abstract"], answer: "final", attempted: false, selected: "" },
-  { num: 46, question: "Which method is used to find the character at a given index in a string?", options: ["charAt()", "getChar()", "indexOf()", "charOf()"], answer: "charAt()", attempted: false, selected: "" },
-  { num: 47, question: "Which operator is used to perform a ternary operation?", options: ["if-else", "?:", "&&", "||"], answer: "?:", attempted: false, selected: "" },
-  { num: 48, question: "Which keyword is used to synchronize a method?", options: ["sync", "synchronized", "locked", "threadsafe"], answer: "synchronized", attempted: false, selected: "" },
-  { num: 49, question: "Which method is called automatically when an object is printed?", options: ["print()", "toString()", "display()", "getInfo()"], answer: "toString()", attempted: false, selected: "" },
-  { num: 50, question: "Which keyword is used to define a nested class?", options: ["inner", "nested", "class", "None of these"], answer: "class", attempted: false, selected: "" }
-];
+  {
+    num: 1,
+    question_en: "Which keyword is used to define a subclass of an abstract class?",
+    question_hi: "एब्स्ट्रैक्ट क्लास की सबक्लास को परिभाषित करने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["extends", "inherits", "implements", "super"],
+    options_hi: ["extends", "inherits", "implements", "super"],
+    answer_en: "extends",
+    answer_hi: "extends",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 2,
+    question_en: "What is the extension of compiled Java bytecode files?",
+    question_hi: "कम्पाइल्ड जावा बाइटकोड फ़ाइलों का एक्सटेंशन क्या होता है?",
+    options_en: [".java", ".class", ".jar", ".exe"],
+    options_hi: [".java", ".class", ".jar", ".exe"],
+    answer_en: ".class",
+    answer_hi: ".class",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 3,
+    question_en: "Which component converts Java source code into bytecode?",
+    question_hi: "कौन सा घटक जावा सोर्स कोड को बाइटकोड में बदलता है?",
+    options_en: ["JVM", "JRE", "JIT", "Javac"],
+    options_hi: ["JVM", "JRE", "JIT", "Javac"],
+    answer_en: "Javac",
+    answer_hi: "Javac",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 4,
+    question_en: "Which keyword is used to stop a thread temporarily?",
+    question_hi: "कौन सा कीवर्ड एक थ्रेड को अस्थायी रूप से रोकने के लिए उपयोग किया जाता है?",
+    options_en: ["pause", "sleep", "wait", "halt"],
+    options_hi: ["pause", "sleep", "wait", "halt"],
+    answer_en: "sleep",
+    answer_hi: "sleep",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 5,
+    question_en: "Which keyword is used to define a block that must execute regardless of exception?",
+    question_hi: "कौन सा कीवर्ड एक ब्लॉक को परिभाषित करता है जो अपवाद होने पर भी चलता है?",
+    options_en: ["try", "catch", "finally", "throw"],
+    options_hi: ["try", "catch", "finally", "throw"],
+    answer_en: "finally",
+    answer_hi: "finally",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 6,
+    question_en: "Which of the following represents a valid Java array declaration?",
+    question_hi: "निम्न में से कौन सा एक वैध जावा ऐरे घोषणा है?",
+    options_en: ["int arr[];", "int arr;", "arr int[];", "array int;"],
+    options_hi: ["int arr[];", "int arr;", "arr int[];", "array int;"],
+    answer_en: "int arr[];",
+    answer_hi: "int arr[];",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 7,
+    question_en: "Which method can be used to get the current thread in Java?",
+    question_hi: "जावा में वर्तमान थ्रेड प्राप्त करने के लिए किस मेथड का उपयोग होता है?",
+    options_en: ["Thread.get()", "Thread.run()", "Thread.currentThread()", "Thread.active()"],
+    options_hi: ["Thread.get()", "Thread.run()", "Thread.currentThread()", "Thread.active()"],
+    answer_en: "Thread.currentThread()",
+    answer_hi: "Thread.currentThread()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 8,
+    question_en: "Which keyword is used to make a variable belong to the class rather than an instance?",
+    question_hi: "कौन सा कीवर्ड एक वेरिएबल को इंस्टेंस की बजाय क्लास का बनाता है?",
+    options_en: ["final", "static", "constant", "shared"],
+    options_hi: ["final", "static", "constant", "shared"],
+    answer_en: "static",
+    answer_hi: "static",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 9,
+    question_en: "Which operator is used to create an instance of a class?",
+    question_hi: "किस ऑपरेटर का उपयोग ऑब्जेक्ट बनाने के लिए किया जाता है?",
+    options_en: ["instanceof", "create", "new", "object"],
+    options_hi: ["instanceof", "create", "new", "object"],
+    answer_en: "new",
+    answer_hi: "new",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 10,
+    question_en: "Which collection class allows key-value pairs with duplicate values but unique keys?",
+    question_hi: "कौन सी कलेक्शन क्लास यूनिक की के साथ डुप्लिकेट वैल्यू की अनुमति देती है?",
+    options_en: ["Set", "List", "Map", "Vector"],
+    options_hi: ["Set", "List", "Map", "Vector"],
+    answer_en: "Map",
+    answer_hi: "Map",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 11,
+    question_en: "Which exception is thrown when an array is accessed out of bounds?",
+    question_hi: "जब किसी ऐरे को सीमा से बाहर एक्सेस किया जाता है तो कौन सा अपवाद फेंका जाता है?",
+    options_en: ["IOException", "NullPointerException", "ArrayIndexOutOfBoundsException", "ClassCastException"],
+    options_hi: ["IOException", "NullPointerException", "ArrayIndexOutOfBoundsException", "ClassCastException"],
+    answer_en: "ArrayIndexOutOfBoundsException",
+    answer_hi: "ArrayIndexOutOfBoundsException",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 12,
+    question_en: "Which of these keywords is used for method overloading?",
+    question_hi: "इनमें से कौन सा कीवर्ड मेथड ओवरलोडिंग के लिए उपयोग होता है?",
+    options_en: ["overload", "override", "sameName", "None of these"],
+    options_hi: ["overload", "override", "sameName", "इनमें से कोई नहीं"],
+    answer_en: "None of these",
+    answer_hi: "इनमें से कोई नहीं",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 13,
+    question_en: "What is the return type of System.out.println()?",
+    question_hi: "System.out.println() का रिटर्न प्रकार क्या है?",
+    options_en: ["int", "void", "String", "boolean"],
+    options_hi: ["int", "void", "String", "boolean"],
+    answer_en: "void",
+    answer_hi: "void",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 14,
+    question_en: "Which class provides mathematical functions like sqrt() and pow()?",
+    question_hi: "कौन सा क्लास sqrt() और pow() जैसे गणित फ़ंक्शन प्रदान करता है?",
+    options_en: ["System", "Math", "Number", "Calculator"],
+    options_hi: ["System", "Math", "Number", "Calculator"],
+    answer_en: "Math",
+    answer_hi: "Math",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 15,
+    question_en: "Which method is called just before an object is garbage collected?",
+    question_hi: "ऑब्जेक्ट के गार्बेज कलेक्ट होने से पहले कौन सा मेथड कॉल होता है?",
+    options_en: ["finalize()", "delete()", "dispose()", "clear()"],
+    options_hi: ["finalize()", "delete()", "dispose()", "clear()"],
+    answer_en: "finalize()",
+    answer_hi: "finalize()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 16,
+    question_en: "Which of these is not a valid Java access modifier?",
+    question_hi: "इनमें से कौन सा जावा एक्सेस मॉडिफायर मान्य नहीं है?",
+    options_en: ["private", "protected", "default", "external"],
+    options_hi: ["private", "protected", "default", "external"],
+    answer_en: "external",
+    answer_hi: "external",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 17,
+    question_en: "Which keyword is used to define a method that must be implemented by subclasses?",
+    question_hi: "कौन सा कीवर्ड ऐसे मेथड के लिए उपयोग होता है जिसे सबक्लास को अनिवार्य रूप से लागू करना चाहिए?",
+    options_en: ["final", "static", "abstract", "implements"],
+    options_hi: ["final", "static", "abstract", "implements"],
+    answer_en: "abstract",
+    answer_hi: "abstract",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 18,
+    question_en: "What is the parent package of all Java packages?",
+    question_hi: "सभी जावा पैकेज का पैरेंट पैकेज कौन सा है?",
+    options_en: ["java", "lang", "util", "root"],
+    options_hi: ["java", "lang", "util", "root"],
+    answer_en: "java",
+    answer_hi: "java",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 19,
+    question_en: "Which statement is used to throw an exception manually?",
+    question_hi: "कौन सा स्टेटमेंट मैन्युअली एक्सेप्शन फेंकने के लिए उपयोग होता है?",
+    options_en: ["throws", "throw", "raise", "error"],
+    options_hi: ["throws", "throw", "raise", "error"],
+    answer_en: "throw",
+    answer_hi: "throw",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 20,
+    question_en: "Which of these allows dynamic method dispatch in Java?",
+    question_hi: "इनमें से कौन सा जावा में डायनामिक मेथड डिस्पैच को सक्षम बनाता है?",
+    options_en: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"],
+    options_hi: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"],
+    answer_en: "Polymorphism",
+    answer_hi: "Polymorphism",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 21,
+    question_en: "Which keyword is used to refer to the superclass version of a variable or method?",
+    question_hi: "कौन सा कीवर्ड सुपरक्लास के वेरिएबल या मेथड को संदर्भित करता है?",
+    options_en: ["this", "super", "extends", "parent"],
+    options_hi: ["this", "super", "extends", "parent"],
+    answer_en: "super",
+    answer_hi: "super",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 22,
+    question_en: "Which interface is used to iterate over a collection?",
+    question_hi: "कलेक्शन पर इटरेशन के लिए कौन सा इंटरफेस उपयोग होता है?",
+    options_en: ["Iterator", "Iterable", "Loop", "Collection"],
+    options_hi: ["Iterator", "Iterable", "Loop", "Collection"],
+    answer_en: "Iterator",
+    answer_hi: "Iterator",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 23,
+    question_en: "Which class is the root of the Java exception hierarchy?",
+    question_hi: "जावा एक्सेप्शन हाइरार्की का रूट क्लास कौन सा है?",
+    options_en: ["Throwable", "Exception", "Error", "RuntimeException"],
+    options_hi: ["Throwable", "Exception", "Error", "RuntimeException"],
+    answer_en: "Throwable",
+    answer_hi: "Throwable",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 24,
+    question_en: "Which keyword is used to make a class unmodifiable?",
+    question_hi: "कौन सा कीवर्ड क्लास को अनमॉडिफायबल बनाता है?",
+    options_en: ["static", "final", "sealed", "const"],
+    options_hi: ["static", "final", "sealed", "const"],
+    answer_en: "final",
+    answer_hi: "final",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 25,
+    question_en: "Which operator is used for bitwise OR in Java?",
+    question_hi: "जावा में बिटवाइज OR के लिए कौन सा ऑपरेटर उपयोग होता है?",
+    options_en: ["||", "|", "or", "&&"],
+    options_hi: ["||", "|", "or", "&&"],
+    answer_en: "|",
+    answer_hi: "|",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 26,
+    question_en: "Which function is used to find the absolute value of a number?",
+    question_hi: "किस फ़ंक्शन का उपयोग संख्या का एब्सोल्यूट मान प्राप्त करने के लिए किया जाता है?",
+    options_en: ["Math.abs()", "Math.absolute()", "Math.value()", "Math.positive()"],
+    options_hi: ["Math.abs()", "Math.absolute()", "Math.value()", "Math.positive()"],
+    answer_en: "Math.abs()",
+    answer_hi: "Math.abs()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 27,
+    question_en: "Which of these is not a valid String method?",
+    question_hi: "इनमें से कौन सा एक वैध String मेथड नहीं है?",
+    options_en: ["concat()", "length()", "append()", "toLowerCase()"],
+    options_hi: ["concat()", "length()", "append()", "toLowerCase()"],
+    answer_en: "append()",
+    answer_hi: "append()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 28,
+    question_en: "Which class is used to take formatted input from console?",
+    question_hi: "कंसोल से फॉर्मैटेड इनपुट लेने के लिए कौन सा क्लास उपयोग होता है?",
+    options_en: ["Scanner", "BufferedReader", "Console", "InputReader"],
+    options_hi: ["Scanner", "BufferedReader", "Console", "InputReader"],
+    answer_en: "Scanner",
+    answer_hi: "Scanner",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 29,
+    question_en: "Which keyword is used to create a thread by implementing an interface?",
+    question_hi: "इंटरफेस को लागू कर थ्रेड बनाने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["Runnable", "Thread", "Executor", "Task"],
+    options_hi: ["Runnable", "Thread", "Executor", "Task"],
+    answer_en: "Runnable",
+    answer_hi: "Runnable",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 30,
+    question_en: "Which type of variable is shared among all instances of a class?",
+    question_hi: "क्लास की सभी इंस्टेंस के बीच कौन सा वेरिएबल साझा होता है?",
+    options_en: ["local", "instance", "static", "final"],
+    options_hi: ["local", "instance", "static", "final"],
+    answer_en: "static",
+    answer_hi: "static",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 31,
+    question_en: "Which method of Object class is used to compare two objects?",
+    question_hi: "दो ऑब्जेक्ट्स की तुलना करने के लिए Object क्लास का कौन सा मेथड उपयोग होता है?",
+    options_en: ["equals()", "compare()", "==", "isEqual()"],
+    options_hi: ["equals()", "compare()", "==", "isEqual()"],
+    answer_en: "equals()",
+    answer_hi: "equals()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 32,
+    question_en: "Which Java operator is used for conditional branching?",
+    question_hi: "कंडिशनल ब्रांचिंग के लिए जावा में कौन सा ऑपरेटर उपयोग होता है?",
+    options_en: ["?", ":", "?:", "->"],
+    options_hi: ["?", ":", "?:", "->"],
+    answer_en: "?:",
+    answer_hi: "?:",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 33,
+    question_en: "Which keyword prevents a variable from being changed once initialized?",
+    question_hi: "कौन सा कीवर्ड किसी वेरिएबल को इनिशियलाइज़ होने के बाद बदलने से रोकता है?",
+    options_en: ["static", "final", "const", "volatile"],
+    options_hi: ["static", "final", "const", "volatile"],
+    answer_en: "final",
+    answer_hi: "final",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 34,
+    question_en: "Which keyword is used to catch multiple exceptions together?",
+    question_hi: "कई एक्सेप्शन एक साथ पकड़ने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["multi", "catch", "multi-catch", "pipe"],
+    options_hi: ["multi", "catch", "multi-catch", "pipe"],
+    answer_en: "multi-catch",
+    answer_hi: "multi-catch",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 35,
+    question_en: "Which class provides methods for manipulating arrays?",
+    question_hi: "कौन सा क्लास ऐरे को मैनेज करने के लिए मेथड प्रदान करता है?",
+    options_en: ["Collections", "Arrays", "List", "System"],
+    options_hi: ["Collections", "Arrays", "List", "System"],
+    answer_en: "Arrays",
+    answer_hi: "Arrays",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 36,
+    question_en: "Which method is used to get the current time in milliseconds?",
+    question_hi: "मिलीसेकंड में वर्तमान समय प्राप्त करने के लिए कौन सा मेथड उपयोग होता है?",
+    options_en: ["System.getTime()", "System.nanoTime()", "System.currentTimeMillis()", "Date.now()"],
+    options_hi: ["System.getTime()", "System.nanoTime()", "System.currentTimeMillis()", "Date.now()"],
+    answer_en: "System.currentTimeMillis()",
+    answer_hi: "System.currentTimeMillis()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 37,
+    question_en: "Which keyword allows using a class from another package?",
+    question_hi: "दूसरे पैकेज से क्लास उपयोग करने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["package", "include", "import", "use"],
+    options_hi: ["package", "include", "import", "use"],
+    answer_en: "import",
+    answer_hi: "import",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 38,
+    question_en: "Which keyword allows a subclass to access superclass constructors?",
+    question_hi: "सुपरक्लास के कंस्ट्रक्टर तक पहुंचने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["extends", "super", "this", "base"],
+    options_hi: ["extends", "super", "this", "base"],
+    answer_en: "super",
+    answer_hi: "super",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 39,
+    question_en: "Which method can convert a string to an integer?",
+    question_hi: "कौन सा मेथड स्ट्रिंग को इंटीजर में बदल सकता है?",
+    options_en: ["Integer.parseInt()", "String.toInt()", "Integer.value()", "parseInt()"],
+    options_hi: ["Integer.parseInt()", "String.toInt()", "Integer.value()", "parseInt()"],
+    answer_en: "Integer.parseInt()",
+    answer_hi: "Integer.parseInt()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 40,
+    question_en: "Which Java concept is achieved using interfaces?",
+    question_hi: "कौन सा जावा कॉन्सेप्ट इंटरफेस के माध्यम से प्राप्त किया जाता है?",
+    options_en: ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"],
+    options_hi: ["Inheritance", "Encapsulation", "Abstraction", "Polymorphism"],
+    answer_en: "Abstraction",
+    answer_hi: "Abstraction",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 41,
+    question_en: "Which of these methods belongs to the Thread class?",
+    question_hi: "इनमें से कौन सा मेथड Thread क्लास का हिस्सा है?",
+    options_en: ["run()", "execute()", "start()", "both run() and start()"],
+    options_hi: ["run()", "execute()", "start()", "दोनों run() और start()"],
+    answer_en: "both run() and start()",
+    answer_hi: "दोनों run() और start()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 42,
+    question_en: "Which keyword indicates that a method cannot be overridden?",
+    question_hi: "कौन सा कीवर्ड यह दर्शाता है कि मेथड को ओवरराइड नहीं किया जा सकता?",
+    options_en: ["final", "static", "const", "sealed"],
+    options_hi: ["final", "static", "const", "sealed"],
+    answer_en: "final",
+    answer_hi: "final",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 43,
+    question_en: "Which class stores key-value elements and maintains insertion order?",
+    question_hi: "कौन सा क्लास की-वैल्यू तत्वों को स्टोर करता है और इंसर्शन ऑर्डर बनाए रखता है?",
+    options_en: ["HashMap", "TreeMap", "LinkedHashMap", "Hashtable"],
+    options_hi: ["HashMap", "TreeMap", "LinkedHashMap", "Hashtable"],
+    answer_en: "LinkedHashMap",
+    answer_hi: "LinkedHashMap",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 44,
+    question_en: "Which of these is not a valid collection type?",
+    question_hi: "इनमें से कौन सा एक मान्य कलेक्शन प्रकार नहीं है?",
+    options_en: ["List", "Set", "Map", "Record"],
+    options_hi: ["List", "Set", "Map", "Record"],
+    answer_en: "Record",
+    answer_hi: "Record",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 45,
+    question_en: "Which keyword is used to prevent inheritance of a class?",
+    question_hi: "कौन सा कीवर्ड क्लास की इनहेरिटेंस रोकने के लिए उपयोग होता है?",
+    options_en: ["static", "final", "sealed", "abstract"],
+    options_hi: ["static", "final", "sealed", "abstract"],
+    answer_en: "final",
+    answer_hi: "final",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 46,
+    question_en: "Which method returns the character at a given index?",
+    question_hi: "कौन सा मेथड दिए गए इंडेक्स पर स्थित कैरेक्टर लौटाता है?",
+    options_en: ["charAt()", "getChar()", "indexOf()", "charOf()"],
+    options_hi: ["charAt()", "getChar()", "indexOf()", "charOf()"],
+    answer_en: "charAt()",
+    answer_hi: "charAt()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 47,
+    question_en: "Which operator performs a ternary operation?",
+    question_hi: "कौन सा ऑपरेटर टर्नरी ऑपरेशन करता है?",
+    options_en: ["if-else", "?:", "&&", "||"],
+    options_hi: ["if-else", "?:", "&&", "||"],
+    answer_en: "?:",
+    answer_hi: "?:",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 48,
+    question_en: "Which keyword is used to synchronize a method?",
+    question_hi: "कौन सा कीवर्ड मेथड को सिंक्रोनाइज़ करने के लिए उपयोग होता है?",
+    options_en: ["sync", "synchronized", "locked", "threadsafe"],
+    options_hi: ["sync", "synchronized", "locked", "threadsafe"],
+    answer_en: "synchronized",
+    answer_hi: "synchronized",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 49,
+    question_en: "Which method is automatically called when an object is printed?",
+    question_hi: "कौन सा मेथड ऑब्जेक्ट प्रिंट होने पर स्वतः कॉल होता है?",
+    options_en: ["print()", "toString()", "display()", "getInfo()"],
+    options_hi: ["print()", "toString()", "display()", "getInfo()"],
+    answer_en: "toString()",
+    answer_hi: "toString()",
+    attempted: false,
+    selected: ""
+  },
+  {
+    num: 50,
+    question_en: "Which keyword is used to define a nested class?",
+    question_hi: "नेस्टेड क्लास को परिभाषित करने के लिए कौन सा कीवर्ड उपयोग होता है?",
+    options_en: ["inner", "nested", "class", "None of these"],
+    options_hi: ["inner", "nested", "class", "इनमें से कोई नहीं"],
+    answer_en: "class",
+    answer_hi: "class",
+    attempted: false,
+    selected: ""
+  }
+]
 
-let currentQuestion = 0;
+let currentQuestion = 0; 
+let language = "en";
+// let timeLeft = 180 * 60; // 180 minutes
+let timeLeft = 60 * 60; // 60 minutes
+let timerInterval;
+
+// ----------------- Quiz Logic -----------------
 function loadQuestion(index) {
-    const question = questions[index];
-
-    // Question text
-    document.getElementById("question").textContent = question.question;
+    const q = questions[index];
+    document.getElementById("question").textContent = `${q.num}. ${
+        language === "en" ? q.question_en : q.question_hi
+    }`;
     document.getElementById("questionCounter").textContent = `Question ${index + 1} of ${questions.length}`;
 
-    // Options
     const optionsElement = document.getElementById("options");
     optionsElement.innerHTML = "";
-    question.options.forEach(option => {
-        const checked = question.selected === option ? "checked" : "";
-        optionsElement.innerHTML += `<li>
-            <input type="radio" name="option" value="${option}" onclick="markAttempted(${index}, '${option}')" ${checked}>
+
+    const options = language === "en" ? q.options_en : q.options_hi;
+
+    options.forEach((option) => {
+        const isSelected = q.selected === option;
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option-box";
+        optionDiv.style = `
+            border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
+            background-color: ${isSelected ? "#e7f1ff" : "white"};
+            padding: 10px;
+            border-radius: 8px;
+            margin: 6px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        `;
+
+        optionDiv.innerHTML = `
+            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} style="margin-right:8px;">
             ${option}
-        </li>`;
+        `;
+
+        optionDiv.addEventListener("click", () => {
+            markAttempted(index, option);
+            loadQuestion(index);
+        });
+
+        optionsElement.appendChild(optionDiv);
     });
 
-    // Agar question visit ho gaya lekin attempt nahi hua
-    if (!question.attempted) {
-        question.visited = true;
-    }
-
-    updateCircles();
+    updateNavigation();
 }
 
-        function markAttempted(index, selectedAnswer) {
+function markAttempted(index, selectedAnswer) {
+    questions[index].attempted = true;
     questions[index].selected = selectedAnswer;
-    questions[index].attempted = true; // Attempt flag set
-    questions[index].visited = true;   // Visited flag bhi set
-    updateCircles();
+    updateNavigation();
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion(currentQuestion);
+    }
+}
+
+function changeLanguage() {
+    language = document.getElementById("languageSelect").value;
+    loadQuestion(currentQuestion);
 }
 
 
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                loadQuestion(currentQuestion);
-            }
-        }
 
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                loadQuestion(currentQuestion);
-            }
-        }
+function submitQuiz() {
+    clearInterval(timerInterval);
+    let attempted = 0,
+        notAttempted = 0,
+        score = 0;
 
-        function updateCircles() {
-    const circleContainer = document.getElementById("circleContainer");
-    circleContainer.innerHTML = "";
-
-    questions.forEach((q, i) => {
-        let status = "";
-
-        if (i === currentQuestion) {
-            status = "active"; // Current question
-        } else if (q.attempted) {
-            status = "answered"; // Green
-        } else if (q.visited) {
-            status = "visited"; // White
-        } else {
-            status = "not-attempted"; // Default gray
-        }
-
-        circleContainer.innerHTML += `<div class="circle ${status}" onclick="jumpToQuestion(${i})">${i + 1}</div>`;
+    questions.forEach((q) => {
+        if (q.attempted) {
+            attempted++;
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) score++;
+        } else notAttempted++;
     });
+
+    alert(
+        `Quiz submitted!\nAttempted: ${attempted}\nNot Attempted: ${notAttempted}\nScore: ${score}/${questions.length}`
+    );
 }
 
-        function jumpToQuestion(index) {
+function startTimer() {
+    const timerElement = document.getElementById("timer");
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time's up!");
+            submitQuiz();
+        } else {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `Time Left: ${hours
+                .toString()
+                .padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timeLeft--;
+        }
+    }, 1000);
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// submit 
+function jumpToQuestion(index) {
             currentQuestion = index;
             loadQuestion(index);
         }
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+      function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+
+            // check correct answer
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
+        } else {
+            notAttempted++;
+        }
 
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
+        // push result
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // store in localStorage
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // ask for result page
+    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
+    if (viewResult) {
+        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+    }
+}
+
+
+
+function updateNavigation() {
+    const nav = document.getElementById("circleContainer");
+    nav.innerHTML = "";
+    questions.forEach((q, i) => {
+        let color = "gray";
+        if (i === currentQuestion) color = "blue";
+        else if (q.attempted) color = "green";
+        nav.innerHTML += `<div class='circle' style='background-color:${color}' onclick='loadQuestion(${i})'>${i + 1}</div>`;
+    });
+}
+
+// ----------------- Camera & Movement Logic -----------------
+let videoStream;
+let movementCount = 0;
+
+function startCamera() {
+    const container = document.createElement("div");
+    container.id = "camera-container";
+    container.style.position = "fixed";
+    container.style.top = "10px";
+    container.style.left = "10px"; // ✅ Left side
+    container.style.width = "130px";
+    container.style.height = "130px";
+    container.style.zIndex = "9999";
+    container.style.borderRadius = "50%";
+    container.style.overflow = "hidden";
+    container.style.border = "3px solid red";
+    container.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    container.style.cursor = "grab";
+    container.style.minWidth = "80px";
+    container.style.minHeight = "80px";
+    container.style.maxWidth = "250px";
+    container.style.maxHeight = "250px";
+    container.style.background = "#000";
+    document.body.appendChild(container);
+
+    const video = document.createElement("video");
+    video.setAttribute("autoplay", true);
+    video.setAttribute("playsinline", true);
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    container.appendChild(video);
+
+    // ✅ Resize handle
+    const resizeHandle = document.createElement("div");
+    resizeHandle.style.position = "absolute";
+    resizeHandle.style.bottom = "2px";
+    resizeHandle.style.right = "2px";
+    resizeHandle.style.width = "15px";
+    resizeHandle.style.height = "15px";
+    resizeHandle.style.background = "rgba(255,255,255,0.7)";
+    resizeHandle.style.borderRadius = "4px";
+    resizeHandle.style.cursor = "se-resize";
+    container.appendChild(resizeHandle);
+
+    // ✅ Drag logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    container.addEventListener("mousedown", (e) => {
+        if (e.target === resizeHandle) return;
+        isDragging = true;
+        offsetX = e.clientX - container.offsetLeft;
+        offsetY = e.clientY - container.offsetTop;
+        container.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        let x = e.clientX - offsetX;
+        let y = e.clientY - offsetY;
+        x = Math.max(0, Math.min(window.innerWidth - container.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - container.offsetHeight, y));
+        container.style.left = `${x}px`;
+        container.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+        container.style.cursor = "grab";
+    });
+
+    // ✅ Resize logic
+    let isResizing = false;
+    let startWidth, startHeight, startX, startY;
+
+    resizeHandle.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        isResizing = true;
+        startWidth = container.offsetWidth;
+        startHeight = container.offsetHeight;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isResizing) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const newSize = Math.max(80, Math.min(250, Math.max(startWidth + dx, startHeight + dy)));
+        container.style.width = `${newSize}px`;
+        container.style.height = `${newSize}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isResizing = false;
+    });
+
+    // ✅ Camera stream
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            videoStream = stream;
+            detectMovement(video);
+        })
+        .catch(err => {
+            console.error("Camera error:", err);
+            alert("Camera not accessible!");
+        });
+}
+
+function detectMovement(video) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 160;
+    canvas.height = 160;
+    let lastImageData = null;
+
+    setInterval(() => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        if (lastImageData) {
+            let diff = 0;
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                diff += Math.abs(imageData.data[i] - lastImageData.data[i]);
+            }
+
+            if (diff > 1000000) {
+                movementCount++;
+                if (movementCount === 1) {
+                    alert("⚠️ Alert 1: Face is not move");
+                } else if (movementCount === 2) {
+                    alert("⚠️ Alert 2: Head is not move");
+                } else if (movementCount === 3) {
+                    alert("⚠️ Alert 3: Test series is restarting...");
+                    restartTest();
                 }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
             }
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+        lastImageData = imageData;
+    }, 2000);
+}
+
+function restartTest() {
+    if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+    }
+    const camContainer = document.getElementById("camera-container");
+    if (camContainer) camContainer.remove();
+
+    movementCount = 0;
+    currentQuestion = 0;
+    timeLeft = 180 * 60;
+
+    questions.forEach(q => {
+        q.attempted = false;
+        q.selected = null;
+    });
+
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera();
+}
+
+// ----------------- Page Load -----------------
+window.onload = function () {
+    loadQuestion(currentQuestion);
+    startTimer();
+    startCamera(); // ✅ Camera starts with test
+};
+
+
+///////////////////////////////////////

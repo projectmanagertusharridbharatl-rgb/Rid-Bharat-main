@@ -1,288 +1,184 @@
- const questions = [
+const questions = [
   {
     "num": 1,
-    "question_en": "Which property aligns text to the center?",
-    "question_hi": "कौन-सी प्रॉपर्टी टेक्स्ट को केंद्र में संरेखित करती है?",
-    "options_en": ["text-align", "vertical-align", "align-items", "justify-content"],
-    "options_hi": ["text-align", "vertical-align", "align-items", "justify-content"],
-    "answer_en": "text-align",
-    "answer_hi": "text-align",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 2,
-    "question_en": "Which HTML tag is used to create a hyperlink?",
-    "question_hi": "हाइपरलिंक बनाने के लिए कौन सा HTML टैग उपयोग होता है?",
-    "options_en": ["a", "link", "href", "hyper"],
-    "options_hi": ["a", "link", "href", "hyper"],
-    "answer_en": "a",
-    "answer_hi": "a",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 3,
-    "question_en": "What is the default display value of a <div> element?",
-    "question_hi": "<div> एलिमेंट का डिफ़ॉल्ट डिस्प्ले मान क्या है?",
-    "options_en": ["block", "inline", "inline-block", "none"],
-    "options_hi": ["block", "inline", "inline-block", "none"],
-    "answer_en": "block",
-    "answer_hi": "block",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 4,
-    "question_en": "Which tag is used to define a table row?",
-    "question_hi": "टेबल रो को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["tr", "td", "table", "row"],
-    "options_hi": ["tr", "td", "table", "row"],
-    "answer_en": "tr",
-    "answer_hi": "tr",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 5,
-    "question_en": "Which attribute specifies an alternate text for an image?",
-    "question_hi": "इमेज के लिए वैकल्पिक टेक्स्ट निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["alt", "title", "src", "caption"],
-    "options_hi": ["alt", "title", "src", "caption"],
-    "answer_en": "alt",
-    "answer_hi": "alt",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 6,
-    "question_en": "Which tag defines a paragraph in HTML?",
-    "question_hi": "HTML में पैराग्राफ को परिभाषित करने वाला टैग कौन सा है?",
-    "options_en": ["p", "div", "span", "para"],
-    "options_hi": ["p", "div", "span", "para"],
-    "answer_en": "p",
-    "answer_hi": "p",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 7,
-    "question_en": "Which tag is used to create an ordered list?",
-    "question_hi": "आदेशित सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ol", "ul", "li", "list"],
-    "options_hi": ["ol", "ul", "li", "list"],
-    "answer_en": "ol",
-    "answer_hi": "ol",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 8,
-    "question_en": "Which tag is used to create an unordered list?",
-    "question_hi": "अनऑर्डर्ड सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ul", "ol", "li", "list"],
-    "options_hi": ["ul", "ol", "li", "list"],
-    "answer_en": "ul",
-    "answer_hi": "ul",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 9,
-    "question_en": "Which attribute is used to provide a tooltip for an element?",
-    "question_hi": "किस attribute का उपयोग किसी एलिमेंट के लिए टूलटिप देने के लिए किया जाता है?",
-    "options_en": ["title", "alt", "tooltip", "hint"],
-    "options_hi": ["title", "alt", "tooltip", "hint"],
-    "answer_en": "title",
-    "answer_hi": "title",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 10,
-    "question_en": "Which tag is used to define a table header?",
-    "question_hi": "टेबल हेडर को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["th", "tr", "td", "table"],
-    "options_hi": ["th", "tr", "td", "table"],
-    "answer_en": "th",
-    "answer_hi": "th",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 11,
-    "question_en": "Which tag is used to define a table cell?",
-    "question_hi": "टेबल सेल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["td", "tr", "th", "table"],
-    "options_hi": ["td", "tr", "th", "table"],
-    "answer_en": "td",
-    "answer_hi": "td",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 12,
-    "question_en": "Which tag is used to define a table?",
-    "question_hi": "टेबल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["table", "tr", "td", "th"],
-    "options_hi": ["table", "tr", "td", "th"],
-    "answer_en": "table",
-    "answer_hi": "table",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 13,
-    "question_en": "Which tag is used to add a line break?",
-    "question_hi": "लाइन ब्रेक जोड़ने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["br", "hr", "break", "lb"],
-    "options_hi": ["br", "hr", "break", "lb"],
-    "answer_en": "br",
-    "answer_hi": "br",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 14,
-    "question_en": "Which tag is used to define a heading?",
-    "question_hi": "हेडिंग को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["h1", "h2", "h3", "h4"],
-    "options_hi": ["h1", "h2", "h3", "h4"],
+    "question_en": "Which HTML tag is used to create the largest heading?",
+    "question_hi": "सबसे बड़ा हेडिंग बनाने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["h1", "h6", "heading", "head"],
+    "options_hi": ["h1", "h6", "heading", "head"],
     "answer_en": "h1",
     "answer_hi": "h1",
     "attempted": false,
     "selected": ""
   },
   {
+    "num": 2,
+    "question_en": "Which HTML tag is used to create the smallest heading?",
+    "question_hi": "सबसे छोटा हेडिंग बनाने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["h6", "h1", "small", "tiny"],
+    "options_hi": ["h6", "h1", "small", "tiny"],
+    "answer_en": "h6",
+    "answer_hi": "h6",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 3,
+    "question_en": "Which HTML attribute is used to define inline styles?",
+    "question_hi": "इनलाइन स्टाइल्स डिफाइन करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["style", "css", "design", "look"],
+    "options_hi": ["style", "css", "design", "look"],
+    "answer_en": "style",
+    "answer_hi": "style",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 4,
+    "question_en": "Which HTML tag is used to define important text?",
+    "question_hi": "इम्पोर्टेन्ट टेक्स्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["strong", "b", "important", "bold"],
+    "options_hi": ["strong", "b", "important", "bold"],
+    "answer_en": "strong",
+    "answer_hi": "strong",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 5,
+    "question_en": "Which HTML tag is used to define emphasized text?",
+    "question_hi": "एम्फेसाइज्ड टेक्स्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["em", "i", "emphasis", "italic"],
+    "options_hi": ["em", "i", "emphasis", "italic"],
+    "answer_en": "em",
+    "answer_hi": "em",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 6,
+    "question_en": "Which HTML tag is used to define a section with navigation links?",
+    "question_hi": "नेविगेशन लिंक्स वाले सेक्शन को डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["nav", "menu", "links", "navigation"],
+    "options_hi": ["nav", "menu", "links", "navigation"],
+    "answer_en": "nav",
+    "answer_hi": "nav",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 7,
+    "question_en": "Which HTML tag is used to define a list item?",
+    "question_hi": "लिस्ट आइटम डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["li", "item", "list", "ul"],
+    "options_hi": ["li", "item", "list", "ul"],
+    "answer_en": "li",
+    "answer_hi": "li",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 8,
+    "question_en": "Which HTML tag is used to define a description list?",
+    "question_hi": "डिस्क्रिप्शन लिस्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["dl", "dd", "dt", "desc"],
+    "options_hi": ["dl", "dd", "dt", "desc"],
+    "answer_en": "dl",
+    "answer_hi": "dl",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 9,
+    "question_en": "Which HTML tag is used to define a term in a description list?",
+    "question_hi": "डिस्क्रिप्शन लिस्ट में टर्म डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["dt", "dd", "dl", "term"],
+    "options_hi": ["dt", "dd", "dl", "term"],
+    "answer_en": "dt",
+    "answer_hi": "dt",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 10,
+    "question_en": "Which HTML tag is used to define a description in a description list?",
+    "question_hi": "डिस्क्रिप्शन लिस्ट में डिस्क्रिप्शन डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["dd", "dt", "dl", "desc"],
+    "options_hi": ["dd", "dt", "dl", "desc"],
+    "answer_en": "dd",
+    "answer_hi": "dd",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 11,
+    "question_en": "Which HTML tag is used to define a table row?",
+    "question_hi": "टेबल रो डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["tr", "td", "th", "table"],
+    "options_hi": ["tr", "td", "th", "table"],
+    "answer_en": "tr",
+    "answer_hi": "tr",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 12,
+    "question_en": "Which HTML tag is used to define a table header cell?",
+    "question_hi": "टेबल हेडर सेल डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["th", "td", "tr", "header"],
+    "options_hi": ["th", "td", "tr", "header"],
+    "answer_en": "th",
+    "answer_hi": "th",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 13,
+    "question_en": "Which HTML tag is used to define a table data cell?",
+    "question_hi": "टेबल डेटा सेल डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["td", "th", "tr", "data"],
+    "options_hi": ["td", "th", "tr", "data"],
+    "answer_en": "td",
+    "answer_hi": "td",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 14,
+    "question_en": "Which HTML tag is used to define a table caption?",
+    "question_hi": "टेबल कैप्शन डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["caption", "title", "head", "label"],
+    "options_hi": ["caption", "title", "head", "label"],
+    "answer_en": "caption",
+    "answer_hi": "caption",
+    "attempted": false,
+    "selected": ""
+  },
+  {
     "num": 15,
-    "question_en": "Which tag is used to define bold text?",
-    "question_hi": "बोल्ड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["b", "strong", "bold", "em"],
-    "options_hi": ["b", "strong", "bold", "em"],
-    "answer_en": "b",
-    "answer_hi": "b",
+    "question_en": "Which HTML attribute is used to specify the number of columns a table cell should span?",
+    "question_hi": "टेबल सेल कितने कॉलम्स तक फैलेगी यह निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["colspan", "rowspan", "span", "columns"],
+    "options_hi": ["colspan", "rowspan", "span", "columns"],
+    "answer_en": "colspan",
+    "answer_hi": "colspan",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 16,
-    "question_en": "Which tag is used to define italic text?",
-    "question_hi": "इटैलिक टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["i", "em", "italic", "it"],
-    "options_hi": ["i", "em", "italic", "it"],
-    "answer_en": "i",
-    "answer_hi": "i",
+    "question_en": "Which HTML attribute is used to specify the number of rows a table cell should span?",
+    "question_hi": "टेबल सेल कितनी रोज़ तक फैलेगी यह निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["rowspan", "colspan", "span", "rows"],
+    "options_hi": ["rowspan", "colspan", "span", "rows"],
+    "answer_en": "rowspan",
+    "answer_hi": "rowspan",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 17,
-    "question_en": "Which tag is used to define a horizontal line?",
-    "question_hi": "हॉरिज़ॉन्टल लाइन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["hr", "line", "br", "hl"],
-    "options_hi": ["hr", "line", "br", "hl"],
-    "answer_en": "hr",
-    "answer_hi": "hr",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 18,
-    "question_en": "Which attribute specifies the URL of a link?",
-    "question_hi": "लिंक का URL निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["href", "src", "link", "url"],
-    "options_hi": ["href", "src", "link", "url"],
-    "answer_en": "href",
-    "answer_hi": "href",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 19,
-    "question_en": "Which tag is used to display a picture on a webpage?",
-    "question_hi": "वेबपेज पर चित्र दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["img", "image", "picture", "src"],
-    "options_hi": ["img", "image", "picture", "src"],
-    "answer_en": "img",
-    "answer_hi": "img",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 20,
-    "question_en": "Which attribute provides alternative text for images?",
-    "question_hi": "इमेज के लिए वैकल्पिक टेक्स्ट कौन सा attribute देता है?",
-    "options_en": ["alt", "title", "src", "caption"],
-    "options_hi": ["alt", "title", "src", "caption"],
-    "answer_en": "alt",
-    "answer_hi": "alt",
-    "attempted": false,
-    "selected": ""
-  },
-
-
-
-
-  
-  {
-    "num": 21,
-    "question_en": "Which tag is used to create a button?",
-    "question_hi": "बटन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["button", "input", "form", "b"],
-    "options_hi": ["button", "input", "form", "b"],
-    "answer_en": "button",
-    "answer_hi": "button",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 22,
-    "question_en": "Which attribute is used to disable an input field?",
-    "question_hi": "इनपुट फ़ील्ड को डिसेबल करने के लिए कौन सा attribute उपयोग होता है?",
-    "options_en": ["disabled", "readonly", "hidden", "inactive"],
-    "options_hi": ["disabled", "readonly", "hidden", "inactive"],
-    "answer_en": "disabled",
-    "answer_hi": "disabled",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 23,
-    "question_en": "Which input type is used for passwords?",
-    "question_hi": "पासवर्ड के लिए कौन सा इनपुट टाइप उपयोग होता है?",
-    "options_en": ["password", "text", "email", "hidden"],
-    "options_hi": ["password", "text", "email", "hidden"],
-    "answer_en": "password",
-    "answer_hi": "password",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 24,
-    "question_en": "Which tag is used to create a checkbox?",
-    "question_hi": "चेकबॉक्स बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["input", "checkbox", "form", "select"],
-    "options_hi": ["input", "checkbox", "form", "select"],
-    "answer_en": "input",
-    "answer_hi": "input",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 25,
-    "question_en": "Which tag is used to create a dropdown list?",
-    "question_hi": "ड्रॉपडाउन सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["select", "option", "input", "list"],
-    "options_hi": ["select", "option", "input", "list"],
-    "answer_en": "select",
-    "answer_hi": "select",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 26,
-    "question_en": "Which tag is used to define a form?",
-    "question_hi": "फॉर्म को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
+    "question_en": "Which HTML tag is used to define a form?",
+    "question_hi": "फॉर्म डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
     "options_en": ["form", "input", "fieldset", "div"],
     "options_hi": ["form", "input", "fieldset", "div"],
     "answer_en": "form",
@@ -291,272 +187,369 @@
     "selected": ""
   },
   {
-    "num": 27,
-    "question_en": "Which tag is used to group related form elements?",
-    "question_hi": "संबंधित फॉर्म एलिमेंट्स को समूहित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["fieldset", "form", "div", "section"],
-    "options_hi": ["fieldset", "form", "div", "section"],
-    "answer_en": "fieldset",
-    "answer_hi": "fieldset",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 28,
-    "question_en": "Which tag is used to create a radio button?",
-    "question_hi": "रेडियो बटन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["input", "radio", "button", "select"],
-    "options_hi": ["input", "radio", "button", "select"],
-    "answer_en": "input",
-    "answer_hi": "input",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 29,
-    "question_en": "Which attribute specifies the action URL of a form?",
-    "question_hi": "फॉर्म का action URL निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["action", "method", "url", "href"],
-    "options_hi": ["action", "method", "url", "href"],
+    "num": 18,
+    "question_en": "Which HTML attribute specifies where to send the form-data when a form is submitted?",
+    "question_hi": "फॉर्म सबमिट होने पर फॉर्म-डेटा कहाँ भेजना है यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["action", "method", "target", "url"],
+    "options_hi": ["action", "method", "target", "url"],
     "answer_en": "action",
     "answer_hi": "action",
     "attempted": false,
     "selected": ""
   },
   {
-    "num": 30,
-    "question_en": "Which attribute specifies the method for form submission?",
-    "question_hi": "फॉर्म सबमिशन के लिए method निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["method", "action", "submit", "type"],
-    "options_hi": ["method", "action", "submit", "type"],
+    "num": 19,
+    "question_en": "Which HTML attribute specifies how to send the form-data?",
+    "question_hi": "फॉर्म-डेटा कैसे भेजना है यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["method", "action", "type", "send"],
+    "options_hi": ["method", "action", "type", "send"],
     "answer_en": "method",
     "answer_hi": "method",
     "attempted": false,
     "selected": ""
   },
   {
+    "num": 20,
+    "question_en": "Which method is used to send form-data as URL variables?",
+    "question_hi": "फॉर्म-डेटा को URL वेरिएबल्स के रूप में भेजने के लिए कौन सी मेथड उपयोग होती है?",
+    "options_en": ["GET", "POST", "PUT", "SEND"],
+    "options_hi": ["GET", "POST", "PUT", "SEND"],
+    "answer_en": "GET",
+    "answer_hi": "GET",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 21,
+    "question_en": "Which method is used to send form-data as HTTP post transaction?",
+    "question_hi": "फॉर्म-डेटा को HTTP पोस्ट ट्रांजैक्शन के रूप में भेजने के लिए कौन सी मेथड उपयोग होती है?",
+    "options_en": ["POST", "GET", "PUT", "SEND"],
+    "options_hi": ["POST", "GET", "PUT", "SEND"],
+    "answer_en": "POST",
+    "answer_hi": "POST",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 22,
+    "question_en": "Which HTML tag is used to define a label for an input element?",
+    "question_hi": "इनपुट एलिमेंट के लिए लेबल डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["label", "span", "div", "text"],
+    "options_hi": ["label", "span", "div", "text"],
+    "answer_en": "label",
+    "answer_hi": "label",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 23,
+    "question_en": "Which HTML attribute is used to associate a label with an input element?",
+    "question_hi": "लेबल को इनपुट एलिमेंट के साथ एसोसिएट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["for", "id", "name", "label"],
+    "options_hi": ["for", "id", "name", "label"],
+    "answer_en": "for",
+    "answer_hi": "for",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 24,
+    "question_en": "Which HTML tag is used to define a group of related options in a drop-down list?",
+    "question_hi": "ड्रॉप-डाउन लिस्ट में संबंधित ऑप्शन्स के ग्रुप को डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["optgroup", "option", "select", "group"],
+    "options_hi": ["optgroup", "option", "select", "group"],
+    "answer_en": "optgroup",
+    "answer_hi": "optgroup",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 25,
+    "question_en": "Which HTML attribute is used to specify that an input field is read-only?",
+    "question_hi": "इनपुट फील्ड रीड-ओनली है यह निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["readonly", "disabled", "static", "fixed"],
+    "options_hi": ["readonly", "disabled", "static", "fixed"],
+    "answer_en": "readonly",
+    "answer_hi": "readonly",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 26,
+    "question_en": "Which HTML attribute is used to specify that an input field is disabled?",
+    "question_hi": "इनपुट फील्ड डिसेबल है यह निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["disabled", "readonly", "off", "inactive"],
+    "options_hi": ["disabled", "readonly", "off", "inactive"],
+    "answer_en": "disabled",
+    "answer_hi": "disabled",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 27,
+    "question_en": "Which HTML attribute specifies the maximum number of characters allowed in an input field?",
+    "question_hi": "इनपुट फील्ड में अधिकतम कितने कैरेक्टर्स की अनुमति है यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["maxlength", "size", "length", "max"],
+    "options_hi": ["maxlength", "size", "length", "max"],
+    "answer_en": "maxlength",
+    "answer_hi": "maxlength",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 28,
+    "question_en": "Which HTML attribute specifies the width of an input field?",
+    "question_hi": "इनपुट फील्ड की चौड़ाई निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["size", "width", "length", "maxlength"],
+    "options_hi": ["size", "width", "length", "maxlength"],
+    "answer_en": "size",
+    "answer_hi": "size",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 29,
+    "question_en": "Which HTML tag is used to define a clickable area inside an image map?",
+    "question_hi": "इमेज मैप के अंदर क्लिक करने योग्य एरिया डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["area", "map", "img", "click"],
+    "options_hi": ["area", "map", "img", "click"],
+    "answer_en": "area",
+    "answer_hi": "area",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 30,
+    "question_en": "Which HTML tag is used to define an image map?",
+    "question_hi": "इमेज मैप डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["map", "area", "img", "imagemap"],
+    "options_hi": ["map", "area", "img", "imagemap"],
+    "answer_en": "map",
+    "answer_hi": "map",
+    "attempted": false,
+    "selected": ""
+  },
+  {
     "num": 31,
-    "question_en": "Which tag is used to create a hyperlink that opens in a new tab?",
-    "question_hi": "नए टैब में लिंक खोलने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["a", "link", "href", "target"],
-    "options_hi": ["a", "link", "href", "target"],
-    "answer_en": "a",
-    "answer_hi": "a",
+    "question_en": "Which HTML attribute is used to specify an alternate text for an image?",
+    "question_hi": "इमेज के लिए ऑल्टरनेट टेक्स्ट निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["alt", "title", "src", "text"],
+    "options_hi": ["alt", "title", "src", "text"],
+    "answer_en": "alt",
+    "answer_hi": "alt",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 32,
-    "question_en": "Which attribute specifies the text to display in a tooltip?",
-    "question_hi": "टूलटिप में दिखाने के लिए टेक्स्ट निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["title", "alt", "tooltip", "caption"],
-    "options_hi": ["title", "alt", "tooltip", "caption"],
-    "answer_en": "title",
-    "answer_hi": "title",
+    "question_en": "Which HTML attribute specifies the URL of the image?",
+    "question_hi": "इमेज का URL निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["src", "href", "url", "link"],
+    "options_hi": ["src", "href", "url", "link"],
+    "answer_en": "src",
+    "answer_hi": "src",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 33,
-    "question_en": "Which tag is used to display preformatted text?",
-    "question_hi": "पूर्व-फॉर्मेटेड टेक्स्ट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["pre", "code", "p", "span"],
-    "options_hi": ["pre", "code", "p", "span"],
-    "answer_en": "pre",
-    "answer_hi": "pre",
+    "question_en": "Which HTML tag is used to define a paragraph?",
+    "question_hi": "पैराग्राफ डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["p", "para", "text", "div"],
+    "options_hi": ["p", "para", "text", "div"],
+    "answer_en": "p",
+    "answer_hi": "p",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 34,
-    "question_en": "Which tag is used to create a horizontal rule?",
-    "question_hi": "हॉरिज़ॉन्टल लाइन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["hr", "line", "div", "rule"],
-    "options_hi": ["hr", "line", "div", "rule"],
+    "question_en": "Which HTML tag is used to define a line break?",
+    "question_hi": "लाइन ब्रेक डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["br", "break", "lb", "newline"],
+    "options_hi": ["br", "break", "lb", "newline"],
+    "answer_en": "br",
+    "answer_hi": "br",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 35,
+    "question_en": "Which HTML tag is used to define a horizontal rule?",
+    "question_hi": "हॉरिजॉन्टल रूल डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["hr", "line", "rule", "horizontal"],
+    "options_hi": ["hr", "line", "rule", "horizontal"],
     "answer_en": "hr",
     "answer_hi": "hr",
     "attempted": false,
     "selected": ""
   },
   {
-    "num": 35,
-    "question_en": "Which tag is used to add comments in HTML?",
-    "question_hi": "HTML में कमेंट जोड़ने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["<!-- comment -->", "// comment", "# comment", "<comment>"],
-    "options_hi": ["<!-- comment -->", "// comment", "# comment", "<comment>"],
-    "answer_en": "<!-- comment -->",
-    "answer_hi": "<!-- comment -->",
-    "attempted": false,
-    "selected": ""
-  },
-  {
     "num": 36,
-    "question_en": "Which tag is used to define bold text semantically?",
-    "question_hi": "सामान्य अर्थ में बोल्ड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["strong", "b", "bold", "em"],
-    "options_hi": ["strong", "b", "bold", "em"],
-    "answer_en": "strong",
-    "answer_hi": "strong",
+    "question_en": "Which HTML tag is used to define a comment?",
+    "question_hi": "कमेंट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["<!-- -->", "//", "/* */", "#"],
+    "options_hi": ["<!-- -->", "//", "/* */", "#"],
+    "answer_en": "<!-- -->",
+    "answer_hi": "<!-- -->",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 37,
-    "question_en": "Which tag is used to define emphasized text?",
-    "question_hi": "उत्कृष्टता (emphasis) वाला टेक्स्ट परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["em", "i", "italic", "strong"],
-    "options_hi": ["em", "i", "italic", "strong"],
-    "answer_en": "em",
-    "answer_hi": "em",
+    "question_en": "Which HTML tag is used to define preformatted text?",
+    "question_hi": "प्रीफॉर्मेटेड टेक्स्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["pre", "code", "text", "format"],
+    "options_hi": ["pre", "code", "text", "format"],
+    "answer_en": "pre",
+    "answer_hi": "pre",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 38,
-    "question_en": "Which tag is used to define an abbreviation?",
-    "question_hi": "संक्षेप (abbreviation) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["abbr", "acronym", "short", "abbrv"],
-    "options_hi": ["abbr", "acronym", "short", "abbrv"],
-    "answer_en": "abbr",
-    "answer_hi": "abbr",
+    "question_en": "Which HTML tag is used to define a hyperlink?",
+    "question_hi": "हाइपरलिंक डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["a", "link", "href", "hyper"],
+    "options_hi": ["a", "link", "href", "hyper"],
+    "answer_en": "a",
+    "answer_hi": "a",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 39,
-    "question_en": "Which tag is used to define a blockquote?",
-    "question_hi": "ब्लॉककोट (blockquote) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["blockquote", "q", "quote", "p"],
-    "options_hi": ["blockquote", "q", "quote", "p"],
-    "answer_en": "blockquote",
-    "answer_hi": "blockquote",
+    "question_en": "Which HTML attribute specifies the URL of the page the link goes to?",
+    "question_hi": "लिंक किस पेज पर जाएगा इसका URL निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["href", "src", "url", "link"],
+    "options_hi": ["href", "src", "url", "link"],
+    "answer_en": "href",
+    "answer_hi": "href",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 40,
-    "question_en": "Which tag is used to define an inline quotation?",
-    "question_hi": "इनलाइन कोटेशन (inline quotation) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["q", "blockquote", "quote", "span"],
-    "options_hi": ["q", "blockquote", "quote", "span"],
-    "answer_en": "q",
-    "answer_hi": "q",
+    "question_en": "Which HTML attribute specifies where to open the linked document?",
+    "question_hi": "लिंक्ड डॉक्यूमेंट कहाँ खुलेगा यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["target", "window", "open", "href"],
+    "options_hi": ["target", "window", "open", "href"],
+    "answer_en": "target",
+    "answer_hi": "target",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 41,
-    "question_en": "Which tag is used to define keyboard input?",
-    "question_hi": "कीबोर्ड इनपुट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["kbd", "input", "code", "var"],
-    "options_hi": ["kbd", "input", "code", "var"],
-    "answer_en": "kbd",
-    "answer_hi": "kbd",
+    "question_en": "Which target attribute value opens the linked document in a new window or tab?",
+    "question_hi": "कौन सा टारगेट एट्रिब्यूट वैल्यू लिंक्ड डॉक्यूमेंट को नई विंडो या टैब में खोलता है?",
+    "options_en": ["_blank", "_self", "_parent", "_top"],
+    "options_hi": ["_blank", "_self", "_parent", "_top"],
+    "answer_en": "_blank",
+    "answer_hi": "_blank",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 42,
-    "question_en": "Which tag is used to define sample output from a program?",
-    "question_hi": "प्रोग्राम का सैम्पल आउटपुट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["samp", "output", "code", "pre"],
-    "options_hi": ["samp", "output", "code", "pre"],
-    "answer_en": "samp",
-    "answer_hi": "samp",
+    "question_en": "Which HTML tag is used to define an unordered list?",
+    "question_hi": "अनऑर्डर्ड लिस्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["ul", "ol", "li", "list"],
+    "options_hi": ["ul", "ol", "li", "list"],
+    "answer_en": "ul",
+    "answer_hi": "ul",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 43,
-    "question_en": "Which tag is used to define computer code?",
-    "question_hi": "कंप्यूटर कोड दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["code", "pre", "kbd", "var"],
-    "options_hi": ["code", "pre", "kbd", "var"],
-    "answer_en": "code",
-    "answer_hi": "code",
+    "question_en": "Which HTML tag is used to define an ordered list?",
+    "question_hi": "ऑर्डर्ड लिस्ट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["ol", "ul", "li", "list"],
+    "options_hi": ["ol", "ul", "li", "list"],
+    "answer_en": "ol",
+    "answer_hi": "ol",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 44,
-    "question_en": "Which tag is used to define a variable?",
-    "question_hi": "वेरिएबल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["var", "span", "code", "pre"],
-    "options_hi": ["var", "span", "code", "pre"],
-    "answer_en": "var",
-    "answer_hi": "var",
+    "question_en": "Which HTML attribute specifies that an input field must be filled out?",
+    "question_hi": "इनपुट फील्ड को भरना आवश्यक है यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["required", "must", "necessary", "validate"],
+    "options_hi": ["required", "must", "necessary", "validate"],
+    "answer_en": "required",
+    "answer_hi": "required",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 45,
-    "question_en": "Which tag is used to define a description term in a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट में डिस्क्रिप्शन टर्म को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dt", "dd", "dl", "list"],
-    "options_hi": ["dt", "dd", "dl", "list"],
-    "answer_en": "dt",
-    "answer_hi": "dt",
+    "question_en": "Which HTML attribute specifies a short hint that describes the expected value of an input field?",
+    "question_hi": "इनपुट फील्ड की एक्सपेक्टेड वैल्यू को डिस्क्राइब करने वाला शॉर्ट हिंट निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["placeholder", "hint", "tooltip", "title"],
+    "options_hi": ["placeholder", "hint", "tooltip", "title"],
+    "answer_en": "placeholder",
+    "answer_hi": "placeholder",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 46,
-    "question_en": "Which tag is used to define a description definition in a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट में डिस्क्रिप्शन डिफिनिशन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dd", "dt", "dl", "list"],
-    "options_hi": ["dd", "dt", "dl", "list"],
-    "answer_en": "dd",
-    "answer_hi": "dd",
+    "question_en": "Which HTML tag is used to define the document's body?",
+    "question_hi": "डॉक्यूमेंट का बॉडी डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["body", "html", "head", "main"],
+    "options_hi": ["body", "html", "head", "main"],
+    "answer_en": "body",
+    "answer_hi": "body",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 47,
-    "question_en": "Which tag is used to define a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dl", "dt", "dd", "list"],
-    "options_hi": ["dl", "dt", "dd", "list"],
-    "answer_en": "dl",
-    "answer_hi": "dl",
+    "question_en": "Which HTML tag is used to define the document's head?",
+    "question_hi": "डॉक्यूमेंट का हेड डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["head", "html", "body", "header"],
+    "options_hi": ["head", "html", "body", "header"],
+    "answer_en": "head",
+    "answer_hi": "head",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 48,
-    "question_en": "Which tag is used to define inserted text?",
-    "question_hi": "इंसर्टेड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ins", "del", "add", "text"],
-    "options_hi": ["ins", "del", "add", "text"],
-    "answer_en": "ins",
-    "answer_hi": "ins",
+    "question_en": "Which HTML tag is used to define the root of an HTML document?",
+    "question_hi": "HTML डॉक्यूमेंट का रूट डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["html", "head", "body", "root"],
+    "options_hi": ["html", "head", "body", "root"],
+    "answer_en": "html",
+    "answer_hi": "html",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 49,
-    "question_en": "Which tag is used to define deleted text?",
-    "question_hi": "डिलीट किया गया टेक्स्ट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["del", "ins", "remove", "text"],
-    "options_hi": ["del", "ins", "remove", "text"],
-    "answer_en": "del",
-    "answer_hi": "del",
+    "question_en": "Which HTML tag is used to define the title of the document?",
+    "question_hi": "डॉक्यूमेंट का टाइटल डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["title", "head", "h1", "header"],
+    "options_hi": ["title", "head", "h1", "header"],
+    "answer_en": "title",
+    "answer_hi": "title",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 50,
-    "question_en": "Which tag is used to define a citation?",
-    "question_hi": "साइटेशन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["cite", "q", "blockquote", "ref"],
-    "options_hi": ["cite", "q", "blockquote", "ref"],
-    "answer_en": "cite",
-    "answer_hi": "cite",
+    "question_en": "Which HTML tag is used to define a division or a section?",
+    "question_hi": "डिवीजन या सेक्शन डिफाइन करने के लिए कौन सा HTML टैग उपयोग होता है?",
+    "options_en": ["div", "span", "section", "article"],
+    "options_hi": ["div", "span", "section", "article"],
+    "answer_en": "div",
+    "answer_hi": "div",
     "attempted": false,
     "selected": ""
   }
-
- ]
-
+]
 
 
 
@@ -634,6 +627,8 @@ function changeLanguage() {
     loadQuestion(currentQuestion);
 }
 
+
+
 function submitQuiz() {
     clearInterval(timerInterval);
     let attempted = 0,
@@ -684,44 +679,49 @@ function jumpToQuestion(index) {
             loadQuestion(index);
         }
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+      function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+
+            // check correct answer
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
-
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
-                }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
-            }
+        } else {
+            notAttempted++;
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+
+        // push result
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // store in localStorage
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // ask for result page
+    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
+    if (viewResult) {
+        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+    }
+}
+
 
 
 function updateNavigation() {

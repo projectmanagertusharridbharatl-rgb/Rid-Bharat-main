@@ -1,561 +1,555 @@
- const questions = [
+const questions = [
   {
     "num": 1,
-    "question_en": "Which property aligns text to the center?",
-    "question_hi": "कौन-सी प्रॉपर्टी टेक्स्ट को केंद्र में संरेखित करती है?",
-    "options_en": ["text-align", "vertical-align", "align-items", "justify-content"],
-    "options_hi": ["text-align", "vertical-align", "align-items", "justify-content"],
-    "answer_en": "text-align",
-    "answer_hi": "text-align",
+    "question_en": "Which HTML attribute is used to specify that an input field should be pre-filled with a value?",
+    "question_hi": "इनपुट फील्ड प्री-फिल्ड वैल्यू के साथ होनी चाहिए यह निर्दिष्ट करने के लिए कौन सा HTML एट्रिब्यूट उपयोग होता है?",
+    "options_en": ["value", "placeholder", "default", "prefill"],
+    "options_hi": ["value", "placeholder", "default", "prefill"],
+    "answer_en": "value",
+    "answer_hi": "value",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 2,
-    "question_en": "Which HTML tag is used to create a hyperlink?",
-    "question_hi": "हाइपरलिंक बनाने के लिए कौन सा HTML टैग उपयोग होता है?",
-    "options_en": ["a", "link", "href", "hyper"],
-    "options_hi": ["a", "link", "href", "hyper"],
-    "answer_en": "a",
-    "answer_hi": "a",
+    "question_en": "Which HTML attribute specifies that a form should not be validated when submitted?",
+    "question_hi": "फॉर्म सबमिट होने पर वैलिडेट नहीं होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["novalidate", "no-validate", "skip-validation", "formnovalidate"],
+    "options_hi": ["novalidate", "no-validate", "skip-validation", "formnovalidate"],
+    "answer_en": "novalidate",
+    "answer_hi": "novalidate",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 3,
-    "question_en": "What is the default display value of a <div> element?",
-    "question_hi": "<div> एलिमेंट का डिफ़ॉल्ट डिस्प्ले मान क्या है?",
-    "options_en": ["block", "inline", "inline-block", "none"],
-    "options_hi": ["block", "inline", "inline-block", "none"],
-    "answer_en": "block",
-    "answer_hi": "block",
+    "question_en": "Which HTML attribute specifies that an input field should have multiple values?",
+    "question_hi": "इनपुट फील्ड में मल्टीपल वैल्यूज होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["multiple", "many", "several", "multi"],
+    "options_hi": ["multiple", "many", "several", "multi"],
+    "answer_en": "multiple",
+    "answer_hi": "multiple",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 4,
-    "question_en": "Which tag is used to define a table row?",
-    "question_hi": "टेबल रो को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["tr", "td", "table", "row"],
-    "options_hi": ["tr", "td", "table", "row"],
-    "answer_en": "tr",
-    "answer_hi": "tr",
+    "question_en": "Which HTML attribute specifies the pattern that an input field's value is checked against?",
+    "question_hi": "इनपुट फील्ड की वैल्यू किस पैटर्न के खिलाफ चेक की जाएगी यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["pattern", "regex", "format", "validate"],
+    "options_hi": ["pattern", "regex", "format", "validate"],
+    "answer_en": "pattern",
+    "answer_hi": "pattern",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 5,
-    "question_en": "Which attribute specifies an alternate text for an image?",
-    "question_hi": "इमेज के लिए वैकल्पिक टेक्स्ट निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["alt", "title", "src", "caption"],
-    "options_hi": ["alt", "title", "src", "caption"],
-    "answer_en": "alt",
-    "answer_hi": "alt",
+    "question_en": "Which HTML attribute specifies the type of content in a meta tag?",
+    "question_hi": "मेटा टैग में कंटेंट का टाइप निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["name", "content", "http-equiv", "charset"],
+    "options_hi": ["name", "content", "http-equiv", "charset"],
+    "answer_en": "name",
+    "answer_hi": "name",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 6,
-    "question_en": "Which tag defines a paragraph in HTML?",
-    "question_hi": "HTML में पैराग्राफ को परिभाषित करने वाला टैग कौन सा है?",
-    "options_en": ["p", "div", "span", "para"],
-    "options_hi": ["p", "div", "span", "para"],
-    "answer_en": "p",
-    "answer_hi": "p",
+    "question_en": "Which HTML attribute specifies the content of a meta tag?",
+    "question_hi": "मेटा टैग के कंटेंट को निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["content", "value", "data", "meta-content"],
+    "options_hi": ["content", "value", "data", "meta-content"],
+    "answer_en": "content",
+    "answer_hi": "content",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 7,
-    "question_en": "Which tag is used to create an ordered list?",
-    "question_hi": "आदेशित सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ol", "ul", "li", "list"],
-    "options_hi": ["ol", "ul", "li", "list"],
-    "answer_en": "ol",
-    "answer_hi": "ol",
+    "question_en": "Which HTML attribute specifies that a link is a stylesheet?",
+    "question_hi": "लिंक एक स्टाइलशीट है यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["rel", "type", "href", "stylesheet"],
+    "options_hi": ["rel", "type", "href", "stylesheet"],
+    "answer_en": "rel",
+    "answer_hi": "rel",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 8,
-    "question_en": "Which tag is used to create an unordered list?",
-    "question_hi": "अनऑर्डर्ड सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ul", "ol", "li", "list"],
-    "options_hi": ["ul", "ol", "li", "list"],
-    "answer_en": "ul",
-    "answer_hi": "ul",
+    "question_en": "Which HTML attribute specifies the size of an input field?",
+    "question_hi": "इनपुट फील्ड का साइज निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["size", "width", "length", "maxlength"],
+    "options_hi": ["size", "width", "length", "maxlength"],
+    "answer_en": "size",
+    "answer_hi": "size",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 9,
-    "question_en": "Which attribute is used to provide a tooltip for an element?",
-    "question_hi": "किस attribute का उपयोग किसी एलिमेंट के लिए टूलटिप देने के लिए किया जाता है?",
-    "options_en": ["title", "alt", "tooltip", "hint"],
-    "options_hi": ["title", "alt", "tooltip", "hint"],
-    "answer_en": "title",
-    "answer_hi": "title",
+    "question_en": "Which HTML attribute specifies that an image should be loaded when the page loads?",
+    "question_hi": "पेज लोड होने पर इमेज लोड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["loading", "eager", "lazy", "load"],
+    "options_hi": ["loading", "eager", "lazy", "load"],
+    "answer_en": "loading",
+    "answer_hi": "loading",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 10,
-    "question_en": "Which tag is used to define a table header?",
-    "question_hi": "टेबल हेडर को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["th", "tr", "td", "table"],
-    "options_hi": ["th", "tr", "td", "table"],
-    "answer_en": "th",
-    "answer_hi": "th",
+    "question_en": "Which HTML attribute specifies that an image should be loaded only when it's visible in the viewport?",
+    "question_hi": "इमेज तभी लोड होनी चाहिए जब वह व्यूपोर्ट में विजिबल हो यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["loading", "lazy", "eager", "visible"],
+    "options_hi": ["loading", "lazy", "eager", "visible"],
+    "answer_en": "loading",
+    "answer_hi": "loading",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 11,
-    "question_en": "Which tag is used to define a table cell?",
-    "question_hi": "टेबल सेल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["td", "tr", "th", "table"],
-    "options_hi": ["td", "tr", "th", "table"],
-    "answer_en": "td",
-    "answer_hi": "td",
+    "question_en": "Which HTML attribute specifies the relationship between the current document and the linked document in a link tag?",
+    "question_hi": "लिंक टैग में करंट डॉक्यूमेंट और लिंक्ड डॉक्यूमेंट के बीच रिलेशनशिप निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["rel", "relationship", "type", "href"],
+    "options_hi": ["rel", "relationship", "type", "href"],
+    "answer_en": "rel",
+    "answer_hi": "rel",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 12,
-    "question_en": "Which tag is used to define a table?",
-    "question_hi": "टेबल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["table", "tr", "td", "th"],
-    "options_hi": ["table", "tr", "td", "th"],
-    "answer_en": "table",
-    "answer_hi": "table",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 13,
-    "question_en": "Which tag is used to add a line break?",
-    "question_hi": "लाइन ब्रेक जोड़ने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["br", "hr", "break", "lb"],
-    "options_hi": ["br", "hr", "break", "lb"],
-    "answer_en": "br",
-    "answer_hi": "br",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 14,
-    "question_en": "Which tag is used to define a heading?",
-    "question_hi": "हेडिंग को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["h1", "h2", "h3", "h4"],
-    "options_hi": ["h1", "h2", "h3", "h4"],
-    "answer_en": "h1",
-    "answer_hi": "h1",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 15,
-    "question_en": "Which tag is used to define bold text?",
-    "question_hi": "बोल्ड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["b", "strong", "bold", "em"],
-    "options_hi": ["b", "strong", "bold", "em"],
-    "answer_en": "b",
-    "answer_hi": "b",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 16,
-    "question_en": "Which tag is used to define italic text?",
-    "question_hi": "इटैलिक टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["i", "em", "italic", "it"],
-    "options_hi": ["i", "em", "italic", "it"],
-    "answer_en": "i",
-    "answer_hi": "i",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 17,
-    "question_en": "Which tag is used to define a horizontal line?",
-    "question_hi": "हॉरिज़ॉन्टल लाइन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["hr", "line", "br", "hl"],
-    "options_hi": ["hr", "line", "br", "hl"],
-    "answer_en": "hr",
-    "answer_hi": "hr",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 18,
-    "question_en": "Which attribute specifies the URL of a link?",
-    "question_hi": "लिंक का URL निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["href", "src", "link", "url"],
-    "options_hi": ["href", "src", "link", "url"],
+    "question_en": "Which HTML attribute specifies the URL of the page that the link goes to in an anchor tag?",
+    "question_hi": "एंकर टैग में लिंक किस पेज पर जाएगा इसका URL निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["href", "src", "url", "link"],
+    "options_hi": ["href", "src", "url", "link"],
     "answer_en": "href",
     "answer_hi": "href",
     "attempted": false,
     "selected": ""
   },
   {
+    "num": 13,
+    "question_en": "Which HTML attribute specifies that a link should open in a new tab?",
+    "question_hi": "लिंक न्यू टैब में खुलनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["target", "_blank", "new", "window"],
+    "options_hi": ["target", "_blank", "new", "window"],
+    "answer_en": "target",
+    "answer_hi": "target",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 14,
+    "question_en": "Which HTML attribute specifies that a link should open in the same tab?",
+    "question_hi": "लिंक सेम टैब में खुलनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["target", "_self", "same", "current"],
+    "options_hi": ["target", "_self", "same", "current"],
+    "answer_en": "target",
+    "answer_hi": "target",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 15,
+    "question_en": "Which HTML attribute specifies that a link should open in the parent frame?",
+    "question_hi": "लिंक पेरेंट फ्रेम में खुलनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["target", "_parent", "parent", "up"],
+    "options_hi": ["target", "_parent", "parent", "up"],
+    "answer_en": "target",
+    "answer_hi": "target",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 16,
+    "question_en": "Which HTML attribute specifies that a link should open in the full body of the window?",
+    "question_hi": "लिंक विंडो के फुल बॉडी में खुलनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["target", "_top", "top", "full"],
+    "options_hi": ["target", "_top", "top", "full"],
+    "answer_en": "target",
+    "answer_hi": "target",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 17,
+    "question_en": "Which HTML attribute specifies the language of the linked document?",
+    "question_hi": "लिंक्ड डॉक्यूमेंट की भाषा निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["hreflang", "lang", "language", "xml:lang"],
+    "options_hi": ["hreflang", "lang", "language", "xml:lang"],
+    "answer_en": "hreflang",
+    "answer_hi": "hreflang",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 18,
+    "question_en": "Which HTML attribute specifies the media type of the linked document in a link tag?",
+    "question_hi": "लिंक टैग में लिंक्ड डॉक्यूमेंट का मीडिया टाइप निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["media", "type", "content-type", "mime"],
+    "options_hi": ["media", "type", "content-type", "mime"],
+    "answer_en": "media",
+    "answer_hi": "media",
+    "attempted": false,
+    "selected": ""
+  },
+  {
     "num": 19,
-    "question_en": "Which tag is used to display a picture on a webpage?",
-    "question_hi": "वेबपेज पर चित्र दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["img", "image", "picture", "src"],
-    "options_hi": ["img", "image", "picture", "src"],
-    "answer_en": "img",
-    "answer_hi": "img",
+    "question_en": "Which HTML attribute specifies the character encoding for the document in a meta tag?",
+    "question_hi": "मेटा टैग में डॉक्यूमेंट के लिए कैरेक्टर एन्कोडिंग निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["charset", "encoding", "char", "charset-encoding"],
+    "options_hi": ["charset", "encoding", "char", "charset-encoding"],
+    "answer_en": "charset",
+    "answer_hi": "charset",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 20,
-    "question_en": "Which attribute provides alternative text for images?",
-    "question_hi": "इमेज के लिए वैकल्पिक टेक्स्ट कौन सा attribute देता है?",
-    "options_en": ["alt", "title", "src", "caption"],
-    "options_hi": ["alt", "title", "src", "caption"],
-    "answer_en": "alt",
-    "answer_hi": "alt",
+    "question_en": "Which HTML attribute specifies the viewport settings for responsive design?",
+    "question_hi": "रिस्पॉन्सिव डिजाइन के लिए व्यूपोर्ट सेटिंग्स निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["content", "name", "viewport", "meta"],
+    "options_hi": ["content", "name", "viewport", "meta"],
+    "answer_en": "name",
+    "answer_hi": "name",
     "attempted": false,
     "selected": ""
   },
-
-
-
-
-  
   {
     "num": 21,
-    "question_en": "Which tag is used to create a button?",
-    "question_hi": "बटन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["button", "input", "form", "b"],
-    "options_hi": ["button", "input", "form", "b"],
-    "answer_en": "button",
-    "answer_hi": "button",
+    "question_en": "Which HTML attribute specifies that a form element should be submitted with the form?",
+    "question_hi": "फॉर्म एलिमेंट को फॉर्म के साथ सबमिट किया जाना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["name", "id", "form", "submit"],
+    "options_hi": ["name", "id", "form", "submit"],
+    "answer_en": "name",
+    "answer_hi": "name",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 22,
-    "question_en": "Which attribute is used to disable an input field?",
-    "question_hi": "इनपुट फ़ील्ड को डिसेबल करने के लिए कौन सा attribute उपयोग होता है?",
-    "options_en": ["disabled", "readonly", "hidden", "inactive"],
-    "options_hi": ["disabled", "readonly", "hidden", "inactive"],
-    "answer_en": "disabled",
-    "answer_hi": "disabled",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 23,
-    "question_en": "Which input type is used for passwords?",
-    "question_hi": "पासवर्ड के लिए कौन सा इनपुट टाइप उपयोग होता है?",
-    "options_en": ["password", "text", "email", "hidden"],
-    "options_hi": ["password", "text", "email", "hidden"],
-    "answer_en": "password",
-    "answer_hi": "password",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 24,
-    "question_en": "Which tag is used to create a checkbox?",
-    "question_hi": "चेकबॉक्स बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["input", "checkbox", "form", "select"],
-    "options_hi": ["input", "checkbox", "form", "select"],
-    "answer_en": "input",
-    "answer_hi": "input",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 25,
-    "question_en": "Which tag is used to create a dropdown list?",
-    "question_hi": "ड्रॉपडाउन सूची बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["select", "option", "input", "list"],
-    "options_hi": ["select", "option", "input", "list"],
-    "answer_en": "select",
-    "answer_hi": "select",
-    "attempted": false,
-    "selected": ""
-  },
-  {
-    "num": 26,
-    "question_en": "Which tag is used to define a form?",
-    "question_hi": "फॉर्म को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["form", "input", "fieldset", "div"],
-    "options_hi": ["form", "input", "fieldset", "div"],
+    "question_en": "Which HTML attribute specifies that an input field should be part of a form?",
+    "question_hi": "इनपुट फील्ड फॉर्म का पार्ट होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["form", "name", "id", "form-id"],
+    "options_hi": ["form", "name", "id", "form-id"],
     "answer_en": "form",
     "answer_hi": "form",
     "attempted": false,
     "selected": ""
   },
   {
+    "num": 23,
+    "question_en": "Which HTML attribute specifies that a button should submit the form?",
+    "question_hi": "बटन फॉर्म सबमिट करेगा यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "submit", "form", "action"],
+    "options_hi": ["type", "submit", "form", "action"],
+    "answer_en": "type",
+    "answer_hi": "type",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 24,
+    "question_en": "Which HTML attribute specifies that a button should reset the form?",
+    "question_hi": "बटन फॉर्म रीसेट करेगा यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "reset", "form", "action"],
+    "options_hi": ["type", "reset", "form", "action"],
+    "answer_en": "type",
+    "answer_hi": "type",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 25,
+    "question_en": "Which HTML attribute specifies that a button should be a clickable button?",
+    "question_hi": "बटन क्लिकेबल बटन होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "button", "click", "action"],
+    "options_hi": ["type", "button", "click", "action"],
+    "answer_en": "type",
+    "answer_hi": "type",
+    "attempted": false,
+    "selected": ""
+  },
+  {
+    "num": 26,
+    "question_en": "Which HTML attribute specifies that an input field should be a password field?",
+    "question_hi": "इनपुट फील्ड पासवर्ड फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "password", "input", "secret"],
+    "options_hi": ["type", "password", "input", "secret"],
+    "answer_en": "type",
+    "answer_hi": "type",
+    "attempted": false,
+    "selected": ""
+  },
+  {
     "num": 27,
-    "question_en": "Which tag is used to group related form elements?",
-    "question_hi": "संबंधित फॉर्म एलिमेंट्स को समूहित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["fieldset", "form", "div", "section"],
-    "options_hi": ["fieldset", "form", "div", "section"],
-    "answer_en": "fieldset",
-    "answer_hi": "fieldset",
+    "question_en": "Which HTML attribute specifies that an input field should be a checkbox?",
+    "question_hi": "इनपुट फील्ड चेकबॉक्स होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "checkbox", "input", "check"],
+    "options_hi": ["type", "checkbox", "input", "check"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 28,
-    "question_en": "Which tag is used to create a radio button?",
-    "question_hi": "रेडियो बटन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["input", "radio", "button", "select"],
-    "options_hi": ["input", "radio", "button", "select"],
-    "answer_en": "input",
-    "answer_hi": "input",
+    "question_en": "Which HTML attribute specifies that an input field should be a radio button?",
+    "question_hi": "इनपुट फील्ड रेडियो बटन होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "radio", "input", "option"],
+    "options_hi": ["type", "radio", "input", "option"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 29,
-    "question_en": "Which attribute specifies the action URL of a form?",
-    "question_hi": "फॉर्म का action URL निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["action", "method", "url", "href"],
-    "options_hi": ["action", "method", "url", "href"],
-    "answer_en": "action",
-    "answer_hi": "action",
+    "question_en": "Which HTML attribute specifies that an input field should be a file upload field?",
+    "question_hi": "इनपुट फील्ड फाइल अपलोड फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "file", "input", "upload"],
+    "options_hi": ["type", "file", "input", "upload"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 30,
-    "question_en": "Which attribute specifies the method for form submission?",
-    "question_hi": "फॉर्म सबमिशन के लिए method निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["method", "action", "submit", "type"],
-    "options_hi": ["method", "action", "submit", "type"],
-    "answer_en": "method",
-    "answer_hi": "method",
+    "question_en": "Which HTML attribute specifies that an input field should be a hidden field?",
+    "question_hi": "इनपुट फील्ड हिडन फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "hidden", "input", "secret"],
+    "options_hi": ["type", "hidden", "input", "secret"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 31,
-    "question_en": "Which tag is used to create a hyperlink that opens in a new tab?",
-    "question_hi": "नए टैब में लिंक खोलने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["a", "link", "href", "target"],
-    "options_hi": ["a", "link", "href", "target"],
-    "answer_en": "a",
-    "answer_hi": "a",
+    "question_en": "Which HTML attribute specifies that an input field should be an email field?",
+    "question_hi": "इनपुट फील्ड ईमेल फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "email", "input", "mail"],
+    "options_hi": ["type", "email", "input", "mail"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 32,
-    "question_en": "Which attribute specifies the text to display in a tooltip?",
-    "question_hi": "टूलटिप में दिखाने के लिए टेक्स्ट निर्दिष्ट करने वाला attribute कौन सा है?",
-    "options_en": ["title", "alt", "tooltip", "caption"],
-    "options_hi": ["title", "alt", "tooltip", "caption"],
-    "answer_en": "title",
-    "answer_hi": "title",
+    "question_en": "Which HTML attribute specifies that an input field should be a URL field?",
+    "question_hi": "इनपुट फील्ड URL फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "url", "input", "link"],
+    "options_hi": ["type", "url", "input", "link"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 33,
-    "question_en": "Which tag is used to display preformatted text?",
-    "question_hi": "पूर्व-फॉर्मेटेड टेक्स्ट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["pre", "code", "p", "span"],
-    "options_hi": ["pre", "code", "p", "span"],
-    "answer_en": "pre",
-    "answer_hi": "pre",
+    "question_en": "Which HTML attribute specifies that an input field should be a number field?",
+    "question_hi": "इनपुट फील्ड नंबर फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "number", "input", "numeric"],
+    "options_hi": ["type", "number", "input", "numeric"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 34,
-    "question_en": "Which tag is used to create a horizontal rule?",
-    "question_hi": "हॉरिज़ॉन्टल लाइन बनाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["hr", "line", "div", "rule"],
-    "options_hi": ["hr", "line", "div", "rule"],
-    "answer_en": "hr",
-    "answer_hi": "hr",
+    "question_en": "Which HTML attribute specifies that an input field should be a range slider?",
+    "question_hi": "इनपुट फील्ड रेंज स्लाइडर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "range", "input", "slider"],
+    "options_hi": ["type", "range", "input", "slider"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 35,
-    "question_en": "Which tag is used to add comments in HTML?",
-    "question_hi": "HTML में कमेंट जोड़ने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["<!-- comment -->", "// comment", "# comment", "<comment>"],
-    "options_hi": ["<!-- comment -->", "// comment", "# comment", "<comment>"],
-    "answer_en": "<!-- comment -->",
-    "answer_hi": "<!-- comment -->",
+    "question_en": "Which HTML attribute specifies that an input field should be a date picker?",
+    "question_hi": "इनपुट फील्ड डेट पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "date", "input", "calendar"],
+    "options_hi": ["type", "date", "input", "calendar"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 36,
-    "question_en": "Which tag is used to define bold text semantically?",
-    "question_hi": "सामान्य अर्थ में बोल्ड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["strong", "b", "bold", "em"],
-    "options_hi": ["strong", "b", "bold", "em"],
-    "answer_en": "strong",
-    "answer_hi": "strong",
+    "question_en": "Which HTML attribute specifies that an input field should be a color picker?",
+    "question_hi": "इनपुट फील्ड कलर पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "color", "input", "picker"],
+    "options_hi": ["type", "color", "input", "picker"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 37,
-    "question_en": "Which tag is used to define emphasized text?",
-    "question_hi": "उत्कृष्टता (emphasis) वाला टेक्स्ट परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["em", "i", "italic", "strong"],
-    "options_hi": ["em", "i", "italic", "strong"],
-    "answer_en": "em",
-    "answer_hi": "em",
+    "question_en": "Which HTML attribute specifies that an input field should be a search field?",
+    "question_hi": "इनपुट फील्ड सर्च फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "search", "input", "find"],
+    "options_hi": ["type", "search", "input", "find"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 38,
-    "question_en": "Which tag is used to define an abbreviation?",
-    "question_hi": "संक्षेप (abbreviation) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["abbr", "acronym", "short", "abbrv"],
-    "options_hi": ["abbr", "acronym", "short", "abbrv"],
-    "answer_en": "abbr",
-    "answer_hi": "abbr",
+    "question_en": "Which HTML attribute specifies that an input field should be a telephone number field?",
+    "question_hi": "इनपुट फील्ड टेलीफोन नंबर फील्ड होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "tel", "input", "phone"],
+    "options_hi": ["type", "tel", "input", "phone"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 39,
-    "question_en": "Which tag is used to define a blockquote?",
-    "question_hi": "ब्लॉककोट (blockquote) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["blockquote", "q", "quote", "p"],
-    "options_hi": ["blockquote", "q", "quote", "p"],
-    "answer_en": "blockquote",
-    "answer_hi": "blockquote",
+    "question_en": "Which HTML attribute specifies that an input field should be a time picker?",
+    "question_hi": "इनपुट फील्ड टाइम पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "time", "input", "clock"],
+    "options_hi": ["type", "time", "input", "clock"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 40,
-    "question_en": "Which tag is used to define an inline quotation?",
-    "question_hi": "इनलाइन कोटेशन (inline quotation) को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["q", "blockquote", "quote", "span"],
-    "options_hi": ["q", "blockquote", "quote", "span"],
-    "answer_en": "q",
-    "answer_hi": "q",
+    "question_en": "Which HTML attribute specifies that an input field should be a month picker?",
+    "question_hi": "इनपुट फील्ड मंथ पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "month", "input", "calendar"],
+    "options_hi": ["type", "month", "input", "calendar"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 41,
-    "question_en": "Which tag is used to define keyboard input?",
-    "question_hi": "कीबोर्ड इनपुट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["kbd", "input", "code", "var"],
-    "options_hi": ["kbd", "input", "code", "var"],
-    "answer_en": "kbd",
-    "answer_hi": "kbd",
+    "question_en": "Which HTML attribute specifies that an input field should be a week picker?",
+    "question_hi": "इनपुट फील्ड वीक पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "week", "input", "calendar"],
+    "options_hi": ["type", "week", "input", "calendar"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 42,
-    "question_en": "Which tag is used to define sample output from a program?",
-    "question_hi": "प्रोग्राम का सैम्पल आउटपुट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["samp", "output", "code", "pre"],
-    "options_hi": ["samp", "output", "code", "pre"],
-    "answer_en": "samp",
-    "answer_hi": "samp",
+    "question_en": "Which HTML attribute specifies that an input field should be a datetime-local picker?",
+    "question_hi": "इनपुट फील्ड डेटटाइम-लोकल पिकर होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["type", "datetime-local", "input", "calendar"],
+    "options_hi": ["type", "datetime-local", "input", "calendar"],
+    "answer_en": "type",
+    "answer_hi": "type",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 43,
-    "question_en": "Which tag is used to define computer code?",
-    "question_hi": "कंप्यूटर कोड दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["code", "pre", "kbd", "var"],
-    "options_hi": ["code", "pre", "kbd", "var"],
-    "answer_en": "code",
-    "answer_hi": "code",
+    "question_en": "Which HTML attribute specifies that a textarea should have a default value?",
+    "question_hi": "टेक्स्टएरिया में डिफॉल्ट वैल्यू होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["value", "placeholder", "default", "text"],
+    "options_hi": ["value", "placeholder", "default", "text"],
+    "answer_en": "placeholder",
+    "answer_hi": "placeholder",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 44,
-    "question_en": "Which tag is used to define a variable?",
-    "question_hi": "वेरिएबल को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["var", "span", "code", "pre"],
-    "options_hi": ["var", "span", "code", "pre"],
-    "answer_en": "var",
-    "answer_hi": "var",
+    "question_en": "Which HTML attribute specifies that a select element should have multiple options selectable?",
+    "question_hi": "सेलेक्ट एलिमेंट में मल्टीपल ऑप्शन सेलेक्टेबल होने चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["multiple", "many", "several", "multi"],
+    "options_hi": ["multiple", "many", "several", "multi"],
+    "answer_en": "multiple",
+    "answer_hi": "multiple",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 45,
-    "question_en": "Which tag is used to define a description term in a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट में डिस्क्रिप्शन टर्म को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dt", "dd", "dl", "list"],
-    "options_hi": ["dt", "dd", "dl", "list"],
-    "answer_en": "dt",
-    "answer_hi": "dt",
+    "question_en": "Which HTML attribute specifies that an option in a select element should be disabled?",
+    "question_hi": "सेलेक्ट एलिमेंट में ऑप्शन डिसेबल होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["disabled", "readonly", "off", "inactive"],
+    "options_hi": ["disabled", "readonly", "off", "inactive"],
+    "answer_en": "disabled",
+    "answer_hi": "disabled",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 46,
-    "question_en": "Which tag is used to define a description definition in a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट में डिस्क्रिप्शन डिफिनिशन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dd", "dt", "dl", "list"],
-    "options_hi": ["dd", "dt", "dl", "list"],
-    "answer_en": "dd",
-    "answer_hi": "dd",
+    "question_en": "Which HTML attribute specifies that an option in a select element should be the default selected option?",
+    "question_hi": "सेलेक्ट एलिमेंट में ऑप्शन डिफॉल्ट सेलेक्टेड ऑप्शन होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["selected", "checked", "default", "on"],
+    "options_hi": ["selected", "checked", "default", "on"],
+    "answer_en": "selected",
+    "answer_hi": "selected",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 47,
-    "question_en": "Which tag is used to define a description list?",
-    "question_hi": "डिस्क्रिप्शन लिस्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["dl", "dt", "dd", "list"],
-    "options_hi": ["dl", "dt", "dd", "list"],
-    "answer_en": "dl",
-    "answer_hi": "dl",
+    "question_en": "Which HTML attribute specifies that an input field should have a list of pre-defined options?",
+    "question_hi": "इनपुट फील्ड में प्री-डिफाइंड ऑप्शन्स की लिस्ट होनी चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["list", "options", "datalist", "predefined"],
+    "options_hi": ["list", "options", "datalist", "predefined"],
+    "answer_en": "list",
+    "answer_hi": "list",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 48,
-    "question_en": "Which tag is used to define inserted text?",
-    "question_hi": "इंसर्टेड टेक्स्ट को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["ins", "del", "add", "text"],
-    "options_hi": ["ins", "del", "add", "text"],
-    "answer_en": "ins",
-    "answer_hi": "ins",
+    "question_en": "Which HTML attribute specifies that a form should be validated using HTML5 validation?",
+    "question_hi": "फॉर्म HTML5 वैलिडेशन का उपयोग करके वैलिडेट होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["novalidate", "validate", "html5validate", "formvalidate"],
+    "options_hi": ["novalidate", "validate", "html5validate", "formvalidate"],
+    "answer_en": "novalidate",
+    "answer_hi": "novalidate",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 49,
-    "question_en": "Which tag is used to define deleted text?",
-    "question_hi": "डिलीट किया गया टेक्स्ट दिखाने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["del", "ins", "remove", "text"],
-    "options_hi": ["del", "ins", "remove", "text"],
-    "answer_en": "del",
-    "answer_hi": "del",
+    "question_en": "Which HTML attribute specifies that an input field should have a spell check enabled?",
+    "question_hi": "इनपुट फील्ड में स्पेल चेक एनेबल होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["spellcheck", "check", "spell", "validate"],
+    "options_hi": ["spellcheck", "check", "spell", "validate"],
+    "answer_en": "spellcheck",
+    "answer_hi": "spellcheck",
     "attempted": false,
     "selected": ""
   },
   {
     "num": 50,
-    "question_en": "Which tag is used to define a citation?",
-    "question_hi": "साइटेशन को परिभाषित करने के लिए कौन सा टैग उपयोग होता है?",
-    "options_en": ["cite", "q", "blockquote", "ref"],
-    "options_hi": ["cite", "q", "blockquote", "ref"],
-    "answer_en": "cite",
-    "answer_hi": "cite",
+    "question_en": "Which HTML attribute specifies that an input field should have auto-capitalization enabled?",
+    "question_hi": "इनपुट फील्ड में ऑटो-कैपिटलाइजेशन एनेबल होना चाहिए यह निर्दिष्ट करने वाला HTML एट्रिब्यूट कौन सा है?",
+    "options_en": ["autocapitalize", "capitalize", "auto", "text-transform"],
+    "options_hi": ["autocapitalize", "capitalize", "auto", "text-transform"],
+    "answer_en": "autocapitalize",
+    "answer_hi": "autocapitalize",
     "attempted": false,
     "selected": ""
   }
-
- ]
+];
 
 
 
@@ -634,6 +628,8 @@ function changeLanguage() {
     loadQuestion(currentQuestion);
 }
 
+
+
 function submitQuiz() {
     clearInterval(timerInterval);
     let attempted = 0,
@@ -684,44 +680,49 @@ function jumpToQuestion(index) {
             loadQuestion(index);
         }
 
-        function submitQuiz() {
-            let confirmation = confirm("Are you sure you want to submit the test?");
-            
-            if (!confirmation) {
-                return; // अगर यूज़र 'Cancel' करता है तो आगे नहीं बढ़ेंगे
+      function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+
+            // check correct answer
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
             }
 
-            let attempted = 0;
-            let notAttempted = 0;
-            let score = 0;
-            const results = [];
-
-            questions.forEach(q => {
-                if (q.attempted) {
-                    attempted++;
-                    if (q.selected === q.answer) {
-                        score++;
-                    }
-                } else {
-                    notAttempted++;
-                }
-                results.push({ question: q.question, selected: q.selected || "Not Answered", correct: q.answer });
-            });
-
-            localStorage.setItem("attempted", attempted);
-            localStorage.setItem("notAttempted", notAttempted);
-            localStorage.setItem("score", score);
-            localStorage.setItem("results", JSON.stringify(results));
-
-            // रिजल्ट देखने से पहले एक और कन्फर्मेशन ले सकते हैं
-            let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
-            if (viewResult) {
-                window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
-            }
+        } else {
+            notAttempted++;
         }
-        window.onload = () => {
-            loadQuestion(currentQuestion);
-        };
+
+        // push result
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // store in localStorage
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // ask for result page
+    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
+    if (viewResult) {
+        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+    }
+}
+
 
 
 function updateNavigation() {

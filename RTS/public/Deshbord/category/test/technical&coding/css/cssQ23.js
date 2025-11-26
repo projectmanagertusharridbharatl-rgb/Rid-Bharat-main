@@ -556,7 +556,8 @@ const questions = [
 
 let currentQuestion = 0; 
 let language = "en";
-let timeLeft = 180 * 60; // 180 minutes
+// let timeLeft = 180 * 60; // 180 minutes
+let timeLeft = 60 * 60; // 60 minutes
 let timerInterval;
 
 // ----------------- Quiz Logic -----------------
@@ -627,6 +628,8 @@ function changeLanguage() {
     loadQuestion(currentQuestion);
 }
 
+
+
 function submitQuiz() {
     clearInterval(timerInterval);
     let attempted = 0,
@@ -666,6 +669,61 @@ function startTimer() {
         }
     }, 1000);
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// submit 
+function jumpToQuestion(index) {
+            currentQuestion = index;
+            loadQuestion(index);
+        }
+
+      function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+
+            // check correct answer
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
+            }
+
+        } else {
+            notAttempted++;
+        }
+
+        // push result
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // store in localStorage
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // ask for result page
+    let viewResult = confirm("Test submitted successfully! Do you want to view your result?");
+    if (viewResult) {
+        window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+    }
+}
+
+
 
 function updateNavigation() {
     const nav = document.getElementById("circleContainer");
@@ -849,3 +907,6 @@ window.onload = function () {
     startTimer();
     startCamera(); // ✅ Camera starts with test
 };
+
+
+///////////////////////////////////////
