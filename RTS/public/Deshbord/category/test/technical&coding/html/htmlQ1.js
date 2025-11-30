@@ -550,31 +550,21 @@ const questions = [
     "selected": ""
   }
 
-]
+];
 
 
 
 
-// ----------------- Global Variables -----------------
 
 
-
+// --------------------------- GLOBAL VARS -----------------------------
 let currentQuestion = 0;
 let language = "en";
-let timeLeft = 60 * 60; // 60 minutes
+let timeLeft = 60 * 60;   // 60 minutes timer
 let timerInterval;
 
-let timeSpentPerQuestion = new Array(questions.length).fill(0);
-let lastQuestionChangeTime = Date.now();
-
-
-
-/* ============================================================
-      LOAD QUESTION
-============================================================ */
-
+// --------------------------- LOAD QUESTION ----------------------------
 function loadQuestion(index) {
-
     const q = questions[index];
 
     document.getElementById("question").textContent =
@@ -588,10 +578,10 @@ function loadQuestion(index) {
 
     const options = language === "en" ? q.options_en : q.options_hi;
 
-    options.forEach(option => {
+    options.forEach((option) => {
         const isSelected = q.selected === option;
-
         const optionDiv = document.createElement("div");
+
         optionDiv.className = "option-box";
         optionDiv.style = `
             border: 2px solid ${isSelected ? "#007bff" : "#ccc"};
@@ -600,12 +590,11 @@ function loadQuestion(index) {
             border-radius: 8px;
             margin: 6px 0;
             cursor: pointer;
-            transition: all 0.2s;
         `;
 
         optionDiv.innerHTML = `
-            <input type="radio" name="option" value="${option}" ${isSelected ? "checked" : ""} 
-            style="margin-right:8px;"> ${option}
+            <input type="radio" name="option"
+            value="${option}" ${isSelected ? "checked" : ""} /> ${option}
         `;
 
         optionDiv.addEventListener("click", () => {
@@ -619,40 +608,16 @@ function loadQuestion(index) {
     updateNavigation();
 }
 
-
-
-/* ============================================================
-      TIME TRACKING PER QUESTION
-============================================================ */
-
-function trackTimeForCurrentQuestion() {
-    const now = Date.now();
-    const diff = Math.floor((now - lastQuestionChangeTime) / 1000);
-    timeSpentPerQuestion[currentQuestion] += diff;
-    lastQuestionChangeTime = now;
-}
-
-
-
-/* ============================================================
-      MARK ATTEMPT
-============================================================ */
-
+// --------------------------- MARK ATTEMPT ----------------------------
 function markAttempted(index, selectedAnswer) {
     questions[index].attempted = true;
     questions[index].selected = selectedAnswer;
     updateNavigation();
 }
 
-
-
-/* ============================================================
-      NEXT / PREVIOUS
-============================================================ */
-
+// --------------------------- NEXT / PREV -----------------------------
 function nextQuestion() {
     if (currentQuestion < questions.length - 1) {
-        trackTimeForCurrentQuestion();
         currentQuestion++;
         loadQuestion(currentQuestion);
     }
@@ -660,35 +625,89 @@ function nextQuestion() {
 
 function prevQuestion() {
     if (currentQuestion > 0) {
-        trackTimeForCurrentQuestion();
         currentQuestion--;
         loadQuestion(currentQuestion);
     }
 }
 
-
-
-/* ============================================================
-      LANGUAGE CHANGE
-============================================================ */
-
+// --------------------------- LANGUAGE CHANGE -------------------------
 function changeLanguage() {
     language = document.getElementById("languageSelect").value;
     loadQuestion(currentQuestion);
 }
 
+// --------------------------- TIMER -------------------------------
+function startTimer() {
+    const timerElement = document.getElementById("timer");
+    clearInterval(timerInterval);
 
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("⏳ Time Over!");
+            submitQuiz();
+        }
 
-/* ============================================================
-      NAVIGATION CIRCLES
-============================================================ */
+        const h = Math.floor(timeLeft / 3600);
+        const m = Math.floor((timeLeft % 3600) / 60);
+        const s = timeLeft % 60;
 
-function jumpToQuestion(i) {
-    trackTimeForCurrentQuestion();
-    currentQuestion = i;
-    loadQuestion(i);
+        timerElement.textContent =
+            `Time Left: ${h.toString().padStart(2, "0")}:${m
+                .toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+
+        timeLeft--;
+    }, 1000);
 }
 
+// --------------------------- SUBMIT QUIZ (FINAL FIXED) ---------------------
+function submitQuiz() {
+    let confirmation = confirm("Are you sure you want to submit the test?");
+    if (!confirmation) return;
+
+    clearInterval(timerInterval);
+
+    // ⭐ LIVE TIME CALCULATION (CORRECT)
+    const totalTimeSpent = (60 * 60) - timeLeft;
+    const mins = Math.floor(totalTimeSpent / 60);
+    const secs = totalTimeSpent % 60;
+
+    // SAVE TIME
+    localStorage.setItem("timeTaken", `${mins} min ${secs} sec`);
+
+    let attempted = 0;
+    let notAttempted = 0;
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+        if (q.attempted) {
+            attempted++;
+            if (q.selected === q.answer_en || q.selected === q.answer_hi) {
+                score++;
+            }
+        } else {
+            notAttempted++;
+        }
+
+        results.push({
+            question: language === "en" ? q.question_en : q.question_hi,
+            selected: q.selected || "Not Answered",
+            correct: language === "en" ? q.answer_en : q.answer_hi
+        });
+    });
+
+    // SAVE DATA
+    localStorage.setItem("attempted", attempted);
+    localStorage.setItem("notAttempted", notAttempted);
+    localStorage.setItem("score", score);
+    localStorage.setItem("results", JSON.stringify(results));
+
+    // GO TO RESULT PAGE
+    window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+}
+
+// --------------------------- NAVIGATION ------------------------------
 function updateNavigation() {
     const nav = document.getElementById("circleContainer");
     nav.innerHTML = "";
@@ -699,156 +718,54 @@ function updateNavigation() {
         else if (q.attempted) color = "green";
 
         nav.innerHTML += `
-            <div class="circle" 
-                style="background:${color}" 
-                onclick="jumpToQuestion(${i})">
-                    ${i + 1}
-            </div>`;
+        <div class="circle"
+        style="background:${color}"
+        onclick="jumpToQuestion(${i})">${i + 1}</div>`;
     });
 }
 
-
-
-/* ============================================================
-      SUBMIT QUIZ (FINAL)
-============================================================ */
-
-function submitQuiz() {
-
-    let ok = confirm("Are you sure you want to submit?");
-    if (!ok) return;
-
-    trackTimeForCurrentQuestion();
-
-    // ⏱ TIME TAKEN CALCULATION
-    const start = Number(localStorage.getItem("quizStartTime"));
-    const end = Date.now();
-    const diff = Math.floor((end - start) / 1000);
-
-    const mins = Math.floor(diff / 60);
-    const secs = diff % 60;
-
-    localStorage.setItem("timeTaken", `${mins} min ${secs} sec`);
-
-
-    // SCORE CALCULATION
-    let attempted = 0, notAttempted = 0, score = 0;
-    const results = [];
-
-    questions.forEach((q, i) => {
-        if (q.attempted) {
-            attempted++;
-            if (q.selected === q.answer_en || q.selected === q.answer_hi)
-                score++;
-        } else {
-            notAttempted++;
-        }
-
-        results.push({
-            question: language === "en" ? q.question_en : q.question_hi,
-            selected: q.selected || "Not Answered",
-            correct: language === "en" ? q.answer_en : q.answer_hi,
-            timeSpent: timeSpentPerQuestion[i] + " sec",
-        });
-    });
-
-    // SAVE IN LOCAL STORAGE FOR RESULT PAGE
-    localStorage.setItem("attempted", attempted);
-    localStorage.setItem("notAttempted", notAttempted);
-    localStorage.setItem("score", score);
-    localStorage.setItem("results", JSON.stringify(results));
-    localStorage.setItem("timePerQuestion", JSON.stringify(timeSpentPerQuestion));
-
-    alert("Quiz Submitted Successfully!");
-
-    window.location.href = "/RTS/public/Deshbord/category/test/submit-test.html";
+function jumpToQuestion(i) {
+    currentQuestion = i;
+    loadQuestion(i);
 }
 
-
-
-/* ============================================================
-      TIMER (AUTO SUBMIT)
-============================================================ */
-
-function startTimer() {
-    const timerEl = document.getElementById("timer");
-
-    clearInterval(timerInterval);
-
-    timerInterval = setInterval(() => {
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            alert("⏳ Time Over! Submitting Test...");
-            submitQuiz();
-            return;
-        }
-
-        const h = Math.floor(timeLeft / 3600);
-        const m = Math.floor((timeLeft % 3600) / 60);
-        const s = timeLeft % 60;
-
-        timerEl.textContent = `Time Left: ${h.toString().padStart(2, "0")}:${m
-            .toString()
-            .padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
-
-        timeLeft--;
-    }, 1000);
-}
-
-
-
-/* ============================================================
-      CAMERA + MOVEMENT (Same as your code)
-============================================================ */
-
-let movementCount = 0;
+// --------------------------- CAMERA (NO CHANGE) ----------------------
 let videoStream;
+let movementCount = 0;
 
 function startCamera() {
-    const box = document.createElement("div");
-    box.id = "cameraBox";
-    box.style = `
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 3px solid red;
-        z-index: 9999;
-    `;
-
-    document.body.appendChild(box);
+    const container = document.createElement("div");
+    container.id = "camera-container";
+    container.style.position = "fixed";
+    container.style.top = "10px";
+    container.style.left = "10px";
+    container.style.width = "130px";
+    container.style.height = "130px";
+    container.style.borderRadius = "50%";
+    container.style.overflow = "hidden";
+    container.style.background = "#000";
+    container.style.border = "3px solid red";
+    container.style.zIndex = "9999";
+    document.body.appendChild(container);
 
     const video = document.createElement("video");
-    video.setAttribute("autoplay", true);
+    video.autoplay = true;
+    video.playsInline = true;
     video.style.width = "100%";
     video.style.height = "100%";
-    box.appendChild(video);
+    video.style.objectFit = "cover";
+    container.appendChild(video);
 
-    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-        video.srcObject = stream;
-        videoStream = stream;
-    });
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            videoStream = stream;
+        })
+        .catch(() => alert("Camera not accessible!"));
 }
 
-
-
-/* ============================================================
-      PAGE LOAD
-============================================================ */
-
-window.onload = () => {
-
-    // QUIZ START TIME
-    if (!localStorage.getItem("quizStartTime")) {
-        localStorage.setItem("quizStartTime", Date.now());
-    }
-
-    currentQuestion = 0;
-    lastQuestionChangeTime = Date.now();
-
+// --------------------------- PAGE LOAD --------------------------
+window.onload = function () {
     loadQuestion(currentQuestion);
     startTimer();
     startCamera();
